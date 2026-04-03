@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHYZIK — The training platform for lifters.</title>
+  <meta name="description" content="Structured programs. Progressive overload. A social feed built on real workouts. PHYZIK is the training platform for serious lifters.">
+  <meta property="og:title" content="PHYZIK — The training platform for lifters.">
+  <meta property="og:description" content="Structured programs. Progressive overload. A social feed built on real workouts.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://phyzik.app">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="icon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0A0A0B;
+      --surface1: #141416;
+      --surface2: #1C1C1F;
+      --text-primary: #FFFFFF;
+      --text-secondary: #9CA3AF;
+      --text-tertiary: #6B7280;
+      --accent: #A78BFA;
+      --accent-muted: rgba(167,139,250,0.12);
+      --divider: #1F1F23;
+      --gold: #C9A84C;
+      --success: #4ADE80;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px;
+      background: rgba(10,10,11,0.9);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--divider);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { height: 28px; width: 28px; border-radius: 6px; }
+    .nav-logo span {
+      font-size: 15px; font-weight: 800; letter-spacing: 3px;
+      color: var(--text-primary);
+    }
+    .nav-right { display: flex; align-items: center; gap: 28px; }
+    .nav-right a {
+      color: var(--text-secondary); text-decoration: none;
+      font-size: 13px; font-weight: 500;
+      transition: color 0.15s;
+    }
+    .nav-right a:hover { color: var(--text-primary); }
+    .nav-right .cta { color: var(--accent); }
+    .nav-hamburger {
+      display: none; background: none; border: none;
+      color: var(--text-secondary); cursor: pointer; padding: 4px;
+    }
+
+    /* ── HERO ─────────────────────────────────────────── */
+    .hero {
+      padding: 140px 32px 0;
+      max-width: 1080px; margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hero-eyebrow .dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s ease infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; } 50% { opacity: 0.3; }
+    }
+    .hero h1 {
+      font-size: clamp(36px, 5.5vw, 64px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -2px;
+      max-width: 680px;
+      margin-bottom: 20px;
+    }
+    .hero-desc {
+      font-size: 17px; line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 500px;
+      margin-bottom: 36px;
+    }
+
+    /* Email form */
+    .email-row {
+      display: flex; gap: 10px;
+      max-width: 420px;
+    }
+    .email-row input {
+      flex: 1; min-width: 0;
+      padding: 12px 16px;
+      background: var(--surface1);
+      border: 1px solid var(--divider);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-size: 14px; font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .email-row input::placeholder { color: var(--text-tertiary); }
+    .email-row input:focus { border-color: var(--accent); }
+    .email-row button {
+      padding: 12px 24px;
+      background: var(--accent); color: #000;
+      border: none; border-radius: 8px;
+      font-size: 14px; font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer; white-space: nowrap;
+      transition: opacity 0.15s;
+    }
+    .email-row button:hover { opacity: 0.85; }
+    .form-feedback {
+      font-size: 13px; color: var(--text-tertiary);
+      margin-top: 10px; min-height: 18px;
+    }
+    .form-feedback.ok { color: var(--success); }
+    .hero-footnote {
+      font-size: 12px; color: var(--text-tertiary);
+      margin-top: 8px;
+    }
+
+    /* ── PHONE STRIP ─────────────────────────────────── */
+    .phone-strip {
+      margin-top: 80px;
+      padding: 0 32px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .phone-strip::-webkit-scrollbar { display: none; }
+    .phone-strip-inner {
+      display: flex;
+      gap: 16px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .phone-strip-inner img {
+      height: 480px;
+      width: auto;
+      border-radius: 20px;
+      flex-shrink: 0;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.35);
+    }
+
+    /* ── DIVIDERS ────────────────────────────────────── */
+    .sep {
+      height: 1px;
+      background: var(--divider);
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .sep-full {
+      height: 1px;
+      background: var(--divider);
+    }
+
+    /* ── SECTION INTRO ───────────────────────────────── */
+    .s {
+      padding: 96px 32px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .s-label {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 12px;
+    }
+    .s-title {
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .s-desc {
+      font-size: 16px; line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 520px;
+    }
+
+    /* ── FEATURE ROWS ────────────────────────────────── */
+    .feature {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      padding: 96px 32px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .feature-label {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 10px;
+    }
+    .feature-text h2 {
+      font-size: 28px; font-weight: 700;
+      letter-spacing: -0.5px; line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .feature-text p {
+      font-size: 15px; line-height: 1.75;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+    .feature-visual {
+      display: flex; justify-content: center;
+    }
+    .feature-visual img {
+      height: 520px; width: auto;
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+    .feature-visual.pair {
+      gap: 14px;
+    }
+    .feature-visual.pair img {
+      height: 460px;
+    }
+    .feature.flip .feature-text { order: 2; }
+    .feature.flip .feature-visual { order: 1; }
+
+    /* ── NUMBERS ─────────────────────────────────────── */
+    .numbers {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      padding: 72px 32px;
+      max-width: 1080px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .num-val {
+      font-size: 40px; font-weight: 800;
+      letter-spacing: -2px;
+    }
+    .num-label {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-top: 4px;
+    }
+
+    /* ── CTA BLOCK ───────────────────────────────────── */
+    .cta-block {
+      padding: 96px 32px;
+      max-width: 1080px; margin: 0 auto;
+      text-align: center;
+    }
+    .cta-block .s-title { margin-bottom: 8px; }
+    .cta-block .s-desc { margin: 0 auto 32px; }
+    .cta-block .email-row { margin: 0 auto; }
+    .cta-block .form-feedback { text-align: center; }
+
+    /* ── FOOTER ───────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--divider);
+      padding: 40px 32px;
+    }
+    .footer-inner {
+      max-width: 1080px; margin: 0 auto;
+      display: flex; align-items: center;
+      justify-content: space-between;
+    }
+    .footer-left {
+      display: flex; align-items: center; gap: 20px;
+    }
+    .footer-left img { height: 20px; width: 20px; border-radius: 4px; opacity: 0.6; }
+    .footer-copy { font-size: 12px; color: var(--text-tertiary); }
+    .footer-right { display: flex; gap: 24px; }
+    .footer-right a {
+      font-size: 12px; color: var(--text-tertiary);
+      text-decoration: none; transition: color 0.15s;
+    }
+    .footer-right a:hover { color: var(--text-secondary); }
+
+    /* ── MOBILE ───────────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .nav-right { display: none; }
+      .nav-right.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 56px; left: 0; right: 0;
+        background: var(--surface1);
+        border-bottom: 1px solid var(--divider);
+        padding: 20px 16px; gap: 14px;
+      }
+      .nav-hamburger { display: block; }
+      .hero { padding: 120px 16px 0; }
+      .hero h1 { letter-spacing: -1px; }
+      .email-row { flex-direction: column; max-width: 100%; }
+      .phone-strip { padding: 0 16px; margin-top: 56px; }
+      .phone-strip-inner img { height: 380px; border-radius: 16px; }
+      .s { padding: 72px 16px; }
+      .feature { grid-template-columns: 1fr; gap: 40px; padding: 72px 16px; }
+      .feature.flip .feature-text { order: 1; }
+      .feature.flip .feature-visual { order: 2; }
+      .feature-visual img { height: 420px; }
+      .feature-visual.pair img { height: 360px; }
+      .numbers { grid-template-columns: repeat(2, 1fr); padding: 56px 16px; }
+      .num-val { font-size: 32px; }
+      .cta-block { padding: 72px 16px; }
+      .cta-block .email-row { flex-direction: column; }
+      .footer-inner { flex-direction: column; gap: 16px; }
+      .footer-left { flex-direction: column; gap: 6px; }
+    }
+
+    /* ── REVEAL ───────────────────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .reveal.in { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="icon.png" alt="PHYZIK">
+    <span>PHYZIK</span>
+  </a>
+  <button class="nav-hamburger" onclick="document.querySelector('.nav-right').classList.toggle('open')" aria-label="Menu">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+  </button>
+  <div class="nav-right">
+    <a href="#features">Features</a>
+    <a href="#analytics">Analytics</a>
+    <a href="#community">Community</a>
+    <a href="#access" class="cta">Get early access</a>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <p class="hero-eyebrow"><span class="dot"></span> BETA — SPRING 2026</p>
+  <h1>The training platform built for lifters.</h1>
+  <p class="hero-desc">Structured programs. Automatic progressive overload. A social feed where every post is a real workout. One app — everything you need to get stronger.</p>
+  <form class="email-row" id="heroForm" onsubmit="return submitEmail(event,'heroForm')">
+    <input type="email" placeholder="your@email.com" required>
+    <button type="submit">Get early access</button>
+  </form>
+  <p class="form-feedback" id="heroFormFb"></p>
+  <p class="hero-footnote">Free to use. Available on iOS.</p>
+</section>
+
+<div class="phone-strip">
+  <div class="phone-strip-inner">
+    <img src="01_Train_Program.png" alt="Train" class="reveal">
+    <img src="02_Active_Workout.png" alt="Workout" class="reveal">
+    <img src="03_Floor_Social.png" alt="Floor" class="reveal">
+    <img src="04_Squads.png" alt="Squads" class="reveal">
+    <img src="05_Profile.png" alt="Profile" class="reveal">
+  </div>
+</div>
+
+<div class="sep" style="margin-top:96px"></div>
+
+<div class="s reveal">
+  <p class="s-label">WHY PHYZIK</p>
+  <h2 class="s-title">Built around how you actually train.</h2>
+  <p class="s-desc">Every feature exists to make sure you're stronger next month than you are today. Nothing extra.</p>
+</div>
+
+<div class="sep"></div>
+
+<div id="features">
+
+  <div class="feature reveal">
+    <div class="feature-text">
+      <p class="feature-label">PROGRAMS</p>
+      <h2>Periodized training that adapts to you.</h2>
+      <p>12-week hypertrophy, strength, or recomp programs with volume cycling, exercise rotation, and deload weeks. Built on evidence-based volume landmarks — Schoenfeld, Israetel, MEV/MAV/MRV framework.</p>
+      <p>Your weekly schedule shows exactly what to train, when. Track progress through cycles with a clear view of what's ahead.</p>
+    </div>
+    <div class="feature-visual">
+      <img src="01_Train_Program.png" alt="Program schedule">
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="feature flip reveal">
+    <div class="feature-text">
+      <p class="feature-label">ACTIVE WORKOUT</p>
+      <h2>Log every set. Hit every number.</h2>
+      <p>All sets visible in a clean table. Rest timer at the top. Swipe between exercises. Warm-up sets, drop sets, supersets — it handles how you actually train.</p>
+      <p>PR detection in real-time. Estimated 1RM calculated on every working set. Barbell calculator shows what plates to load.</p>
+    </div>
+    <div class="feature-visual">
+      <img src="02_Active_Workout.png" alt="Active workout">
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="feature reveal" id="community">
+    <div class="feature-text">
+      <p class="feature-label">THE FLOOR</p>
+      <h2>A feed built on real training.</h2>
+      <p>Every post is a completed workout — duration, volume, exercises, PRs. No fake motivation posts. No ads. Just real sessions from people you follow.</p>
+      <p>Share cards auto-generate after every session — formatted for Instagram Stories with your stats, photo, and the PHYZIK watermark.</p>
+    </div>
+    <div class="feature-visual">
+      <img src="10_feed_post.png" alt="Floor post">
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="feature flip reveal">
+    <div class="feature-text">
+      <p class="feature-label">SQUADS</p>
+      <h2>Your crew. Your accountability.</h2>
+      <p>Private groups for the people you actually train with. See each other's weekly schedule, compare training days, track who's putting in the work.</p>
+      <p>Squad leaderboards, combined volume stats, and a group activity feed that keeps everyone honest.</p>
+    </div>
+    <div class="feature-visual">
+      <img src="04_Squads.png" alt="Squads">
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="feature reveal" id="analytics">
+    <div class="feature-text">
+      <p class="feature-label">ANALYTICS</p>
+      <h2>Know exactly where you stand.</h2>
+      <p>Performance Index scores your week across consistency, progressive overload, volume, and intensity. Muscle group breakdowns show if you're hitting targets. Rep range distribution tells you if training matches your goal.</p>
+      <p>Body weight trends with EWMA smoothing filter out daily noise. See your real trajectory, not scale anxiety.</p>
+    </div>
+    <div class="feature-visual pair">
+      <img src="07_Performance_Index.png" alt="Performance Index">
+      <img src="09_Weight_Tracker.png" alt="Weight tracker">
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="feature flip reveal">
+    <div class="feature-text">
+      <p class="feature-label">RECOVERY</p>
+      <h2>Fatigue mapped. Recovery timed.</h2>
+      <p>Anatomical muscle recovery map shows which groups are fresh and which need rest — updated after every session based on volume and systemic fatigue.</p>
+      <p>Weekly volume bars, set counts, training time, and streak tracking give you the full picture at a glance.</p>
+    </div>
+    <div class="feature-visual">
+      <img src="06_Train_Recovery.png" alt="Muscle recovery">
+    </div>
+  </div>
+
+</div>
+
+<div class="sep-full"></div>
+
+<div class="numbers reveal">
+  <div>
+    <div class="num-val">730+</div>
+    <div class="num-label">Exercises</div>
+  </div>
+  <div>
+    <div class="num-val">5,000</div>
+    <div class="num-label">Program combinations</div>
+  </div>
+  <div>
+    <div class="num-val">35</div>
+    <div class="num-label">Built-in challenges</div>
+  </div>
+  <div>
+    <div class="num-val">3,145</div>
+    <div class="num-label">Exercise aliases</div>
+  </div>
+</div>
+
+<div class="sep-full"></div>
+
+<div class="cta-block reveal" id="access">
+  <p class="s-label">EARLY ACCESS</p>
+  <h2 class="s-title">Join the beta.</h2>
+  <p class="s-desc">We're onboarding lifters now. Drop your email — we'll reach out when it's your turn.</p>
+  <form class="email-row" id="ctaForm" onsubmit="return submitEmail(event,'ctaForm')">
+    <input type="email" placeholder="your@email.com" required>
+    <button type="submit">Get early access</button>
+  </form>
+  <p class="form-feedback" id="ctaFormFb"></p>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <img src="icon.png" alt="">
+      <span class="footer-copy">&copy; 2026 Physique Technologies LLC</span>
+    </div>
+    <div class="footer-right">
+      <a href="https://instagram.com/phyzik.app" target="_blank" rel="noopener">@phyzik.app</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+async function submitEmail(e, id) {
+  e.preventDefault();
+  const form = document.getElementById(id);
+  const fb = document.getElementById(id + 'Fb');
+  const email = form.querySelector('input').value;
+  const btn = form.querySelector('button');
+  btn.textContent = '...'; btn.disabled = true;
+  try {
+    await fetch('https://vawfcizelppxfhffflgs.supabase.co/rest/v1/waitlist', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZhd2ZjaXplbHBweGZoZmZmbGdzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE1NTA4MTMsImV4cCI6MjA1NzEyNjgxM30.tMqXMjfvgJFjNFEghPCq14bZ0TFbz7NZvDm1iB36IKM',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({ email })
+    });
+  } catch(err) {}
+  fb.textContent = "You're on the list.";
+  fb.className = 'form-feedback ok';
+  form.querySelector('input').value = '';
+  btn.textContent = 'Get early access'; btn.disabled = false;
+  return false;
+}
+
+document.querySelectorAll('.nav-right a').forEach(a => {
+  a.addEventListener('click', () => document.querySelector('.nav-right').classList.remove('open'));
+});
+</script>
+</body>
+</html>
