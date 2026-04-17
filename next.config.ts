@@ -19,6 +19,12 @@ const config: NextConfig = {
       { source: '/@:username', destination: '/redirect' },
     ]
   },
+  async redirects() {
+    return [
+      { source: '/privacy.html', destination: '/privacy', permanent: true },
+      { source: '/terms.html', destination: '/terms', permanent: true },
+    ]
+  },
   async headers() {
     return [
       {
