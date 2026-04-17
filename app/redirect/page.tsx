@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 
-const APP_STORE_URL = 'https://apps.apple.com/app/id6744116498'
+const APP_STORE_URL = 'https://apps.apple.com/us/app/phyzik/id6760412488'
 
 export default function RedirectPage() {
   useEffect(() => {

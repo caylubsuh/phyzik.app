@@ -1,5 +1,5 @@
-export const APP_STORE_URL = 'https://apps.apple.com/app/id6744116498'
-export const APP_STORE_ID = 'id6744116498'
+export const APP_STORE_URL = 'https://apps.apple.com/us/app/phyzik/id6760412488'
+export const APP_STORE_ID = 'id6760412488'
 export const BUNDLE_ID = 'com.physiquetech.physiqueai'
 export const INSTAGRAM_URL = 'https://www.instagram.com/phyzik.app'
 export const SITE_URL = 'https://phyzik.app'

@@ -33,11 +33,11 @@ npm run lint      # ESLint
 2. **Deep-link rewrites** — `/post/*`, `/workout/*`, `/squad/*`, `/community/*`, `/gym/*`,
    `/challenge/*`, `/@username` all rewrite to `/redirect`, which attempts `phyzik://` and falls
    back to the App Store. Configured in `next.config.ts`.
-3. **App Store**: id6744116498. **Bundle**: `com.physiquetech.physiqueai`. **Scheme**: `phyzik://`.
+3. **App Store**: id6760412488. **Bundle**: `com.physiquetech.physiqueai`. **Scheme**: `phyzik://`.
 
 ## Related
 
-- App Store: https://apps.apple.com/app/id6744116498
+- App Store: https://apps.apple.com/us/app/phyzik/id6760412488
 - Main app repo: (internal)
 
 ## TODOs
