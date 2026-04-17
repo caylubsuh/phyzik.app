@@ -33,11 +33,40 @@ export default function HeroContent() {
       </motion.a>
 
       <h1 className="sr-only">{BRAND.name}</h1>
-      <Wordmark variant="hero" animate />
+      <div className="relative">
+        {reduced ? (
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2"
+            style={{
+              width: '140%',
+              height: '280%',
+              background:
+                'radial-gradient(ellipse at center, rgba(167,139,250,0.35) 0%, rgba(167,139,250,0.12) 30%, transparent 65%)',
+              filter: 'blur(40px)',
+            }}
+          />
+        ) : (
+          <motion.div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2"
+            animate={{ opacity: [0.8, 1, 0.8], scale: [1, 1.05, 1] }}
+            transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
+            style={{
+              width: '140%',
+              height: '280%',
+              background:
+                'radial-gradient(ellipse at center, rgba(167,139,250,0.35) 0%, rgba(167,139,250,0.12) 30%, transparent 65%)',
+              filter: 'blur(40px)',
+            }}
+          />
+        )}
+        <Wordmark variant="hero" animate />
+      </div>
 
       <FadeUp delay={1.2}>
         <h2 className="text-2xl font-semibold tracking-tight text-text-primary md:text-4xl lg:text-5xl">
-          The training platform built for{' '}
+          The <span className="text-accent">social</span> training platform built for{' '}
           <span className="text-accent">lifters.</span>
         </h2>
       </FadeUp>

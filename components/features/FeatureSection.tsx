@@ -46,8 +46,28 @@ export default function FeatureSection({
   const imageOnLeft = imagePosition === 'left'
 
   return (
-    <Section ref={sectionRef} id={id} spacing="loose">
-      <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16 lg:gap-24">
+    <Section
+      ref={sectionRef}
+      id={id}
+      spacing="medium"
+      className="relative overflow-hidden"
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute"
+        style={{
+          width: '900px',
+          height: '700px',
+          top: imageOnLeft ? undefined : '-200px',
+          right: imageOnLeft ? undefined : '-200px',
+          bottom: imageOnLeft ? '-200px' : undefined,
+          left: imageOnLeft ? '-200px' : undefined,
+          background:
+            'radial-gradient(ellipse at center, rgba(167,139,250,0.12) 0%, transparent 60%)',
+          filter: 'blur(80px)',
+        }}
+      />
+      <div className="relative grid items-center gap-12 md:grid-cols-2 md:gap-16 lg:gap-24">
         <div className={cn('w-full', imageOnLeft ? 'md:order-1' : 'md:order-2')}>
           <div
             className={cn(

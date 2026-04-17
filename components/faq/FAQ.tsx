@@ -9,15 +9,15 @@ import FadeUp from '@/components/motion/FadeUp'
 const ITEMS: { q: string; a: string }[] = [
   {
     q: 'Is PHYZIK really free?',
-    a: "Yes. Completely free through our first 500 users — no ads, no paywalls, no credit card. We'll introduce an optional Pro tier later at around $6.99/month for advanced analytics and exclusive programs, but the core experience — workout tracking, programs, progressive overload, squads, and The Floor — will always be free.",
+    a: "Yes — completely free. No ads, no paywalls, no credit card, no 'free for the first X users' catch. That's aligned with why we built this: everyone who steps into a gym deserves the tools to become the best version of themselves, regardless of what they can afford. How we eventually fund the platform — whether through gym partnerships, optional advanced features, or something else — is something we're still exploring, but the core experience is free.",
   },
   {
     q: 'Who is PHYZIK built for?',
-    a: "Serious lifters. People who train 3+ times a week with a real program and want their tracking app to keep up. We're hypertrophy-focused today with powerlifting and CrossFit modes on the roadmap. If you're casual about the gym, this isn't the app for you.",
+    a: "Anyone who trains. If you step into a gym with intent — whether you're an ultra-marathon runner, a competitive bodybuilder, a high schooler getting your first pump, a working professional squeezing in lunch sessions, or someone who just started last week — PHYZIK is built for you. Strava did this for runners and cyclists. PHYZIK is that for lifters.",
   },
   {
-    q: 'How is this different from Hevy or Strong?',
-    a: "Three things. One: social is built in — every post is a completed workout, no motivation content, no ads. Two: programs are first-class — periodized splits with volume cycling and deload weeks, not just empty routines you fill in yourself. Three: progressive overload is automatic — the app proposes the next session's weights and reps based on how you performed the last one. No other lifting app does all three.",
+    q: 'How is PHYZIK different from other lifting apps?',
+    a: "Three things make PHYZIK different. First, social is built in — every post is a completed workout, not gym selfies or motivation content. Second, programs are first-class — periodized splits with volume cycling, deload weeks, and research-backed volume landmarks, not empty routines you fill in yourself. Third, progressive overload is automatic — PHYZIK proposes the next session's weights and reps based on how you performed the last one. You just show up and lift.",
   },
   {
     q: 'Is there an Android version?',
@@ -25,7 +25,7 @@ const ITEMS: { q: string; a: string }[] = [
   },
   {
     q: 'Do you sell my data?',
-    a: "No. We don't sell, share, or monetize your data. Your workouts, weights, and progress are yours. Full details in our privacy policy.",
+    a: "Never. Your workouts, weights, PRs, photos, and progress are yours. We don't sell data, we don't share it with advertisers, we don't monetize it. Profiles are private by default — you control exactly what's visible and to whom. Full details in our privacy policy.",
   },
   {
     q: 'Can I use PHYZIK without sharing my workouts publicly?',
