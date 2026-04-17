@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import SmoothScroll from '@/components/SmoothScroll'
+import GrainOverlay from '@/components/motion/GrainOverlay'
 import './globals.css'
 
 const inter = Inter({
@@ -59,6 +60,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="bg-bg text-text-primary antialiased">
+        <GrainOverlay />
         <SmoothScroll>{children}</SmoothScroll>
         <Analytics />
       </body>
