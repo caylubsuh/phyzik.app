@@ -44,5 +44,6 @@ next-env.d.ts
 _preserve/
 
 # claude code session data
-.claude/
+.claude/*
+!.claude/skills/
 
