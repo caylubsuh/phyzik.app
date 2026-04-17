@@ -1,5 +1,7 @@
 import Hero from '@/components/hero/Hero'
 import Nav from '@/components/nav/Nav'
+import FeaturesIntro from '@/components/features/FeaturesIntro'
+import FeaturesGrid from '@/components/features/FeaturesGrid'
 
 export default function HomePage() {
   return (
@@ -7,14 +9,10 @@ export default function HomePage() {
       <Nav />
       <main id="main-content">
         <Hero />
-        <section
-          id="features"
-          className="flex h-screen items-center justify-center border-t border-border"
-        >
-          <p className="text-sm uppercase tracking-[0.22em] text-text-tertiary">
-            Feature sections — Phase 4
-          </p>
-        </section>
+        <div id="features">
+          <FeaturesIntro />
+          <FeaturesGrid />
+        </div>
       </main>
     </>
   )
