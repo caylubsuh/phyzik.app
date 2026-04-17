@@ -9,15 +9,29 @@ import FadeUp from '@/components/motion/FadeUp'
 const ITEMS: { q: string; a: string }[] = [
   {
     q: 'Is PHYZIK really free?',
-    a: "Yes — completely free. No ads, no paywalls, no credit card, no 'free for the first X users' catch. That's aligned with why we built this: everyone who steps into a gym deserves the tools to become the best version of themselves, regardless of what they can afford. How we eventually fund the platform — whether through gym partnerships, optional advanced features, or something else — is something we're still exploring, but the core experience is free.",
+    a: `Yes. Completely free — no trial, no "first 500 users," no asterisk.
+
+PHYZIK exists because we believe one thing: if you walk into a gym with intent to get better, you deserve tools that are actually built for you. We don't care where you come from, what you can afford, your background, your experience level, your gender, your ethnicity, or what you've done before. We care that you're here — and we give you everything we've got.
+
+Every program. Every insight. Every feature. Yours.`,
   },
   {
     q: 'Who is PHYZIK built for?',
-    a: "Anyone who trains. If you step into a gym with intent — whether you're an ultra-marathon runner, a competitive bodybuilder, a high schooler getting your first pump, a working professional squeezing in lunch sessions, or someone who just started last week — PHYZIK is built for you. Strava did this for runners and cyclists. PHYZIK is that for lifters.",
+    a: `Anyone in the gym, training with intent.
+
+An ultra-marathon runner adding Zone 2 and strength work. A competitive bodybuilder mid-prep. A high schooler learning what a deadlift is. A working professional squeezing in lunch sessions. Someone who joined last Monday.
+
+Same app. Same tools. Same respect. If you lift, PHYZIK is built for you.`,
   },
   {
     q: 'How is PHYZIK different from other lifting apps?',
-    a: "Three things make PHYZIK different. First, social is built in — every post is a completed workout, not gym selfies or motivation content. Second, programs are first-class — periodized splits with volume cycling, deload weeks, and research-backed volume landmarks, not empty routines you fill in yourself. Third, progressive overload is automatic — PHYZIK proposes the next session's weights and reps based on how you performed the last one. You just show up and lift.",
+    a: `Three things.
+
+First: social is real, and it's built in. Gym selfies, progress posts, training breakthroughs — all of it lives on The Floor. But every post is attached to a completed workout. Real exercises, real weights, real reps, real progression. The feed isn't noise; it's signal. You learn from how people are actually training.
+
+Second: the programming is the product. Your split isn't a static PDF someone charged you forty bucks for — it's generated from the same peer-reviewed literature that informs elite coaching. Volume landmarks, mechanical tension, stimulus-to-fatigue ratios, proximity-to-failure thresholds. And it adapts: as your numbers move, your program moves. Volume cycles across mesocycles, deloads trigger when recovery calls for them, and every week stays calibrated to where hypertrophy research says adaptation actually happens.
+
+Third: progressive overload is automatic. Every session, PHYZIK proposes your next weights and reps based on exactly how you performed last time. Hit the top of your rep range? Weight goes up. Stalled? You get a variation or a deload. You show up, you lift — the math is handled.`,
   },
   {
     q: 'Is there an Android version?',
@@ -56,24 +70,26 @@ export default function FAQ() {
                 className="group border-t border-border"
               >
                 <Accordion.Header className="flex">
-                  <Accordion.Trigger className="flex w-full items-center justify-between py-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-bg">
-                    <span className="text-lg font-semibold text-text-primary transition-colors group-hover:text-accent md:text-xl">
+                  <Accordion.Trigger className="flex w-full items-center justify-between rounded-lg py-6 text-left transition-colors duration-200 hover:bg-white/[0.015] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-bg">
+                    <span className="text-lg font-semibold text-text-primary group-data-[state=open]:font-bold md:text-xl">
                       {item.q}
                     </span>
                     <Plus
-                      className="h-5 w-5 shrink-0 text-text-secondary transition-colors group-hover:text-accent group-data-[state=open]:hidden"
+                      className="h-5 w-5 shrink-0 text-text-tertiary transition-colors duration-200 group-hover:text-accent group-data-[state=open]:hidden group-data-[state=open]:text-accent"
                       aria-hidden="true"
                     />
                     <Minus
-                      className="hidden h-5 w-5 shrink-0 text-text-secondary transition-colors group-hover:text-accent group-data-[state=open]:block"
+                      className="hidden h-5 w-5 shrink-0 text-text-tertiary transition-colors duration-200 group-hover:text-accent group-data-[state=open]:block group-data-[state=open]:text-accent"
                       aria-hidden="true"
                     />
                   </Accordion.Trigger>
                 </Accordion.Header>
                 <Accordion.Content className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
-                  <p className="max-w-[640px] pb-6 pr-8 text-[15px] leading-relaxed text-text-secondary md:text-base">
-                    {item.a}
-                  </p>
+                  <div className="max-w-[640px] space-y-4 pb-6 pr-8 text-[15px] leading-relaxed text-text-secondary md:text-base">
+                    {item.a.split('\n\n').map((para, pi) => (
+                      <p key={pi}>{para}</p>
+                    ))}
+                  </div>
                 </Accordion.Content>
               </Accordion.Item>
             ))}
