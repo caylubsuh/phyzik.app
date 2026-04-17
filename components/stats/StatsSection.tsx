@@ -1,15 +1,41 @@
 import Section from '@/components/ui/Section'
 import Pill from '@/components/ui/Pill'
 import FadeUp from '@/components/motion/FadeUp'
-import StatBlock from '@/components/ui/StatBlock'
-import { STATS } from '@/lib/constants'
+import PillarBlock from './PillarBlock'
+
+const PILLARS: { headline: React.ReactNode; description: string }[] = [
+  {
+    headline: (
+      <>
+        <span className="text-accent">730+</span> Exercises
+      </>
+    ),
+    description:
+      'Every major compound, isolation, and variation — properly catalogued, fatigue-indexed, and surfaced by intelligent search.',
+  },
+  {
+    headline: 'Intelligent Adaptive Programming',
+    description:
+      'Volume cycles across mesocycles. Automatic deloads when recovery calls for them. Session-by-session adjustments tuned to your real performance.',
+  },
+  {
+    headline: 'Social Functionality',
+    description:
+      'Every post on The Floor is attached to a completed workout. Squads, challenges, and community built into the training experience — not bolted on.',
+  },
+  {
+    headline: 'Elite-Level Strength & Hypertrophy Analytics',
+    description:
+      'Strength progression curves. Volume landmark tracking. Recovery trends. Muscle-group distribution. The numbers serious coaches live by.',
+  },
+]
 
 export default function StatsSection() {
   return (
     <Section spacing="loose">
       <div className="flex flex-col items-center">
         <FadeUp>
-          <Pill>BY THE NUMBERS</Pill>
+          <Pill>WHAT POWERS PHYZIK</Pill>
         </FadeUp>
 
         <FadeUp delay={0.1}>
@@ -18,24 +44,18 @@ export default function StatsSection() {
           </h2>
         </FadeUp>
 
-        <FadeUp delay={0.2} className="mt-20 w-full">
-          <div className="grid grid-cols-1 place-items-center gap-12 md:grid-cols-2 md:gap-16 lg:grid-cols-4 lg:gap-8">
-            {STATS.map((s) => (
-              <StatBlock
-                key={s.label}
-                value={s.value}
-                suffix={s.suffix}
-                label={s.label}
-                className="items-center text-center"
-              />
-            ))}
-          </div>
-        </FadeUp>
+        <div className="mt-20 grid w-full grid-cols-1 gap-12 md:grid-cols-2 md:gap-16 lg:grid-cols-4 lg:gap-12">
+          {PILLARS.map((p, i) => (
+            <FadeUp key={i} delay={0.2 + i * 0.1}>
+              <PillarBlock headline={p.headline} description={p.description} />
+            </FadeUp>
+          ))}
+        </div>
 
-        <FadeUp delay={0.4}>
+        <FadeUp delay={0.5}>
           <p className="mx-auto mt-20 max-w-[640px] text-center text-base leading-relaxed text-text-secondary md:text-lg">
-            Every exercise, cross-referenced. Every rep range, backed by research.
-            Every program, built on evidence.
+            Built on the deepest science in training research. Grounded in what
+            actually works in the gym.
           </p>
         </FadeUp>
       </div>
