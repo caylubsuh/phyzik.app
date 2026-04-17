@@ -10,9 +10,9 @@ import PhoneFrame from '@/components/ui/PhoneFrame'
 import StatBlock from '@/components/ui/StatBlock'
 import ScrollIndicator from '@/components/ui/ScrollIndicator'
 import FadeUp from '@/components/motion/FadeUp'
-import LetterReveal from '@/components/motion/LetterReveal'
 import CountUp from '@/components/motion/CountUp'
 import AccentGlow from '@/components/motion/AccentGlow'
+import Wordmark from '@/components/brand/Wordmark'
 import { STATS } from '@/lib/constants'
 
 export const metadata: Metadata = {
@@ -108,24 +108,28 @@ export default function PreviewPage() {
           <Block label="Device" title="Phone frame">
             <div className="grid gap-8 md:grid-cols-2">
               <PhoneFrame
-                screenshot="/screenshots/train-program.png"
-                alt="Train program screenshot"
+                screenshot="/screenshots/marketing/03-active-tracker.png"
+                alt="Active tracker screenshot"
                 priority
               />
               <PhoneFrame
-                screenshot="/screenshots/feed-post.png"
-                alt="Feed post screenshot"
+                screenshot="/screenshots/marketing/01-floor-post.png"
+                alt="Floor post screenshot"
                 floatOnHover
               />
             </div>
           </Block>
 
-          <Block label="Typography" title="Letter reveal">
-            <div className="overflow-hidden py-6">
-              <LetterReveal
-                text="PHYZIK"
-                className="text-[140px] font-black leading-none tracking-tightest text-text-primary"
-              />
+          <Block label="Brand" title="Wordmark">
+            <div className="flex flex-col gap-8">
+              <div className="flex flex-col gap-2">
+                <Pill>nav variant</Pill>
+                <Wordmark variant="nav" />
+              </div>
+              <div className="flex flex-col gap-2">
+                <Pill>hero variant (animated)</Pill>
+                <Wordmark variant="hero" animate />
+              </div>
             </div>
           </Block>
 

@@ -35,7 +35,8 @@ export default function PhoneFrame({
             alt={alt}
             priority={priority}
             fill
-            sizes="(min-width: 768px) 320px, 80vw"
+            sizes="(max-width: 768px) 80vw, 360px"
+            quality={95}
             className="object-cover"
           />
           <div className="pointer-events-none absolute left-0 right-0 top-0 h-[40%] rounded-t-[2rem] md:rounded-t-[2.5rem] bg-gradient-to-b from-white/[0.04] to-transparent" />

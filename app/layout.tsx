@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     'Structured programs. Automatic progressive overload. A social feed where every post is a real workout.',
   icons: {
     icon: '/icon.png',
-    apple: '/icon.png',
+    apple: '/apple-icon.png',
   },
   openGraph: {
     title: 'PHYZIK — The training platform built for lifters',

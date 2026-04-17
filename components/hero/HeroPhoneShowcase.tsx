@@ -38,8 +38,8 @@ export default function HeroPhoneShowcase() {
           transition={{ duration: 1.2, delay: 2.2, ease: [0.22, 1, 0.36, 1] }}
         >
           <PhoneFrame
-            screenshot="/screenshots/train-program.png"
-            alt="PHYZIK Train tab"
+            screenshot="/screenshots/marketing/03-active-tracker.png"
+            alt="PHYZIK active workout tracker"
             priority
             className="max-w-[360px]"
           />

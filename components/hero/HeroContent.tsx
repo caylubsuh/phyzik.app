@@ -5,7 +5,7 @@ import { Star } from 'lucide-react'
 import AppStoreBadge from '@/components/ui/AppStoreBadge'
 import QRCode from '@/components/ui/QRCode'
 import FadeUp from '@/components/motion/FadeUp'
-import LetterReveal from '@/components/motion/LetterReveal'
+import Wordmark from '@/components/brand/Wordmark'
 import { APP_STORE_URL, BRAND } from '@/lib/constants'
 
 export default function HeroContent() {
@@ -32,12 +32,8 @@ export default function HeroContent() {
         Now live on the App Store
       </motion.a>
 
-      <LetterReveal
-        text={BRAND.name}
-        as="h1"
-        startDelay={0.3}
-        className="font-black leading-none tracking-tighter text-text-primary text-[80px] sm:text-[120px] md:text-[180px] lg:text-[240px] xl:text-[280px]"
-      />
+      <h1 className="sr-only">{BRAND.name}</h1>
+      <Wordmark variant="hero" animate />
 
       <FadeUp delay={1.2}>
         <h2 className="text-2xl font-semibold tracking-tight text-text-primary md:text-4xl lg:text-5xl">

@@ -12,6 +12,7 @@ import { Menu, X } from 'lucide-react'
 import AppStoreBadge from '@/components/ui/AppStoreBadge'
 import Button from '@/components/ui/Button'
 import Container from '@/components/ui/Container'
+import Wordmark from '@/components/brand/Wordmark'
 import { APP_STORE_URL } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 
@@ -81,10 +82,10 @@ export default function Nav() {
         <Container className="flex h-full items-center justify-between">
           <Link
             href="/"
-            className="rounded-sm font-black text-[18px] tracking-[-0.02em] text-text-primary transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-bg"
-            aria-label="PHYZIK — home"
+            aria-label="PHYZIK — Home"
+            className="flex items-center rounded-sm transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-bg"
           >
-            PHYZIK
+            <Wordmark variant="nav" />
           </Link>
 
           <nav className="hidden items-center gap-10 md:flex" aria-label="Primary">
@@ -185,9 +186,7 @@ function MobileMenu({ open, onClose }: MobileMenuProps) {
       )}
     >
       <div className="flex h-20 items-center justify-between px-6">
-        <span className="font-black text-[18px] tracking-[-0.02em] text-text-primary">
-          PHYZIK
-        </span>
+        <Wordmark variant="nav" />
         <button
           ref={closeBtnRef}
           type="button"
