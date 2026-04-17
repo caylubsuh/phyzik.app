@@ -125,7 +125,7 @@ export default async function OpengraphImage() {
           height={108}
           style={{
             width: 720,
-            height: 'auto',
+            height: 108,
             zIndex: 1,
             marginBottom: 40,
           }}
