@@ -40,7 +40,7 @@ export default function StatsSection() {
 
         <FadeUp delay={0.1}>
           <h2 className="mx-auto mt-8 max-w-[800px] text-center text-4xl font-bold leading-[1.05] tracking-tightest text-text-primary md:text-6xl lg:text-7xl">
-            Built to match how hard you train.
+            Four foundations. One training system.
           </h2>
         </FadeUp>
 
@@ -54,8 +54,9 @@ export default function StatsSection() {
 
         <FadeUp delay={0.5}>
           <p className="mx-auto mt-20 max-w-[640px] text-center text-base leading-relaxed text-text-secondary md:text-lg">
-            Built on the deepest science in training research. Grounded in what
-            actually works in the gym.
+            Every algorithm — progression, volume cycling, deload timing,
+            recovery modeling — is grounded in the peer-reviewed exercise
+            science that shapes elite coaching.
           </p>
         </FadeUp>
       </div>

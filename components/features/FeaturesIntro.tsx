@@ -19,8 +19,8 @@ export default function FeaturesIntro() {
 
         <FadeUp delay={0.2}>
           <p className="mx-auto max-w-[620px] text-lg leading-relaxed text-text-secondary md:text-xl">
-            Built by lifters who lift. Every feature exists to make sure
-            you&apos;re stronger next month than you are today.
+            Every feature serves one purpose: to equip you with the tools to
+            become the best version of yourself.
           </p>
         </FadeUp>
 
