@@ -21,7 +21,18 @@ export default async function OpengraphImage() {
       }),
   ])
 
-  const wordmarkUrl = 'https://phyzik.app/brand/phyzik-wordmark-white.png'
+  const wordmarkUrl = 'https://www.phyzik.app/brand/phyzik-wordmark-white.png'
+  const iconUrl = 'https://www.phyzik.app/brand/phyzik-icon.png'
+
+  const taglineWords: Array<{ text: string; accent?: boolean }> = [
+    { text: 'The' },
+    { text: 'social', accent: true },
+    { text: 'training' },
+    { text: 'platform' },
+    { text: 'built' },
+    { text: 'for' },
+    { text: 'lifters.', accent: true },
+  ]
 
   return new ImageResponse(
     (
@@ -36,69 +47,178 @@ export default async function OpengraphImage() {
           background: '#0A0A0B',
           position: 'relative',
           fontFamily: 'Inter',
+          padding: '80px',
         }}
       >
         <div
           style={{
             position: 'absolute',
-            top: '50%',
+            top: '42%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            width: '1400px',
-            height: '900px',
+            width: '1100px',
+            height: '700px',
             background:
-              'radial-gradient(ellipse at center, rgba(167,139,250,0.35) 0%, rgba(167,139,250,0.12) 35%, rgba(167,139,250,0) 70%)',
+              'radial-gradient(ellipse at center, rgba(167,139,250,0.38) 0%, rgba(167,139,250,0.14) 32%, rgba(167,139,250,0) 68%)',
             display: 'flex',
-          }}
-        />
-
-        <img
-          src={wordmarkUrl}
-          alt="PHYZIK"
-          width={640}
-          height={96}
-          style={{
-            width: '640px',
-            height: 'auto',
-            marginBottom: '48px',
-            zIndex: 1,
           }}
         />
 
         <div
           style={{
-            fontSize: 40,
-            fontWeight: 700,
-            color: '#F2F2F3',
-            textAlign: 'center',
-            letterSpacing: '-0.02em',
-            maxWidth: '900px',
-            lineHeight: 1.2,
-            zIndex: 1,
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background:
+              'radial-gradient(ellipse 140% 100% at 50% 100%, rgba(167,139,250,0.08) 0%, rgba(167,139,250,0) 60%)',
             display: 'flex',
           }}
+        />
+
+        <div
+          style={{
+            position: 'absolute',
+            top: 40,
+            left: 48,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 14,
+            zIndex: 2,
+          }}
         >
-          <span>
-            The{' '}
-            <span style={{ color: '#A78BFA' }}>social</span>
-            {' '}training platform built for{' '}
-            <span style={{ color: '#A78BFA' }}>lifters.</span>
-          </span>
+          <img
+            src={iconUrl}
+            alt=""
+            width={52}
+            height={52}
+            style={{
+              width: 52,
+              height: 52,
+              borderRadius: 12,
+              display: 'flex',
+            }}
+          />
         </div>
 
         <div
           style={{
             position: 'absolute',
-            bottom: '48px',
-            fontSize: 18,
-            color: '#8A8A8E',
-            letterSpacing: '0.2em',
+            top: 56,
+            right: 56,
+            fontSize: 16,
+            color: 'rgba(255, 255, 255, 0.5)',
+            letterSpacing: '0.25em',
             textTransform: 'uppercase',
-            fontWeight: 400,
+            fontWeight: 500,
             display: 'flex',
           }}
         >
           phyzik.app
+        </div>
+
+        <img
+          src={wordmarkUrl}
+          alt="PHYZIK"
+          width={720}
+          height={108}
+          style={{
+            width: 720,
+            height: 'auto',
+            zIndex: 1,
+            marginBottom: 40,
+          }}
+        />
+
+        <div
+          style={{
+            width: 80,
+            height: 2,
+            background: '#A78BFA',
+            marginBottom: 36,
+            zIndex: 1,
+            display: 'flex',
+          }}
+        />
+
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '0.32em',
+            maxWidth: '940px',
+            fontSize: 44,
+            fontWeight: 700,
+            letterSpacing: '-0.02em',
+            lineHeight: 1.2,
+            textAlign: 'center',
+            zIndex: 1,
+          }}
+        >
+          {taglineWords.map((word, i) => (
+            <span
+              key={i}
+              style={{
+                color: word.accent ? '#A78BFA' : '#F2F2F3',
+                display: 'flex',
+              }}
+            >
+              {word.text}
+            </span>
+          ))}
+        </div>
+
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 48,
+            left: 52,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 10,
+            zIndex: 2,
+          }}
+        >
+          <div
+            style={{
+              width: 8,
+              height: 8,
+              borderRadius: 4,
+              background: '#A78BFA',
+              display: 'flex',
+            }}
+          />
+          <div
+            style={{
+              fontSize: 14,
+              color: 'rgba(255, 255, 255, 0.55)',
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              fontWeight: 500,
+              display: 'flex',
+            }}
+          >
+            Available on iOS
+          </div>
+        </div>
+
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 48,
+            right: 52,
+            fontSize: 14,
+            color: 'rgba(255, 255, 255, 0.55)',
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            fontWeight: 500,
+            display: 'flex',
+          }}
+        >
+          Free. For every lifter.
         </div>
       </div>
     ),
