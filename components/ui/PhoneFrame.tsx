@@ -25,7 +25,10 @@ export default function PhoneFrame({
       )}
     >
       <div className="relative h-full w-full rounded-[2.3rem] md:rounded-[2.8rem] bg-black p-2">
-        <div className="absolute left-1/2 top-3 z-20 h-[22px] w-[35%] -translate-x-1/2 rounded-full bg-black" />
+        <div
+          aria-hidden="true"
+          className="absolute left-1/2 top-3 z-20 h-[22px] w-[35%] -translate-x-1/2 rounded-full bg-black"
+        />
         <div className="relative h-full w-full overflow-hidden rounded-[2rem] md:rounded-[2.5rem] bg-bg">
           <Image
             src={screenshot}
