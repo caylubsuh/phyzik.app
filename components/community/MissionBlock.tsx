@@ -18,7 +18,7 @@ export default function MissionBlock() {
           <span className="text-accent">private</span> — no data sold, shared,
           or monetized. PHYZIK is{' '}
           <span className="text-accent">grounded in science</span> — the same
-          hypertrophy research that shapes elite natural coaching. And PHYZIK
+          hypertrophy research that shapes elite coaching. And PHYZIK
           is <span className="text-accent">social</span> — because training is
           better when the people around you are doing it too.
         </p>

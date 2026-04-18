@@ -106,8 +106,8 @@ export default function PrivacyPage() {
       <p>
         Physique Technologies LLC
         <br />
-        <a href="mailto:physiquetechllc@gmail.com">
-          physiquetechllc@gmail.com
+        <a href="mailto:admin@phyzik.app">
+          admin@phyzik.app
         </a>
         <br />
         416 Windover Ave NW, Vienna, VA 22180
