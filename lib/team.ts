@@ -1,4 +1,4 @@
-export type TeamTier = 'founder' | 'team' | 'athlete' | 'ambassador'
+export type TeamTier = 'founder' | 'team' | 'athlete'
 
 export interface TeamMember {
   slug: string
@@ -30,6 +30,15 @@ export const TEAM: TeamMember[] = [
     photoPath: '/team/vijay.jpg',
   },
   {
+    slug: 'ten',
+    name: 'Ten Takeda',
+    role: 'Hyrox Athlete',
+    tier: 'team',
+    credentials: 'Stockholm International Hyrox — June 14, 2026',
+    bio: "Ten is deep in a Hyrox training block. Eight stations of functional work alternating with one-kilometer runs: sled push, farmer's carry, sandbag lunges, wall balls, rowing, ski erg. Every discipline logged in PHYZIK. Every progression tracked. Ten's presence on the platform is the real-time proof that PHYZIK isn't just for bodybuilders — it's for anyone training with intent.",
+    photoPath: '/team/ten.jpg',
+  },
+  {
     slug: 'sophia',
     name: 'Sophia Guagliano',
     role: 'Head of Bodybuilding',
@@ -42,25 +51,16 @@ export const TEAM: TeamMember[] = [
     slug: 'hannah',
     name: 'Hannah Clark',
     role: 'Lifestyle Lead',
-    tier: 'team',
+    tier: 'athlete',
     credentials: 'Everyday lifter, content pod lead',
     bio: "Hannah runs the lifestyle content pod. Not every lifter trains for a podium — most just want to feel strong, show up consistently, and have a plan they can follow on a Tuesday after work. Hannah's content is for them. PHYZIK's depth, without the intensity tax.",
     photoPath: '/team/hannah.jpg',
   },
   {
-    slug: 'ten',
-    name: 'Ten Takeda',
-    role: 'Hyrox Athlete',
-    tier: 'athlete',
-    credentials: 'Stockholm International Hyrox — June 14, 2026',
-    bio: "Ten is deep in a Hyrox training block. Eight stations of functional work alternating with one-kilometer runs: sled push, farmer's carry, sandbag lunges, wall balls, rowing, ski erg. Every discipline logged in PHYZIK. Every progression tracked. Ten's presence on the platform is the real-time proof that PHYZIK isn't just for bodybuilders — it's for anyone training with intent.",
-    photoPath: '/team/ten.jpg',
-  },
-  {
     slug: 'ethan',
     name: 'Ethan Nagasako',
     role: 'Ambassador',
-    tier: 'ambassador',
+    tier: 'athlete',
     credentials: 'Amateur bodybuilder, Mesocycle 2 in progress',
     bio: "Ethan's training is what real amateur bodybuilding progression looks like when the program handles the structural decisions. Eight weeks into his current block, his lifts are moving — incline bench +20 lb, deadlift +30 lb, weighted pull-up +20 lb on the chain. Follow his blocks on The Floor.",
     photoPath: '/team/ethan.jpg',
@@ -68,7 +68,5 @@ export const TEAM: TeamMember[] = [
 ]
 
 export const FOUNDERS = TEAM.filter((m) => m.tier === 'founder')
-export const TEAM_MEMBERS = TEAM.filter((m) => m.tier === 'team')
-export const ATHLETES = TEAM.filter(
-  (m) => m.tier === 'athlete' || m.tier === 'ambassador',
-)
+export const FOUNDING_TEAM = TEAM.filter((m) => m.tier === 'team')
+export const ATHLETES = TEAM.filter((m) => m.tier === 'athlete')
