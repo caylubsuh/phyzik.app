@@ -74,7 +74,7 @@ Each item: what it is, why it's here, who owns it, where to find the details.
 ### 10. Close first 3 partner gyms (Model 1 + Model 2 mix)
 **Why:** Local network effects seed long-term moat. Starts now, pays off month 3+.
 **Impact:** 🔥🔥 · **Ease:** Medium-hard · **Urgency:** Weeks 2–5
-**Owner:** Caleb + Sophia + Tenkara (relationships)
+**Owner:** Caleb + Sophia + Ten Takeda (relationships)
 **Details:** `marketing/gym-partnerships.md`
 **Definition of done:** 3 gyms signed. 1 framed certificate shipped. First in-gym meetup booked.
 
@@ -139,7 +139,7 @@ Don't rewrite the stack. Re-order it.
 | Vijay | #1 (referral), #4 (share card), #6 (analytics), #7 (program builder) |
 | Sophia | #3 (ambassador sourcing), #7 (program content), #10 (gym relationships) |
 | Hannah | Content execution across the above |
-| Tenkara | #3 (founding athlete), #10 (her gym as first partner) |
+| Ten | #3 (founding athlete), #10 (her gym as first partner) |
 
 ---
 

@@ -51,7 +51,7 @@ The highest-conversion readers live here. Fewer readers per piece, higher intent
 - **Muscle & Fitness** (muscleandfitness.com) — broader bodybuilding consumer. Harder to land; pitch if Sophia has existing relationships.
 - **T-Nation** (t-nation.com) — training methodology. Pitch: "App brings volume landmarks + mesocycle structure to mainstream lifters." Methodology-focused.
 - **Breaking Muscle** (breakingmuscle.com) — programming + functional.
-- **Outside Magazine** (outsideonline.com) — hybrid athletics, Hyrox, adventure fitness. Pitch: "How PHYZIK's Hyrox programming supports hybrid athletes training for the world's fastest-growing race." Tenkara angle.
+- **Outside Magazine** (outsideonline.com) — hybrid athletics, Hyrox, adventure fitness. Pitch: "How PHYZIK's Hyrox programming supports hybrid athletes training for the world's fastest-growing race." Ten Takeda angle.
 
 **Lead time:** 1–3 weeks from first contact to published piece. Fastest movers.
 
@@ -109,11 +109,11 @@ Journalists need a *story*, not an announcement. "Our app launched" isn't a stor
 
 ### 3.3 "Hyrox in one app"
 
-**Hook:** Hyrox is the fastest-growing fitness race format. Its athletes currently juggle 3+ apps (strength log, running tracker, programming PDF). PHYZIK unifies the stack. Pro athlete Tenkara trains on it.
+**Hook:** Hyrox is the fastest-growing fitness race format. Its athletes currently juggle 3+ apps (strength log, running tracker, programming PDF). PHYZIK unifies the stack. Pro athlete Ten trains on it.
 
 **Who cares:** BoxRox, Outside, CrossFit-affiliated press, Hyrox-specific media (Hyrox itself has a newsletter).
 
-**Assets:** Tenkara interview, training block walk-through, race-prep content.
+**Assets:** Ten interview, training block walk-through, race-prep content.
 
 ### 3.4 "Inclusive programming without the pink dumbbells"
 

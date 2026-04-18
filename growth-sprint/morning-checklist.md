@@ -88,7 +88,7 @@ Then open:
 - http://localhost:3000 — verify home still renders, no regressions
 - http://localhost:3000/press — should be the new press page
 - http://localhost:3000/changelog — new changelog page
-- http://localhost:3000/for/hyrox — Tenkara feature visible
+- http://localhost:3000/for/hyrox — Ten Takeda feature visible
 - http://localhost:3000/for/bodybuilding — Sophia feature visible
 - http://localhost:3000/for/women — Sophia + Hannah features
 - http://localhost:3000/sitemap.xml — 9 URLs

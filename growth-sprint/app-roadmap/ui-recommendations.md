@@ -208,7 +208,7 @@ Empty states are where churn happens fastest. Every "nothing here yet" screen is
 
 **Good:** Three cards below a headline "Make the Floor yours":
 1. "Invite a friend" → squad invite flow.
-2. "Follow PHYZIK athletes" → list of 5–10 curated ambassadors including Sophia, Tenkara, Hannah, Ethan — one-tap follow.
+2. "Follow PHYZIK athletes" → list of 5–10 curated ambassadors including Sophia, Ten, Hannah, Ethan — one-tap follow.
 3. "Log your first session — it'll post here" → train tab.
 
 **Why:** Empty states are assignment briefs. Tell the user exactly what to do to un-empty it.

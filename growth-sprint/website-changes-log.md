@@ -88,7 +88,7 @@ Versioned release notes. Scaffolded with v1.0.0, 1.1.0, 1.1.1 based on App Store
 Audience landing page.
 - Hero: "Every discipline, one app."
 - 3 benefits: stations coverage, hybrid programming, pace + performance in one view
-- Tenkara feature block (Stockholm June 14 2026)
+- Ten Takeda feature block (Stockholm June 14 2026)
 
 ### `app/for/bodybuilding/page.tsx` — NEW
 - Hero: "Hypertrophy science in your pocket."

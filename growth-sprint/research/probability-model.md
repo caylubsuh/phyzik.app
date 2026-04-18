@@ -80,7 +80,7 @@ Honest distribution of what I expect by June 1:
 - In a category full of identical gray products, standing out is table stakes — and PHYZIK stands out.
 
 ### The ambassador / athlete roster is a real asset
-- Tenkara's Stockholm training block, Sophia's RP credentials, Hannah's lifestyle lead — these are legitimate press + social anchors that many early-stage apps lack.
+- Ten Takeda's Stockholm training block, Sophia's RP credentials, Hannah's lifestyle lead — these are legitimate press + social anchors that many early-stage apps lack.
 - The `/community` page signals we're not alone in building this — there's a team.
 
 ### The ASO baseline (post-sprint) is solid

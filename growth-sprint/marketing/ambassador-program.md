@@ -44,7 +44,7 @@ More practically: we're a pre-launch app. No paid influencer wants to endorse a 
 
 **Current roster (from `lib/team.ts`):**
 - Sophia — Head of Bodybuilding.
-- Tenkara — Hyrox athlete, Stockholm June 14 2026.
+- Ten Takeda — Hyrox athlete, Stockholm June 14 2026.
 - Hannah — Lifestyle lead, broader lifter audience.
 - Ethan — (role TBD, already listed on team).
 
@@ -57,7 +57,7 @@ More practically: we're a pre-launch app. No paid influencer wants to endorse a 
 - Early access to every feature. First to try the program builder, first to test Pro, first to break stuff.
 - Free PHYZIK merch at release cadence (hoodie, shirts — 2–3 pieces a year).
 - Optional: cash honorarium per quarter ($500–1500) for Tier A who are spending significant time creating PHYZIK-specific content. Not a salary, not a contract — a thank-you retainer that scales with the relationship.
-- Co-developed programming credit: "Hyrox 16-week block, co-designed with Tenkara." Permanent on the program.
+- Co-developed programming credit: "Hyrox 16-week block, co-designed with Ten." Permanent on the program.
 
 **What Tier A gives:**
 - Logs every training session on PHYZIK for 90 days minimum.

@@ -128,7 +128,7 @@ Sources: [How Duolingo reignited user growth — Lenny's](https://www.lennysnews
 **What replicates for PHYZIK:**
 - Target not mega-athletes (we can't afford LeBron) but **credible mid-tier athletes in our niche**: Hyrox pros, IFBB amateurs, powerlifting federation standouts, running-club leaders, CrossFit regional qualifiers.
 - **Exchange value, not cash.** Give them lifetime Pro, visible profile placement, input on the product roadmap. Get their authentic usage in return.
-- Tenkara (Stockholm Hyrox June 14 2026) is already a Whoop-style seed.
+- Ten Takeda (Stockholm Hyrox June 14 2026) is already a Whoop-style seed.
 
 **What doesn't:** We can't afford Whoop's 25% of $60M marketing budget on influencers. We play the inverse game — lots of smaller relationships.
 
@@ -240,7 +240,7 @@ Ranked by combined (impact × ease × transferability):
 4. **Scheduled recurring events (Zwift).** Weekly squad challenges, monthly themed programs ("April Volume Month"), season drops.
 5. **Free concierge onboarding for first 100 users (Strava).** Caleb + team manually add squads for inbound users, help them log their first week. Doesn't scale forever but compounds like crazy early.
 6. **User-generated exercise/routine library (MyFitnessPal).** Every user adds marginal value. Every routine submitted is a piece of content that brings SEO + social proof.
-7. **Athlete-credibility seeding with exchange-of-value (Whoop).** 20-30 mid-tier athletes in lifting/Hyrox/powerlifting/CrossFit niches. Lifetime access + product input + visible placement. Tenkara is the template.
+7. **Athlete-credibility seeding with exchange-of-value (Whoop).** 20-30 mid-tier athletes in lifting/Hyrox/powerlifting/CrossFit niches. Lifetime access + product input + visible placement. Ten is the template.
 8. **Pre-product web tools for SEO + email capture (Calm).** Free on-site calculators (volume-landmark calc, 1RM calc, program picker quiz). Content marketing asset + conversion.
 9. **Coach/gym supply-side recruitment (TrainHeroic).** Identify 10 personal trainers or strength coaches willing to run clients through PHYZIK. They bring their rosters.
 10. **Multi-account organic creative testing (Cal AI).** Create dozens of TikTok/Reels accounts posting feature demos. Find what works. THEN amplify with paid. (Note: actual content production is outside this sprint — this is the structural recommendation.)

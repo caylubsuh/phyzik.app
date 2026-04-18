@@ -1,6 +1,6 @@
 # Marketing — Gym Partnerships
 
-**Owner:** Caleb (relationships), Sophia + Tenkara (local gym credibility).
+**Owner:** Caleb (relationships), Sophia + Ten Takeda (local gym credibility).
 **Budget estimate:** $0 initially (relationship-led); $1–5k/month if we scale to paid placements.
 **Grounded in:** `research/competitors.md` §Zwift §TrainHeroic §Strong, `research/growth-case-studies.md` §Whoop §Peloton.
 
@@ -72,7 +72,7 @@ Not every gym is a fit. Use this filter:
 **Archetype B: The Hyrox / hybrid gym.**
 - Hyrox affiliate gyms.
 - Any gym running structured Hyrox programming.
-- Fit: very high. Tenkara's angle unlocks this.
+- Fit: very high. Ten's angle unlocks this.
 
 **Archetype C: The high-end independent performance gym.**
 - Cressey Sports Performance (MA), EXOS (various), Landow Performance (CO).
@@ -95,7 +95,7 @@ Not every gym is a fit. Use this filter:
 ### 3.1 Find candidates
 
 **Phase 1 — warm graph:**
-- Tenkara's gym (starting point; if she trains at a gym, that's partner #1).
+- Ten's gym (starting point; if she trains at a gym, that's partner #1).
 - Sophia's coaching network.
 - Caleb's personal network (college strength coach, local gym owner, etc.).
 - Any existing user's gym (surface through first 500 users: "where do you train?").
@@ -280,7 +280,7 @@ Cost: $0 if Sophia donates time; gym provides space. Low-effort, high-trust.
 
 ### 7.3 Hyrox prep camp
 
-- Tenkara runs a 4-hour Hyrox prep session.
+- Ten runs a 4-hour Hyrox prep session.
 - Uses PHYZIK as the programming backbone for the session.
 - Charged event ($75–150/person), revenue split with gym.
 - Content gold: video, photos, testimonials.
@@ -289,7 +289,7 @@ Cost: Time, some travel. Revenue-positive.
 
 ### 7.4 Athlete shoot days
 
-- Tenkara / Sophia / other athletes film training content at a partner gym for a day.
+- Ten / Sophia / other athletes film training content at a partner gym for a day.
 - Gym gets brand placement in the content.
 - Content goes to IG, marketing site, App Store screenshots.
 
@@ -349,7 +349,7 @@ Warning signals:
 **Week 1:**
 - Build the candidate list: 30 gyms across 6 cities.
 - Caleb + Sophia first-touch 10.
-- Approach Tenkara's gym + Sophia's home gym first (warmest).
+- Approach Ten's gym + Sophia's home gym first (warmest).
 
 **Week 2:**
 - Visit or video-call the 5 most responsive.
@@ -362,7 +362,7 @@ Warning signals:
 - Build `/gym/{slug}` landing page template + attribution pipeline.
 
 **Week 4:**
-- First in-gym meetup event (at Tenkara's gym or Sophia's).
+- First in-gym meetup event (at Ten's gym or Sophia's).
 - Go public with 3–5 partner gyms on `/community`.
 - Push partner gyms on social.
 
@@ -383,7 +383,7 @@ Warning signals:
 - [ ] Build gym candidate spreadsheet (30 gyms).
 - [ ] Draft 1-page MOU template (Model 1).
 - [ ] Draft quick email agreement (Model 2).
-- [ ] First-touch Tenkara's gym + Sophia's gym immediately.
+- [ ] First-touch Ten's gym + Sophia's gym immediately.
 - [ ] First-touch 8 more gyms across top 3 cities.
 - [ ] Source framed certificate printer (Printful, local frame shop, or vendor).
 - [ ] Design the certificate + gym window decal (Figma → print file).
@@ -394,7 +394,7 @@ Warning signals:
 
 ## 13. One-paragraph pitch for Caleb's internal use
 
-> "Gym partnerships are the slow moat. We're not hitting 50k on them in 6 weeks — we're seeding 8–10 relationships that compound through month 3 and beyond. The three models: official partner (full integration + rev share), ambassador gym (owner-led), community partner (event host). Pitch is free, relationship-led, built on coaching alignment. First targets: Tenkara's gym, Sophia's gym, plus 8 cold-sourced strength temples across our target cities. The certificate on the wall is the physical manifestation of what we're building — a network of serious gyms where PHYZIK is the default training app."
+> "Gym partnerships are the slow moat. We're not hitting 50k on them in 6 weeks — we're seeding 8–10 relationships that compound through month 3 and beyond. The three models: official partner (full integration + rev share), ambassador gym (owner-led), community partner (event host). Pitch is free, relationship-led, built on coaching alignment. First targets: Ten's gym, Sophia's gym, plus 8 cold-sourced strength temples across our target cities. The certificate on the wall is the physical manifestation of what we're building — a network of serious gyms where PHYZIK is the default training app."
 
 ---
 
@@ -414,5 +414,5 @@ Warning signals:
 2. **Paying gym owners cash upfront.** Sets a bad precedent. Once you've paid, they expect pay. Equity + rev share + merch are healthier.
 3. **Demanding exclusivity.** Keeps the gym from signing with us.
 4. **Letting partnerships go dark.** A partner gym unused for 60 days is dead weight. Audit quarterly; sunset ruthlessly.
-5. **Scaling before we've seen one gym work well.** Prove the model at 1 gym (Tenkara's or Sophia's). Then copy the playbook.
+5. **Scaling before we've seen one gym work well.** Prove the model at 1 gym (Ten's or Sophia's). Then copy the playbook.
 6. **Under-investing in the framed certificate's design.** It's the most visible artifact of the partnership — it should look like something the gym is proud to display, not a laminated ad.

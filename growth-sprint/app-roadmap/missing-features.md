@@ -176,7 +176,7 @@ The bigger reason: when a user's sessions land in Apple Health, the Activity rin
 
 **What's missing:** It's unclear whether PHYZIK has a follow model (Twitter-style, asymmetric) or a friend model (Facebook-style, mutual). Each has consequences.
 
-- **Follow model:** Scales better for public content (creators). Users can follow Sophia, Tenkara, any ambassador. No friction. But it creates celebrity dynamics and makes squad creation feel separate from "social."
+- **Follow model:** Scales better for public content (creators). Users can follow Sophia, Ten, any ambassador. No friction. But it creates celebrity dynamics and makes squad creation feel separate from "social."
 - **Friend model:** Tighter trust, better for accountability, but has a friction cost (every connection requires approval) that throttles the content loop.
 
 **Why:** Strava has both (friends = 2-way, follows on creator accounts = 1-way). Hevy has a friends-only model. The right choice depends on whether PHYZIK leans "training log with friends" or "fitness social network." Caleb's brand voice leans the latter.

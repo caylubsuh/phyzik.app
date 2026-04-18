@@ -126,7 +126,7 @@ Ranked by urgency:
 - Ambassador program (Caleb + Sophia run).
 - Influencer campaigns (Caleb runs).
 - Press outreach (Caleb runs).
-- Gym partnerships (Caleb + Sophia + Tenkara run).
+- Gym partnerships (Caleb + Sophia + Ten Takeda run).
 
 Nothing in the "planned" pile has moving parts yet; it's all paper until you decide to execute.
 
@@ -152,7 +152,7 @@ Ambassadors, influencers, gym partners, press contacts — every one is chosen c
 The full roadmap (app + marketing + content) is ~40 person-weeks of work. Six weeks with a small team means ruthless cutting. Pretending we can do everything breaks the team. See `app-roadmap/virality.md` scope honesty, `research/probability-model.md`.
 
 ### Theme 6: The sports niche (Hyrox) is our beachhead
-Hyrox is growing ~50% YoY globally, underserved by software. Tenkara's story + `/for/hyrox` page + niche press push can own this in 6 months. Bigger strategic bet than it looks. See `research/competitors.md` §Hyrox gap, `marketing/press-pr.md` §3.3.
+Hyrox is growing ~50% YoY globally, underserved by software. Ten's story + `/for/hyrox` page + niche press push can own this in 6 months. Bigger strategic bet than it looks. See `research/competitors.md` §Hyrox gap, `marketing/press-pr.md` §3.3.
 
 ---
 

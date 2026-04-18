@@ -40,7 +40,7 @@ const BENEFITS = [
 ]
 
 export default function HyroxPage() {
-  const tenkara = TEAM.find((m) => m.slug === 'tenkara')!
+  const ten = TEAM.find((m) => m.slug === 'tenkara')!
   return (
     <>
       <Nav />
@@ -62,8 +62,8 @@ export default function HyroxPage() {
         <AudienceFeatureFeature
           pill="PROOF"
           heading="Training block in progress."
-          member={tenkara}
-          body="Tenkara is 16 weeks out from Stockholm International Hyrox (June 14, 2026). Six sessions a week. Every sled push, every wall ball, every kilometer logged on PHYZIK. The block, the pacing, the progression — open on The Floor."
+          member={ten}
+          body="Ten Takeda is 16 weeks out from Stockholm International Hyrox (June 14, 2026). Six sessions a week. Every sled push, every wall ball, every kilometer logged on PHYZIK. The block, the pacing, the progression — open on The Floor."
         />
         <FinalCTA />
       </main>
