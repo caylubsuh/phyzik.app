@@ -48,13 +48,13 @@ export const TEAM: TeamMember[] = [
     photoPath: '/team/hannah.jpg',
   },
   {
-    slug: 'tenkara',
-    name: 'Tenkara',
+    slug: 'ten',
+    name: 'Ten Takeda',
     role: 'Hyrox Athlete',
     tier: 'athlete',
     credentials: 'Stockholm International Hyrox — June 14, 2026',
-    bio: "Tenkara is deep in a Hyrox training block. Eight stations of functional work alternating with one-kilometer runs: sled push, farmer's carry, sandbag lunges, wall balls, rowing, ski erg. Every discipline logged in PHYZIK. Every progression tracked. Tenkara's presence on the platform is the real-time proof that PHYZIK isn't just for bodybuilders — it's for anyone training with intent.",
-    photoPath: '/team/tenkara.jpg',
+    bio: "Ten is deep in a Hyrox training block. Eight stations of functional work alternating with one-kilometer runs: sled push, farmer's carry, sandbag lunges, wall balls, rowing, ski erg. Every discipline logged in PHYZIK. Every progression tracked. Ten's presence on the platform is the real-time proof that PHYZIK isn't just for bodybuilders — it's for anyone training with intent.",
+    photoPath: '/team/ten.jpg',
   },
   {
     slug: 'ethan',

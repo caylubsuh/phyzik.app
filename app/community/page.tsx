@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 }
 
 export default function CommunityPage() {
-  const tenkara = TEAM.find((m) => m.slug === 'tenkara')!
+  const tenkara = TEAM.find((m) => m.slug === 'ten')!
   const ethan = TEAM.find((m) => m.slug === 'ethan')!
 
   return (

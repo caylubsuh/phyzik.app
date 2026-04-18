@@ -44,7 +44,7 @@ const BENEFITS = [
 ]
 
 export default function HyroxPage() {
-  const ten = TEAM.find((m) => m.slug === 'tenkara')!
+  const ten = TEAM.find((m) => m.slug === 'ten')!
   return (
     <>
       <Nav />
