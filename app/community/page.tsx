@@ -6,7 +6,6 @@ import Pill from '@/components/ui/Pill'
 import CommunityHero from '@/components/community/CommunityHero'
 import MissionBlock from '@/components/community/MissionBlock'
 import TeamMemberCard from '@/components/community/TeamMemberCard'
-import AthleteFeatureCard from '@/components/community/AthleteFeatureCard'
 import FloorScaffold from '@/components/community/FloorScaffold'
 import AmbassadorCTA from '@/components/community/AmbassadorCTA'
 import FadeUp from '@/components/motion/FadeUp'
@@ -56,26 +55,28 @@ export default function CommunityPage() {
               The people who shape what it becomes.
             </h2>
           </FadeUp>
-          <div className="mt-12">
-            <AthleteFeatureCard
-              member={TEAM.find((m) => m.slug === 'ten')!}
-              arcTitle="ROAD TO STOCKHOLM"
-              arcSubtitle="Stockholm International Hyrox — June 14, 2026"
-              arcStats={[
-                { label: 'Training block', value: '16 weeks' },
-                {
-                  label: 'Disciplines',
-                  value: 'Strength + run + functional',
-                },
-                { label: 'Sessions / week', value: '6' },
-              ]}
-            />
-            <div className="mt-6">
-              <TeamMemberCard
-                member={TEAM.find((m) => m.slug === 'sophia')!}
-                size="large"
-              />
+          {/* Road to Stockholm banner */}
+          <div className="mt-6 mb-8 rounded-2xl border border-white/[0.08] bg-bg-surface p-5 md:p-6">
+            <div className="flex flex-col gap-1">
+              <span className="text-xs font-semibold uppercase tracking-[0.22em] text-accent">
+                ROAD TO STOCKHOLM
+              </span>
+              <p className="text-sm text-text-secondary">
+                Ten is training for the Stockholm International Hyrox — June 14, 2026. Follow along on The Floor.
+              </p>
             </div>
+          </div>
+
+          {/* Ten + Sophia in matching cards */}
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <TeamMemberCard
+              member={TEAM.find((m) => m.slug === 'ten')!}
+              size="large"
+            />
+            <TeamMemberCard
+              member={TEAM.find((m) => m.slug === 'sophia')!}
+              size="large"
+            />
           </div>
         </Section>
 
