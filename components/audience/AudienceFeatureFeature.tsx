@@ -32,11 +32,6 @@ export default function AudienceFeatureFeature({
           <h3 className="text-2xl font-semibold text-text-primary">
             {member.name}
           </h3>
-          {member.credentials && (
-            <span className="text-sm text-text-tertiary">
-              {member.credentials}
-            </span>
-          )}
         </div>
         <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-text-secondary md:text-base">
           {body}

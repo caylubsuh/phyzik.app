@@ -15,7 +15,7 @@ export default function TeamMemberCard({
   size = 'default',
   className,
 }: TeamMemberCardProps) {
-  const { name, role, credentials, bio, photoPath } = member
+  const { name, role, bio, photoPath } = member
   const isLarge = size === 'large'
 
   return (
@@ -52,20 +52,10 @@ export default function TeamMemberCard({
           >
             {role}
           </p>
-          {credentials ? (
-            <p
-              className={cn(
-                'mt-1 text-xs text-text-tertiary',
-                isLarge && 'text-[13px]',
-              )}
-            >
-              {credentials}
-            </p>
-          ) : null}
 
           <p
             className={cn(
-              'mt-4 leading-relaxed text-text-primary/80',
+              'mt-3 leading-relaxed text-text-primary/80',
               isLarge ? 'text-base' : 'text-sm',
             )}
           >

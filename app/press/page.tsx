@@ -155,9 +155,6 @@ export default function PressPage() {
                 <h3 className="text-2xl font-semibold text-text-primary">
                   {founder.name}
                 </h3>
-                {founder.credentials && (
-                  <div className="text-sm text-accent">{founder.credentials}</div>
-                )}
                 <p className="text-[15px] leading-relaxed text-text-secondary">
                   {founder.bio}
                 </p>

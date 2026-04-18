@@ -6,7 +6,6 @@ export interface TeamMember {
   role: string
   tier: TeamTier
   bio: string
-  credentials?: string
   photoPath?: string
 }
 
@@ -16,8 +15,7 @@ export const TEAM: TeamMember[] = [
     name: 'Caleb Suh',
     role: 'CEO, co-founder',
     tier: 'founder',
-    credentials: 'NPC Classic Physique competitor',
-    bio: "Caleb leads product, design, and brand. He built PHYZIK because the training tools he wanted as a lifter didn't exist — apps asked him to do the programming or handed him a static PDF that ignored what he actually lifted. PHYZIK is his answer. Every design decision runs through one question: does this help lifters in the gym?",
+    bio: "Soccer, military, bodybuilding — every chapter of Caleb's life has been grounded in fitness. PHYZIK exists because he believes every lifter, regardless of background or budget, deserves tools built for them.",
     photoPath: '/team/caleb.jpg',
   },
   {
@@ -25,8 +23,7 @@ export const TEAM: TeamMember[] = [
     name: 'Vijay Jagarapu',
     role: 'CTO, co-founder',
     tier: 'founder',
-    credentials: 'Built the platform from zero',
-    bio: "Vijay built the engineering behind PHYZIK. Every workout you log, every program the app generates, every post on The Floor runs on infrastructure he designed and wrote. He owns the systems that make the product feel inevitable — fast, reliable, invisible when it's working.",
+    bio: "A tennis recruit turned ultramarathoner, Vijay built the engineering behind PHYZIK so the infrastructure disappears and the training takes center stage.",
     photoPath: '/team/vijay.jpg',
   },
   {
@@ -34,8 +31,7 @@ export const TEAM: TeamMember[] = [
     name: 'Ten Takeda',
     role: 'Hyrox Athlete',
     tier: 'team',
-    credentials: 'Stockholm International Hyrox — June 14, 2026',
-    bio: "Ten is deep in a Hyrox training block. Eight stations of functional work alternating with one-kilometer runs: sled push, farmer's carry, sandbag lunges, wall balls, rowing, ski erg. Every discipline logged in PHYZIK. Every progression tracked. Ten's presence on the platform is the real-time proof that PHYZIK isn't just for bodybuilders — it's for anyone training with intent.",
+    bio: "Football in Singapore, military service, now Hyrox. Ten's presence is the living proof that PHYZIK is built for anyone training with intent — not just one sport.",
     photoPath: '/team/ten.jpg',
   },
   {
@@ -43,8 +39,7 @@ export const TEAM: TeamMember[] = [
     name: 'Sophia Guagliano',
     role: 'Head of Bodybuilding',
     tier: 'team',
-    credentials: 'Competitive bodybuilder',
-    bio: "Sophia leads bodybuilding content and athlete recruitment. She makes sure PHYZIK reflects how people actually train — not a sanitized, productized version of it. The athlete roster you see building on the platform is the roster she's building.",
+    bio: "D1 soccer, national stage bodybuilding, now a full-time coach. Sophia makes sure PHYZIK reflects how serious athletes actually train — without the gatekeeping.",
     photoPath: '/team/sophia.jpg',
   },
   {
@@ -52,8 +47,7 @@ export const TEAM: TeamMember[] = [
     name: 'Hannah Clark',
     role: 'Lifestyle Lead',
     tier: 'athlete',
-    credentials: 'Everyday lifter, content pod lead',
-    bio: "Hannah runs the lifestyle content pod. Not every lifter trains for a podium — most just want to feel strong, show up consistently, and have a plan they can follow on a Tuesday after work. Hannah's content is for them. PHYZIK's depth, without the intensity tax.",
+    bio: "Hannah's story is the one most lifters actually live. No stage, no sponsorship — just the gym as a constant. She leads lifestyle content so PHYZIK feels built for the Tuesday-after-work lifter too.",
     photoPath: '/team/hannah.jpg',
   },
   {
@@ -61,8 +55,7 @@ export const TEAM: TeamMember[] = [
     name: 'Ethan Nagasako',
     role: 'Ambassador',
     tier: 'athlete',
-    credentials: 'Amateur bodybuilder, Mesocycle 2 in progress',
-    bio: "Ethan's training is what real amateur bodybuilding progression looks like when the program handles the structural decisions. Eight weeks into his current block, his lifts are moving — incline bench +20 lb, deadlift +30 lb, weighted pull-up +20 lb on the chain. Follow his blocks on The Floor.",
+    bio: "Six years of casual lifting, then a decision to compete. Ethan represents the lifter PHYZIK was built for — the one ready to stop guessing and start training with purpose.",
     photoPath: '/team/ethan.jpg',
   },
 ]
