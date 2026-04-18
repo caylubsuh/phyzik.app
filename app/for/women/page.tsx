@@ -13,6 +13,10 @@ export const metadata: Metadata = {
   description:
     'Training built for you. Inclusive, science-backed programming. No pastel palette, no patronizing copy — just real tools for real lifting.',
   alternates: { canonical: `${SITE_URL}/for/women` },
+  robots: {
+    index: false,
+    follow: false,
+  },
   openGraph: {
     title: 'PHYZIK for Women — Training built for you',
     description:

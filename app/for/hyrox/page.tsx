@@ -13,6 +13,10 @@ export const metadata: Metadata = {
   description:
     'Hyrox training in one app. Strength, running, and functional work — every discipline logged, every progression tracked.',
   alternates: { canonical: `${SITE_URL}/for/hyrox` },
+  robots: {
+    index: false,
+    follow: false,
+  },
   openGraph: {
     title: 'PHYZIK for Hyrox — Every discipline, one app',
     description:

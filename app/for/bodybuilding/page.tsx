@@ -13,6 +13,10 @@ export const metadata: Metadata = {
   description:
     'Hypertrophy science in your pocket. Mesocycle design, volume landmarks, and evidence-based programming for bodybuilders.',
   alternates: { canonical: `${SITE_URL}/for/bodybuilding` },
+  robots: {
+    index: false,
+    follow: false,
+  },
   openGraph: {
     title: 'PHYZIK for Bodybuilding — Hypertrophy science in your pocket',
     description:
