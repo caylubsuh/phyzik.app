@@ -36,6 +36,12 @@ export default function Footer() {
               Instagram
             </a>
             <Link
+              href="/community"
+              className="rounded-sm text-[13px] text-text-secondary transition-colors hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-bg"
+            >
+              Community
+            </Link>
+            <Link
               href="/privacy"
               className="rounded-sm text-[13px] text-text-secondary transition-colors hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-bg"
             >
