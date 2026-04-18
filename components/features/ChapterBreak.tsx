@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from 'motion/react'
 export default function ChapterBreak() {
   const reduced = useReducedMotion()
   return (
-    <section className="relative overflow-hidden py-40 md:py-56">
+    <section className="relative overflow-hidden py-12 md:py-20">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10"

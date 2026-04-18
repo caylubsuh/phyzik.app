@@ -11,10 +11,10 @@ type SectionProps = HTMLAttributes<HTMLElement> & {
 }
 
 const spacingMap: Record<Spacing, string> = {
-  tight: 'py-16 md:py-20',
-  default: 'py-24 md:py-32 lg:py-40',
-  medium: 'py-24 md:py-32',
-  loose: 'py-32 md:py-48',
+  tight: 'py-12 md:py-16',
+  default: 'py-16 md:py-20 lg:py-24',
+  medium: 'py-16 md:py-20',
+  loose: 'py-20 md:py-32',
 }
 
 const Section = forwardRef<HTMLElement, SectionProps>(function Section(

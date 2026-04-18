@@ -7,7 +7,7 @@ import QRCode from '@/components/ui/QRCode'
 
 export default function FinalCTA() {
   return (
-    <section className="relative overflow-hidden border-t border-border py-40 md:py-56">
+    <section className="relative overflow-hidden border-t border-border py-24 md:py-32">
       <AccentGlow position="center" size="xl" intensity={0.5} />
 
       <Container className="relative z-10">

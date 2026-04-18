@@ -27,7 +27,7 @@ export default function FeaturesIntro() {
         <FadeUp delay={0.3}>
           <div
             aria-hidden="true"
-            className="mx-auto mt-24 h-px w-16 bg-gradient-to-r from-transparent via-border-mid to-transparent"
+            className="mx-auto mt-14 h-px w-16 bg-gradient-to-r from-transparent via-border-mid to-transparent"
           />
         </FadeUp>
       </div>
