@@ -13,17 +13,17 @@ export const TEAM: TeamMember[] = [
   {
     slug: 'caleb',
     name: 'Caleb Suh',
-    role: 'CEO, co-founder',
+    role: 'CEO, Co-Founder',
     tier: 'founder',
-    bio: "Soccer, military, bodybuilding — every chapter of Caleb's life has been grounded in fitness. PHYZIK exists because he believes every lifter, regardless of background or budget, deserves tools built for them.",
+    bio: "From high school soccer to military service to his first bodybuilding stage in 2025, Caleb brings a conviction forged through failure to PHYZIK — that discipline, resilience, and the people around you are what turn work into something that lasts.",
     photoPath: '/team/caleb.jpg',
   },
   {
     slug: 'vijay',
     name: 'Vijay Jagarapu',
-    role: 'CTO, co-founder',
+    role: 'CTO, Co-Founder',
     tier: 'founder',
-    bio: "A tennis recruit turned ultramarathoner, Vijay built the engineering behind PHYZIK so the infrastructure disappears and the training takes center stage.",
+    bio: "From D1 tennis aspirations to ultramarathon finishes, Vijay brings the discipline that carried him through to PHYZIK — the belief that if you show up and do the reps, the work always compounds.",
     photoPath: '/team/vijay.jpg',
   },
   {
