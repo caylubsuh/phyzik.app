@@ -39,7 +39,7 @@ export const TEAM: TeamMember[] = [
     name: 'Sophia Guagliano',
     role: 'Head of Bodybuilding',
     tier: 'team',
-    bio: "D1 soccer, national stage bodybuilding, now a full-time coach. Sophia makes sure PHYZIK reflects how serious athletes actually train — without the gatekeeping.",
+    bio: "From D1 soccer to nationally qualified bikini bodybuilder and full-time coach, Sophia brings the standard of how serious athletes actually train to PHYZIK — and makes sure every lifter gets access to it, without the gatekeeping.",
     photoPath: '/team/sophia.jpg',
   },
   {
