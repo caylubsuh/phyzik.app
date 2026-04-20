@@ -42,7 +42,7 @@ export default function CommunityPage() {
               <TeamMemberCard
                 key={member.slug}
                 member={member}
-                size="large"
+                size="founding"
               />
             ))}
           </div>
