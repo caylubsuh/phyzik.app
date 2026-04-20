@@ -55,27 +55,25 @@ export default function CommunityPage() {
               The people who shape what it becomes.
             </h2>
           </FadeUp>
-          {/* Road to Stockholm banner */}
-          <div className="mt-6 mb-8 rounded-2xl border border-white/[0.08] bg-bg-surface p-5 md:p-6">
-            <div className="flex flex-col gap-1">
-              <span className="text-xs font-semibold uppercase tracking-[0.22em] text-accent">
-                ROAD TO STOCKHOLM
-              </span>
-              <p className="text-sm text-text-secondary">
-                Ten is training for the Stockholm International Hyrox — June 14, 2026. Follow along on The Floor.
-              </p>
-            </div>
-          </div>
-
-          {/* Ten + Sophia in matching cards */}
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
             <TeamMemberCard
               member={TEAM.find((m) => m.slug === 'ten')!}
-              size="large"
+              size="founding"
             />
             <TeamMemberCard
               member={TEAM.find((m) => m.slug === 'sophia')!}
-              size="large"
+              size="founding"
+              photos={[
+                { src: '/team/sophia.jpg', alt: 'Sophia Guagliano training' },
+                {
+                  src: '/team/sophia-stage.jpg',
+                  alt: 'Sophia Guagliano at Daytona bodybuilding competition',
+                },
+                {
+                  src: '/team/sophia-training.jpg',
+                  alt: 'Sophia Guagliano performing dumbbell curls',
+                },
+              ]}
             />
           </div>
         </Section>
