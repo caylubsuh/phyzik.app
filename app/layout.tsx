@@ -42,10 +42,6 @@ export const metadata: Metadata = {
   authors: [{ name: 'Physique Technologies LLC', url: 'https://phyzik.app' }],
   creator: 'Physique Technologies LLC',
   publisher: 'Physique Technologies LLC',
-  icons: {
-    icon: '/icon.png',
-    apple: '/apple-icon.png',
-  },
   alternates: {
     canonical: 'https://phyzik.app',
   },
