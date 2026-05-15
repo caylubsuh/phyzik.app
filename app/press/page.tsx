@@ -9,16 +9,15 @@ import AccentGlow from '@/components/motion/AccentGlow'
 import FadeUp from '@/components/motion/FadeUp'
 import AppStoreBadge from '@/components/ui/AppStoreBadge'
 import { BRAND, SITE_URL } from '@/lib/constants'
-import { FOUNDERS } from '@/lib/team'
 
 export const metadata: Metadata = {
   title: 'Press & Media Kit',
   description:
-    'PHYZIK media kit — press contact, founder bios, logos, screenshots, and recent coverage.',
+    'PHYZIK media kit — press contact, logos, screenshots, and recent coverage.',
   alternates: { canonical: `${SITE_URL}/press` },
   openGraph: {
     title: 'Press & Media Kit — PHYZIK',
-    description: 'Media kit, founder bios, logos, and press contact.',
+    description: 'Media kit, logos, and press contact.',
     url: `${SITE_URL}/press`,
   },
 }
@@ -71,7 +70,7 @@ export default function PressPage() {
               </h1>
               <p className="mt-6 max-w-3xl text-lg text-text-primary/70 md:text-xl">
                 Covering PHYZIK? Everything you need is here. Boilerplate,
-                founders, logos, screenshots. For anything else —{' '}
+                logos, screenshots. For anything else —{' '}
                 <a
                   href="mailto:press@phyzik.app"
                   className="text-accent underline-offset-4 hover:underline"
@@ -137,30 +136,6 @@ export default function PressPage() {
               </div>
             ))}
           </dl>
-        </Section>
-
-        <Section spacing="medium">
-          <FadeUp>
-            <Pill>FOUNDERS</Pill>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-text-primary md:text-4xl">
-              The people behind it.
-            </h2>
-          </FadeUp>
-          <div className="mt-10 grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2">
-            {FOUNDERS.map((founder) => (
-              <div key={founder.slug} className="flex flex-col gap-3">
-                <div className="text-[11px] uppercase tracking-[0.15em] text-text-tertiary">
-                  {founder.role}
-                </div>
-                <h3 className="text-2xl font-semibold text-text-primary">
-                  {founder.name}
-                </h3>
-                <p className="text-[15px] leading-relaxed text-text-secondary">
-                  {founder.bio}
-                </p>
-              </div>
-            ))}
-          </div>
         </Section>
 
         <Section spacing="medium">

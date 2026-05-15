@@ -1,25 +1,147 @@
+'use client'
+
+import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
+import { Star } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import ScrollIndicator from '@/components/ui/ScrollIndicator'
-import { BRAND } from '@/lib/constants'
+import AppStoreBadge from '@/components/ui/AppStoreBadge'
+import QRCode from '@/components/ui/QRCode'
+import Wordmark from '@/components/brand/Wordmark'
 import HeroBackground from './HeroBackground'
-import HeroContent from './HeroContent'
-import HeroPhoneShowcase from './HeroPhoneShowcase'
+import { APP_STORE_URL, BRAND } from '@/lib/constants'
+
+const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
 export default function Hero() {
+  const reduced = useReducedMotion()
+  const { scrollY } = useScroll()
+  const videoY = useTransform(scrollY, [0, 500], [0, -40], { clamp: true })
+
   return (
     <section
       role="banner"
       aria-label={`${BRAND.name} — ${BRAND.tagline}`}
-      className="relative flex min-h-screen flex-col items-center justify-start overflow-hidden pb-20 pt-32 md:pt-40"
+      className="relative flex min-h-[92vh] flex-col items-stretch justify-start overflow-hidden pb-20 pt-28 md:min-h-screen md:pb-24 md:pt-36"
     >
       <HeroBackground />
 
-      <Container className="relative z-10 flex flex-col items-center gap-16 md:gap-20">
-        <HeroContent />
-        <HeroPhoneShowcase />
+      <Container className="relative z-10 flex-1">
+        <div className="grid h-full items-center gap-14 md:grid-cols-[1.05fr_0.95fr] md:gap-16 lg:gap-24">
+          <div className="flex flex-col items-start gap-6 md:gap-7">
+            <motion.a
+              href={APP_STORE_URL}
+              target="_blank"
+              rel="noopener"
+              aria-label={`${BRAND.name} is now live on the App Store`}
+              initial={reduced ? undefined : { opacity: 0, y: -6 }}
+              animate={reduced ? undefined : { opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
+              className="group inline-flex items-center gap-2 rounded-full border border-border bg-bg-high/60 px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-text-secondary backdrop-blur transition-colors hover:border-border-mid hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+            >
+              <span className="relative inline-flex h-1.5 w-1.5">
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
+              </span>
+              Now live on iOS
+            </motion.a>
+
+            <h1 className="sr-only">{BRAND.name}</h1>
+            <div className="relative w-full max-w-[640px]">
+              <Wordmark variant="hero" animate />
+            </div>
+
+            <motion.h2
+              initial={reduced ? undefined : { opacity: 0, y: 16 }}
+              animate={reduced ? undefined : { opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.45, ease: EASE_OUT_EXPO }}
+              className="max-w-[620px] text-balance text-[clamp(2rem,4.6vw,3.75rem)] font-semibold leading-[1.02] tracking-[-0.035em] text-text-primary"
+            >
+              Where every post is a{' '}
+              <span className="text-accent">real workout.</span>
+            </motion.h2>
+
+            <motion.p
+              initial={reduced ? undefined : { opacity: 0, y: 10 }}
+              animate={reduced ? undefined : { opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.6, ease: 'easeOut' }}
+              className="max-w-[520px] text-base leading-relaxed text-text-secondary md:text-lg"
+            >
+              {BRAND.description}
+            </motion.p>
+
+            <motion.div
+              initial={reduced ? undefined : { opacity: 0, y: 10 }}
+              animate={reduced ? undefined : { opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.75, ease: 'easeOut' }}
+              className="flex flex-col items-start gap-5 md:flex-row md:items-center md:gap-6"
+            >
+              <AppStoreBadge size="lg" />
+              <QRCode />
+            </motion.div>
+
+            <motion.div
+              initial={reduced ? undefined : { opacity: 0 }}
+              animate={reduced ? undefined : { opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.95 }}
+              className="flex items-center gap-3 text-[13px] text-text-tertiary"
+            >
+              <span className="flex items-center gap-0.5" aria-label="5 out of 5 stars">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star
+                    key={i}
+                    className="h-3.5 w-3.5 fill-accent text-accent"
+                    aria-hidden="true"
+                  />
+                ))}
+              </span>
+              <span>5.0 App Store</span>
+              <span aria-hidden="true">•</span>
+              <span>Free</span>
+              <span aria-hidden="true">•</span>
+              <span>iOS</span>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={reduced ? undefined : { opacity: 0, y: 36, scale: 0.96 }}
+            animate={reduced ? undefined : { opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            style={reduced ? undefined : { y: videoY }}
+            className="relative mx-auto w-full max-w-[400px] md:mx-0 md:max-w-none"
+          >
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -inset-8 scale-105 blur-3xl"
+              style={{
+                background:
+                  'radial-gradient(circle, rgba(167,139,250,0.28) 0%, rgba(167,139,250,0.08) 50%, transparent 75%)',
+              }}
+            />
+
+            <div className="relative mx-auto w-full max-w-[400px] overflow-hidden rounded-[44px] border border-border-mid bg-bg-high/40 shadow-[0_40px_120px_-30px_rgba(0,0,0,0.7),0_0_0_1px_rgba(167,139,250,0.06)] md:ml-auto md:mr-0">
+              <video
+                src="/videos/launch-01.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                className="block aspect-[9/16] w-full object-cover"
+              />
+
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 rounded-[44px]"
+                style={{
+                  background:
+                    'linear-gradient(180deg, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.0) 70%, rgba(5,5,6,0.25) 100%)',
+                }}
+              />
+            </div>
+          </motion.div>
+        </div>
       </Container>
 
-      <div className="pointer-events-none absolute bottom-8 left-1/2 z-10 -translate-x-1/2">
+      <div className="pointer-events-none absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 md:block">
         <ScrollIndicator />
       </div>
     </section>

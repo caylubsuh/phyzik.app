@@ -5,7 +5,7 @@ import Button from '@/components/ui/Button'
 import FadeUp from '@/components/motion/FadeUp'
 
 const MAILTO_HREF =
-  'mailto:admin@phyzik.app?subject=Ambassador%20Application&body=Hi%20Caleb%2C%0A%0AMy%20name%20is%20%5Byour%20name%5D.%0A%0AA%20bit%20about%20me%3A%0A-%20How%20I%20train%3A%0A-%20My%20platforms%20%2F%20content%3A%0A-%20Why%20PHYZIK%20fits%20me%3A%0A%0ALooking%20forward%20to%20hearing%20from%20you.%0A%0A%5Byour%20name%5D'
+  'mailto:admin@phyzik.app?subject=Ambassador%20Application&body=Hi%20PHYZIK%2C%0A%0AMy%20name%20is%20%5Byour%20name%5D.%0A%0AA%20bit%20about%20me%3A%0A-%20How%20I%20train%3A%0A-%20My%20platforms%20%2F%20content%3A%0A-%20Why%20PHYZIK%20fits%20me%3A%0A%0ALooking%20forward%20to%20hearing%20from%20you.%0A%0A%5Byour%20name%5D'
 
 export default function AmbassadorCTA() {
   return (
@@ -36,4 +36,4 @@ export default function AmbassadorCTA() {
       </Container>
     </Section>
   )
-}
+}

@@ -4,8 +4,6 @@ import Footer from '@/components/footer/Footer'
 import FinalCTA from '@/components/cta/FinalCTA'
 import AudienceHero from '@/components/audience/AudienceHero'
 import AudienceBenefits from '@/components/audience/AudienceBenefits'
-import AudienceFeatureFeature from '@/components/audience/AudienceFeatureFeature'
-import { TEAM } from '@/lib/team'
 import { SITE_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
@@ -44,7 +42,6 @@ const BENEFITS = [
 ]
 
 export default function BodybuildingPage() {
-  const sophia = TEAM.find((m) => m.slug === 'sophia')!
   return (
     <>
       <Nav />
@@ -63,12 +60,6 @@ export default function BodybuildingPage() {
           pill="THE PROGRAMMING BRAIN"
           heading="Every variable that moves hypertrophy, tracked."
           benefits={BENEFITS}
-        />
-        <AudienceFeatureFeature
-          pill="HEAD OF BODYBUILDING"
-          heading="Programming that reflects how people actually train."
-          member={sophia}
-          body="Sophia leads bodybuilding content and athlete recruitment. She makes sure PHYZIK reflects how competitive lifters actually train — not a sanitized, productized version of it. The programs you see on the platform are built against real prep cycles, not textbook abstractions."
         />
         <FinalCTA />
       </main>

@@ -17,10 +17,6 @@ export function organizationSchema() {
     description: BRAND.description,
     sameAs: [INSTAGRAM_URL, APP_STORE_URL],
     foundingDate: '2024',
-    founders: [
-      { '@type': 'Person', name: 'Caleb Suh', jobTitle: 'CEO, co-founder' },
-      { '@type': 'Person', name: 'Vijay Jagarapu', jobTitle: 'CTO, co-founder' },
-    ],
     contactPoint: [
       {
         '@type': 'ContactPoint',

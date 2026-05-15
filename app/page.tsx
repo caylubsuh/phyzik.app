@@ -1,5 +1,6 @@
 import Hero from '@/components/hero/Hero'
 import Nav from '@/components/nav/Nav'
+import VideoShowcase from '@/components/showcase/VideoShowcase'
 import FeaturesIntro from '@/components/features/FeaturesIntro'
 import FeaturesGrid from '@/components/features/FeaturesGrid'
 import StatsSection from '@/components/stats/StatsSection'
@@ -25,6 +26,7 @@ export default function HomePage() {
       <Nav />
       <main id="main-content">
         <Hero />
+        <VideoShowcase />
         <div id="features">
           <FeaturesIntro />
           <FeaturesGrid />

@@ -124,7 +124,7 @@ export default function TermsPage() {
       <h2>Indemnification</h2>
       <p>
         You agree to indemnify and hold harmless Physique Technologies LLC and
-        its founders, employees, and agents from any claims, damages, or
+        its officers, employees, and agents from any claims, damages, or
         expenses arising from your use of the App, your violation of these
         Terms, or your violation of any third-party rights.
       </p>

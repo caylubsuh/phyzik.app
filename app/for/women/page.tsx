@@ -4,8 +4,6 @@ import Footer from '@/components/footer/Footer'
 import FinalCTA from '@/components/cta/FinalCTA'
 import AudienceHero from '@/components/audience/AudienceHero'
 import AudienceBenefits from '@/components/audience/AudienceBenefits'
-import AudienceFeatureFeature from '@/components/audience/AudienceFeatureFeature'
-import { TEAM } from '@/lib/team'
 import { SITE_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
@@ -44,8 +42,6 @@ const BENEFITS = [
 ]
 
 export default function WomenPage() {
-  const sophia = TEAM.find((m) => m.slug === 'sophia')!
-  const hannah = TEAM.find((m) => m.slug === 'hannah')!
   return (
     <>
       <Nav />
@@ -63,18 +59,6 @@ export default function WomenPage() {
           pill="WHAT'S DIFFERENT"
           heading="Inclusion isn't a color palette. It's what the app actually does."
           benefits={BENEFITS}
-        />
-        <AudienceFeatureFeature
-          pill="HEAD OF BODYBUILDING"
-          heading="Leading programming and athlete recruitment."
-          member={sophia}
-          body="Sophia makes sure the athlete roster you see building on PHYZIK reflects the lifters actually on the platform — not the ones marketing says should be."
-        />
-        <AudienceFeatureFeature
-          pill="LIFESTYLE LEAD"
-          heading="Content for the Tuesday-after-work lifter."
-          member={hannah}
-          body="Not every lifter trains for a podium. Most just want to feel strong, show up consistently, and have a plan they can follow on a Tuesday after work. Hannah's content pod is for them — PHYZIK's depth, without the intensity tax."
         />
         <FinalCTA />
       </main>

@@ -4,8 +4,6 @@ import Footer from '@/components/footer/Footer'
 import FinalCTA from '@/components/cta/FinalCTA'
 import AudienceHero from '@/components/audience/AudienceHero'
 import AudienceBenefits from '@/components/audience/AudienceBenefits'
-import AudienceFeatureFeature from '@/components/audience/AudienceFeatureFeature'
-import { TEAM } from '@/lib/team'
 import { SITE_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
@@ -44,7 +42,6 @@ const BENEFITS = [
 ]
 
 export default function HyroxPage() {
-  const ten = TEAM.find((m) => m.slug === 'ten')!
   return (
     <>
       <Nav />
@@ -62,12 +59,6 @@ export default function HyroxPage() {
           pill="WHY HYROX ATHLETES TRAIN ON PHYZIK"
           heading="Built for the sport that refuses to specialize."
           benefits={BENEFITS}
-        />
-        <AudienceFeatureFeature
-          pill="PROOF"
-          heading="Training block in progress."
-          member={ten}
-          body="Ten Takeda is 16 weeks out from Stockholm International Hyrox (June 14, 2026). Six sessions a week. Every sled push, every wall ball, every kilometer logged on PHYZIK. The block, the pacing, the progression — open on The Floor."
         />
         <FinalCTA />
       </main>
