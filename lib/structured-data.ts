@@ -21,13 +21,7 @@ export function organizationSchema() {
       {
         '@type': 'ContactPoint',
         contactType: 'customer support',
-        email: 'support@phyzik.app',
-        availableLanguage: ['English'],
-      },
-      {
-        '@type': 'ContactPoint',
-        contactType: 'press',
-        email: 'press@phyzik.app',
+        email: 'admin@phyzik.app',
         availableLanguage: ['English'],
       },
     ],

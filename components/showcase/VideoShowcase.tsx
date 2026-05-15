@@ -6,9 +6,21 @@ import Pill from '@/components/ui/Pill'
 import FadeUp from '@/components/motion/FadeUp'
 
 const VIDEOS = [
-  { src: '/videos/launch-02.mp4', label: 'The session', sub: 'Open the app. Hit go.' },
-  { src: '/videos/launch-03.mp4', label: 'The set', sub: 'Log weight, reps, rest.' },
-  { src: '/videos/launch-04.mp4', label: 'The floor', sub: 'Every post is a workout.' },
+  {
+    src: '/videos/launch-02.mp4',
+    label: 'Your profile',
+    sub: 'Streaks, weight, workouts completed — your training history, owned.',
+  },
+  {
+    src: '/videos/launch-04.mp4',
+    label: 'The session',
+    sub: 'Live rest timer. Auto-suggested loads. PRs flagged automatically.',
+  },
+  {
+    src: '/videos/launch-06.mp4',
+    label: 'Nutrition',
+    sub: 'Calories, macros, and meals — in the same app as your training.',
+  },
 ]
 
 function VideoCard({
@@ -104,12 +116,12 @@ export default function VideoShowcase() {
         <div className="flex flex-col items-start gap-6">
           <Pill>IN MOTION</Pill>
           <h2 className="max-w-[820px] text-balance text-4xl font-bold leading-[1.02] tracking-tightest text-text-primary md:text-5xl lg:text-6xl">
-            The app, the lifters,{' '}
-            <span className="text-text-tertiary">the floor.</span>
+            The training app,{' '}
+            <span className="text-text-tertiary">in motion.</span>
           </h2>
           <p className="max-w-[560px] text-base leading-relaxed text-text-secondary md:text-lg">
-            What it actually looks like — from session start to the post
-            that lands on The Floor.
+            Profile, session, nutrition. What it actually looks like
+            day-to-day.
           </p>
         </div>
       </FadeUp>

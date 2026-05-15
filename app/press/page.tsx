@@ -72,10 +72,10 @@ export default function PressPage() {
                 Covering PHYZIK? Everything you need is here. Boilerplate,
                 logos, screenshots. For anything else —{' '}
                 <a
-                  href="mailto:press@phyzik.app"
+                  href="mailto:admin@phyzik.app"
                   className="text-accent underline-offset-4 hover:underline"
                 >
-                  press@phyzik.app
+                  admin@phyzik.app
                 </a>
                 .
               </p>
@@ -245,10 +245,10 @@ export default function PressPage() {
               <p className="mt-3 text-text-secondary">
                 Email{' '}
                 <a
-                  href="mailto:press@phyzik.app"
+                  href="mailto:admin@phyzik.app"
                   className="text-accent underline-offset-4 hover:underline"
                 >
-                  press@phyzik.app
+                  admin@phyzik.app
                 </a>{' '}
                 or{' '}
                 <a
