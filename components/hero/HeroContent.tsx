@@ -64,27 +64,27 @@ export default function HeroContent() {
         <Wordmark variant="hero" animate />
       </div>
 
-      <FadeUp delay={1.2}>
+      <FadeUp delay={0.6}>
         <h2 className="text-2xl font-semibold tracking-tight text-text-primary md:text-4xl lg:text-5xl">
           The <span className="text-accent">social</span> training platform built for{' '}
           <span className="text-accent">lifters.</span>
         </h2>
       </FadeUp>
 
-      <FadeUp delay={1.5}>
+      <FadeUp delay={0.75}>
         <p className="max-w-[580px] text-base leading-relaxed text-text-secondary md:text-lg">
           {BRAND.description}
         </p>
       </FadeUp>
 
-      <FadeUp delay={1.8}>
+      <FadeUp delay={0.9}>
         <div className="flex flex-col items-center gap-6 md:flex-row">
           <AppStoreBadge size="lg" />
           <QRCode />
         </div>
       </FadeUp>
 
-      <FadeUp delay={2.0}>
+      <FadeUp delay={1.05}>
         <div className="mt-2 flex items-center gap-3 text-[13px] text-text-tertiary">
           <span className="flex items-center gap-0.5" aria-label="5 out of 5 stars">
             {Array.from({ length: 5 }).map((_, i) => (

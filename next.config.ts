@@ -23,6 +23,8 @@ const config: NextConfig = {
     return [
       { source: '/privacy.html', destination: '/privacy', permanent: true },
       { source: '/terms.html', destination: '/terms', permanent: true },
+      // Community page hidden - keep source files for future, redirect visits home.
+      { source: '/community', destination: '/', permanent: false },
     ]
   },
   async headers() {

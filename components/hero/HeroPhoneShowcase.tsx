@@ -35,7 +35,7 @@ export default function HeroPhoneShowcase() {
         <motion.div
           initial={reduced ? undefined : { opacity: 0, y: 80, rotateX: 15 }}
           animate={reduced ? undefined : { opacity: 1, y: 0, rotateX: 0 }}
-          transition={{ duration: 1.2, delay: 2.2, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.9, delay: 1.15, ease: [0.22, 1, 0.36, 1] }}
         >
           <PhoneFrame
             screenshot="/screenshots/marketing/01-floor-post.png"

@@ -86,6 +86,20 @@ export default function PrivacyPage() {
         improvement purposes.
       </p>
 
+      <h2 id="account-deletion">Account deletion</h2>
+      <p>
+        You can permanently delete your PHYZIK account at any time. From the
+        app, go to <strong>Profile → Settings → Account → Delete account</strong>{' '}
+        and confirm three times. If you can&apos;t sign in, email{' '}
+        <a href="mailto:admin@phyzik.app">admin@phyzik.app</a> from your
+        registered address and we will process the deletion within 7 business
+        days. Workouts, posts, messages, media, and profile data are removed
+        within 30 days. Aggregated analytics and audit logs are retained for up
+        to 12 months for fraud prevention and product improvement. Full
+        instructions live at{' '}
+        <a href="/delete-account">phyzik.app/delete-account</a>.
+      </p>
+
       <h2>{`Children's privacy`}</h2>
       <p>
         The App is not directed to children under 13. We do not knowingly

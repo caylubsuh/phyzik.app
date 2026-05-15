@@ -39,7 +39,7 @@ export default function StatsSection() {
         </FadeUp>
 
         <FadeUp delay={0.1}>
-          <h2 className="mx-auto mt-8 max-w-[800px] text-center text-4xl font-bold leading-[1.05] tracking-tightest text-text-primary md:text-6xl lg:text-7xl">
+          <h2 className="mx-auto mt-8 max-w-[800px] text-center text-4xl font-bold leading-[1.05] tracking-tightest text-text-primary md:text-5xl lg:text-6xl">
             Four foundations. One training system.
           </h2>
         </FadeUp>
@@ -47,7 +47,11 @@ export default function StatsSection() {
         <div className="mt-20 grid w-full grid-cols-1 gap-12 md:grid-cols-2 md:gap-16 lg:grid-cols-4 lg:gap-12">
           {PILLARS.map((p, i) => (
             <FadeUp key={i} delay={0.2 + i * 0.1}>
-              <PillarBlock headline={p.headline} description={p.description} />
+              <PillarBlock
+                index={i + 1}
+                headline={p.headline}
+                description={p.description}
+              />
             </FadeUp>
           ))}
         </div>

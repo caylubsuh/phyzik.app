@@ -284,10 +284,6 @@ export default function PressPage() {
                 </a>
                 . Usually same-day.
               </p>
-              <p className="mt-4 text-sm text-text-tertiary">
-                Also on <Link href="/community" className="text-accent underline-offset-4 hover:underline">community</Link>:
-                full team, athlete roster, ambassadors.
-              </p>
             </div>
             <AppStoreBadge size="lg" />
           </div>

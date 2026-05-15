@@ -11,7 +11,7 @@ export default function FeaturesIntro() {
         </FadeUp>
 
         <FadeUp delay={0.1}>
-          <h2 className="text-4xl font-bold leading-[1.05] tracking-tightest text-text-primary md:text-6xl lg:text-7xl">
+          <h2 className="text-4xl font-bold leading-[1.05] tracking-tightest text-text-primary md:text-5xl lg:text-6xl">
             Everything you need.{' '}
             <span className="text-text-tertiary">Nothing you don&apos;t.</span>
           </h2>

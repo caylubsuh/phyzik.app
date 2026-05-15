@@ -18,7 +18,7 @@ export default function Footer() {
               sizes="133px"
               className="h-5 w-auto select-none"
             />
-            <p className="mt-3 text-[13px] text-text-tertiary">
+            <p className="mt-3 text-[13px] text-text-secondary">
               © 2026 {BRAND.legalName}
             </p>
           </div>
@@ -35,12 +35,6 @@ export default function Footer() {
             >
               Instagram
             </a>
-            <Link
-              href="/community"
-              className="rounded-sm text-[13px] text-text-secondary transition-colors hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-bg"
-            >
-              Community
-            </Link>
             <Link
               href="/press"
               className="rounded-sm text-[13px] text-text-secondary transition-colors hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-bg"
@@ -64,6 +58,12 @@ export default function Footer() {
               className="rounded-sm text-[13px] text-text-secondary transition-colors hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-bg"
             >
               Terms
+            </Link>
+            <Link
+              href="/delete-account"
+              className="rounded-sm text-[13px] text-text-secondary transition-colors hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-bg"
+            >
+              Delete account
             </Link>
             <a
               href="mailto:admin@phyzik.app"
