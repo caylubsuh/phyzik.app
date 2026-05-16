@@ -42,7 +42,7 @@ export default function HeroContent() {
               width: '140%',
               height: '280%',
               background:
-                'radial-gradient(ellipse at center, rgba(212,175,55,0.35) 0%, rgba(212,175,55,0.12) 30%, transparent 65%)',
+                'radial-gradient(ellipse at center, rgba(184,151,106,0.35) 0%, rgba(184,151,106,0.12) 30%, transparent 65%)',
               filter: 'blur(40px)',
             }}
           />
@@ -56,7 +56,7 @@ export default function HeroContent() {
               width: '140%',
               height: '280%',
               background:
-                'radial-gradient(ellipse at center, rgba(212,175,55,0.35) 0%, rgba(212,175,55,0.12) 30%, transparent 65%)',
+                'radial-gradient(ellipse at center, rgba(184,151,106,0.35) 0%, rgba(184,151,106,0.12) 30%, transparent 65%)',
               filter: 'blur(40px)',
             }}
           />

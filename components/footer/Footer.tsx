@@ -5,7 +5,7 @@ import { BRAND, INSTAGRAM_URL } from '@/lib/constants'
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border py-16">
+    <footer className="py-16">
       <Container>
         <div className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
           <div>

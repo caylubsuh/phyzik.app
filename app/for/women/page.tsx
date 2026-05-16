@@ -50,7 +50,7 @@ export default function WomenPage() {
           pill="FOR WOMEN"
           headline={
             <>
-              Training built <span className="text-tertiary">for you.</span>
+              Training built <span className="text-accent">for you.</span>
             </>
           }
           sub="Same tools. Same depth. Same respect. PHYZIK doesn't build a dumber version of the app for women — it builds one app, for every lifter, and means it."

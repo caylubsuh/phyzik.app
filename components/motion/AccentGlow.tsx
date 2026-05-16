@@ -47,7 +47,7 @@ export default function AccentGlow({
     width: px,
     height: px,
     background:
-      'radial-gradient(circle, rgba(193,159,47,0.9) 0%, rgba(193,159,47,0) 65%)',
+      'radial-gradient(circle, rgba(168,137,106,0.9) 0%, rgba(168,137,106,0) 65%)',
   } as const
 
   if (reduced) {

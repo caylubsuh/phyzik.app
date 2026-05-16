@@ -21,12 +21,12 @@ export default {
         },
         // PRIMARY ACCENT — gold. Used for CTAs, links, icons, glows, ratings, etc.
         accent: {
-          DEFAULT: '#D4AF37',
-          light: 'rgba(212,175,55,0.08)',
-          dark: '#B8932B',
-          dim: 'rgba(212,175,55,0.12)',
-          bubble: 'rgba(212,175,55,0.30)',
-          mid: '#C19F2F',
+          DEFAULT: '#B8976A',
+          light: 'rgba(184,151,106,0.08)',
+          dark: '#997B54',
+          dim: 'rgba(184,151,106,0.12)',
+          bubble: 'rgba(184,151,106,0.30)',
+          mid: '#A8896A',
         },
         // TERTIARY ACCENT — purple. Reserved for inline highlights inside titles.
         tertiary: {

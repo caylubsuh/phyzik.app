@@ -49,7 +49,7 @@ export default function FeatureSection({
     <Section
       ref={sectionRef}
       id={id}
-      spacing="medium"
+      spacing="tight"
       className="relative overflow-hidden"
     >
       <div
@@ -63,15 +63,15 @@ export default function FeatureSection({
           bottom: imageOnLeft ? '-200px' : undefined,
           left: imageOnLeft ? '-200px' : undefined,
           background:
-            'radial-gradient(ellipse at center, rgba(212,175,55,0.12) 0%, transparent 60%)',
+            'radial-gradient(ellipse at center, rgba(184,151,106,0.12) 0%, transparent 60%)',
           filter: 'blur(80px)',
         }}
       />
-      <div className="relative grid items-center gap-12 md:grid-cols-2 md:gap-16 lg:gap-24">
+      <div className="relative grid items-start gap-10 md:grid-cols-2 md:gap-14 lg:gap-20">
         <div className={cn('w-full', imageOnLeft ? 'md:order-1' : 'md:order-2')}>
           <div
             className={cn(
-              'relative mx-auto w-full max-w-[440px]',
+              'relative mx-auto w-full max-w-[280px] md:max-w-[340px]',
               !imageOnLeft && 'md:mx-0 md:ml-auto',
               imageOnLeft && 'md:mx-0 md:mr-auto',
             )}
@@ -82,7 +82,7 @@ export default function FeatureSection({
                 className="pointer-events-none absolute inset-0 scale-110 blur-3xl"
                 style={{
                   background:
-                    'radial-gradient(circle, rgba(212,175,55,0.18), transparent 70%)',
+                    'radial-gradient(circle, rgba(184,151,106,0.18), transparent 70%)',
                 }}
               />
             )}
@@ -101,7 +101,7 @@ export default function FeatureSection({
                     src={image}
                     alt={imageAlt}
                     fill
-                    sizes="(max-width: 768px) 85vw, 440px"
+                    sizes="(max-width: 768px) 75vw, 340px"
                     quality={95}
                     draggable={false}
                     className="object-contain"

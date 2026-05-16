@@ -3,7 +3,6 @@
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { Star } from 'lucide-react'
 import Container from '@/components/ui/Container'
-import ScrollIndicator from '@/components/ui/ScrollIndicator'
 import AppStoreBadge from '@/components/ui/AppStoreBadge'
 import QRCode from '@/components/ui/QRCode'
 import Wordmark from '@/components/brand/Wordmark'
@@ -21,7 +20,7 @@ export default function Hero() {
     <section
       role="banner"
       aria-label={`${BRAND.name} — ${BRAND.tagline}`}
-      className="relative flex min-h-[92vh] flex-col items-stretch justify-start overflow-hidden pb-20 pt-28 md:min-h-screen md:pb-24 md:pt-36"
+      className="relative flex flex-col items-stretch justify-start overflow-hidden pb-16 pt-28 md:pb-20 md:pt-32"
     >
       <HeroBackground />
 
@@ -56,7 +55,7 @@ export default function Hero() {
               className="max-w-[620px] text-balance text-[clamp(2rem,4.6vw,3.75rem)] font-semibold leading-[1.02] tracking-[-0.035em] text-text-primary"
             >
               Where every post is a{' '}
-              <span className="text-tertiary">real workout.</span>
+              <span className="text-accent">real workout.</span>
             </motion.h2>
 
             <motion.p
@@ -113,11 +112,11 @@ export default function Hero() {
               className="pointer-events-none absolute -inset-8 scale-105 blur-3xl"
               style={{
                 background:
-                  'radial-gradient(circle, rgba(212,175,55,0.28) 0%, rgba(212,175,55,0.08) 50%, transparent 75%)',
+                  'radial-gradient(circle, rgba(184,151,106,0.28) 0%, rgba(184,151,106,0.08) 50%, transparent 75%)',
               }}
             />
 
-            <div className="relative mx-auto w-full max-w-[400px] overflow-hidden rounded-[44px] border border-border-mid bg-bg-high/40 shadow-[0_40px_120px_-30px_rgba(0,0,0,0.7),0_0_0_1px_rgba(212,175,55,0.06)] md:ml-auto md:mr-0">
+            <div className="relative mx-auto w-full max-w-[400px] overflow-hidden rounded-[44px] border border-border-mid bg-bg-high/40 shadow-[0_40px_120px_-30px_rgba(0,0,0,0.7),0_0_0_1px_rgba(184,151,106,0.06)] md:ml-auto md:mr-0">
               <video
                 src="/videos/launch-01.mp4"
                 autoPlay
@@ -141,9 +140,7 @@ export default function Hero() {
         </div>
       </Container>
 
-      <div className="pointer-events-none absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 md:block">
-        <ScrollIndicator />
-      </div>
+      
     </section>
   )
 }

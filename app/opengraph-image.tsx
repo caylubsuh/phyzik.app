@@ -59,7 +59,7 @@ export default async function OpengraphImage() {
             width: '1100px',
             height: '700px',
             background:
-              'radial-gradient(ellipse at center, rgba(212,175,55,0.38) 0%, rgba(212,175,55,0.14) 32%, rgba(212,175,55,0) 68%)',
+              'radial-gradient(ellipse at center, rgba(184,151,106,0.38) 0%, rgba(184,151,106,0.14) 32%, rgba(184,151,106,0) 68%)',
             display: 'flex',
           }}
         />
@@ -72,7 +72,7 @@ export default async function OpengraphImage() {
             right: 0,
             bottom: 0,
             background:
-              'radial-gradient(ellipse 140% 100% at 50% 100%, rgba(212,175,55,0.08) 0%, rgba(212,175,55,0) 60%)',
+              'radial-gradient(ellipse 140% 100% at 50% 100%, rgba(184,151,106,0.08) 0%, rgba(184,151,106,0) 60%)',
             display: 'flex',
           }}
         />
@@ -135,7 +135,7 @@ export default async function OpengraphImage() {
           style={{
             width: 80,
             height: 2,
-            background: '#D4AF37',
+            background: '#B8976A',
             marginBottom: 36,
             zIndex: 1,
             display: 'flex',
@@ -162,7 +162,7 @@ export default async function OpengraphImage() {
             <span
               key={i}
               style={{
-                color: word.accent ? '#D4AF37' : '#F2F2F3',
+                color: word.accent ? '#B8976A' : '#F2F2F3',
                 display: 'flex',
               }}
             >
@@ -187,7 +187,7 @@ export default async function OpengraphImage() {
               width: 8,
               height: 8,
               borderRadius: 4,
-              background: '#D4AF37',
+              background: '#B8976A',
               display: 'flex',
             }}
           />

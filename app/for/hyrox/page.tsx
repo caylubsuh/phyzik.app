@@ -50,7 +50,7 @@ export default function HyroxPage() {
           pill="FOR HYROX"
           headline={
             <>
-              Every discipline, <span className="text-tertiary">one app.</span>
+              Every discipline, <span className="text-accent">one app.</span>
             </>
           }
           sub="Hyrox is eight stations and eight kilometers. Your app should cover all of it. PHYZIK tracks strength, run, and functional work in the same session — so you can actually train like the race."
