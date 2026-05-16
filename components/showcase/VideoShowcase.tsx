@@ -68,7 +68,7 @@ function VideoCard({
             className="pointer-events-none absolute -inset-6 -z-10 scale-110 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
             style={{
               background:
-                'radial-gradient(circle, rgba(167,139,250,0.18) 0%, transparent 70%)',
+                'radial-gradient(circle, rgba(212,175,55,0.18) 0%, transparent 70%)',
             }}
           />
           <video

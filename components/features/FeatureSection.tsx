@@ -63,7 +63,7 @@ export default function FeatureSection({
           bottom: imageOnLeft ? '-200px' : undefined,
           left: imageOnLeft ? '-200px' : undefined,
           background:
-            'radial-gradient(ellipse at center, rgba(167,139,250,0.12) 0%, transparent 60%)',
+            'radial-gradient(ellipse at center, rgba(212,175,55,0.12) 0%, transparent 60%)',
           filter: 'blur(80px)',
         }}
       />
@@ -82,7 +82,7 @@ export default function FeatureSection({
                 className="pointer-events-none absolute inset-0 scale-110 blur-3xl"
                 style={{
                   background:
-                    'radial-gradient(circle, rgba(167,139,250,0.18), transparent 70%)',
+                    'radial-gradient(circle, rgba(212,175,55,0.18), transparent 70%)',
                 }}
               />
             )}

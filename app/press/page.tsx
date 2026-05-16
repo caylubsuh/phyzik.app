@@ -66,7 +66,7 @@ export default function PressPage() {
             <FadeUp className="flex flex-col items-start">
               <Pill>PRESS</Pill>
               <h1 className="mt-6 text-5xl font-bold tracking-tight text-text-primary md:text-6xl lg:text-7xl">
-                Media <span className="text-accent">kit.</span>
+                Media <span className="text-tertiary">kit.</span>
               </h1>
               <p className="mt-6 max-w-3xl text-lg text-text-primary/70 md:text-xl">
                 Covering PHYZIK? Everything you need is here. Boilerplate,

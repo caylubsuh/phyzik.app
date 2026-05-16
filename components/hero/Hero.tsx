@@ -56,7 +56,7 @@ export default function Hero() {
               className="max-w-[620px] text-balance text-[clamp(2rem,4.6vw,3.75rem)] font-semibold leading-[1.02] tracking-[-0.035em] text-text-primary"
             >
               Where every post is a{' '}
-              <span className="text-accent">real workout.</span>
+              <span className="text-tertiary">real workout.</span>
             </motion.h2>
 
             <motion.p
@@ -113,11 +113,11 @@ export default function Hero() {
               className="pointer-events-none absolute -inset-8 scale-105 blur-3xl"
               style={{
                 background:
-                  'radial-gradient(circle, rgba(167,139,250,0.28) 0%, rgba(167,139,250,0.08) 50%, transparent 75%)',
+                  'radial-gradient(circle, rgba(212,175,55,0.28) 0%, rgba(212,175,55,0.08) 50%, transparent 75%)',
               }}
             />
 
-            <div className="relative mx-auto w-full max-w-[400px] overflow-hidden rounded-[44px] border border-border-mid bg-bg-high/40 shadow-[0_40px_120px_-30px_rgba(0,0,0,0.7),0_0_0_1px_rgba(167,139,250,0.06)] md:ml-auto md:mr-0">
+            <div className="relative mx-auto w-full max-w-[400px] overflow-hidden rounded-[44px] border border-border-mid bg-bg-high/40 shadow-[0_40px_120px_-30px_rgba(0,0,0,0.7),0_0_0_1px_rgba(212,175,55,0.06)] md:ml-auto md:mr-0">
               <video
                 src="/videos/launch-01.mp4"
                 autoPlay

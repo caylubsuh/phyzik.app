@@ -24,7 +24,7 @@ export default function HeroPhoneShowcase() {
         className="pointer-events-none absolute inset-0 scale-125 blur-3xl"
         style={{
           background:
-            'radial-gradient(circle, rgba(167,139,250,0.22) 0%, rgba(167,139,250,0) 70%)',
+            'radial-gradient(circle, rgba(212,175,55,0.22) 0%, rgba(212,175,55,0) 70%)',
         }}
       />
 

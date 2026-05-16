@@ -11,7 +11,7 @@ export default function ChapterBreak() {
         className="pointer-events-none absolute inset-0 -z-10"
         style={{
           background:
-            'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(167,139,250,0.18) 0%, rgba(167,139,250,0.05) 40%, transparent 70%)',
+            'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(212,175,55,0.18) 0%, rgba(212,175,55,0.05) 40%, transparent 70%)',
           filter: 'blur(30px)',
         }}
       />

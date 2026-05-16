@@ -15,9 +15,13 @@
   --text-tertiary: #71717a;
   --text-inverse: #0a0a0b;
 
-  --accent: #a78bfa;
-  --accent-dark: #8b6fe0;
-  --accent-mid: #9a7ef0;
+  --accent: #D4AF37;
+  --accent-dark: #B8932B;
+  --accent-mid: #C19F2F;
+
+  --tertiary: #A78BFA;
+  --tertiary-dark: #8B6FE0;
+  --tertiary-mid: #9A7EF0;
 
   --gold: #b8976a;
   --gold-dark: #997b54;
@@ -46,7 +50,7 @@
   }
 
   ::selection {
-    background-color: rgba(167, 139, 250, 0.3);
+    background-color: rgba(212, 175, 55, 0.3);
     color: var(--text-primary);
   }
 
@@ -124,14 +128,14 @@
     line-height: 1.75;
   }
   .legal-prose a {
-    color: #a78bfa;
+    color: #D4AF37;
     text-decoration: underline;
     text-underline-offset: 3px;
     text-decoration-thickness: 1px;
     transition: color 150ms;
   }
   .legal-prose a:hover {
-    color: #8b6fe0;
+    color: #B8932B;
   }
   .legal-prose strong {
     color: #f2f2f3;

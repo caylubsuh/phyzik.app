@@ -19,7 +19,17 @@ export default {
           tertiary: '#71717A',
           inverse: '#0A0A0B',
         },
+        // PRIMARY ACCENT — gold. Used for CTAs, links, icons, glows, ratings, etc.
         accent: {
+          DEFAULT: '#D4AF37',
+          light: 'rgba(212,175,55,0.08)',
+          dark: '#B8932B',
+          dim: 'rgba(212,175,55,0.12)',
+          bubble: 'rgba(212,175,55,0.30)',
+          mid: '#C19F2F',
+        },
+        // TERTIARY ACCENT — purple. Reserved for inline highlights inside titles.
+        tertiary: {
           DEFAULT: '#A78BFA',
           light: 'rgba(167,139,250,0.08)',
           dark: '#8B6FE0',
@@ -27,6 +37,7 @@ export default {
           bubble: 'rgba(167,139,250,0.30)',
           mid: '#9A7EF0',
         },
+        // Legacy gold tokens — kept for any existing app-side cross-references.
         gold: {
           DEFAULT: '#B8976A',
           dark: '#997B54',

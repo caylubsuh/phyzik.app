@@ -31,7 +31,7 @@ export default function ChangelogPage() {
             <FadeUp className="flex flex-col items-start">
               <Pill>CHANGELOG</Pill>
               <h1 className="mt-6 text-5xl font-bold tracking-tight text-text-primary md:text-6xl lg:text-7xl">
-                What <span className="text-accent">shipped.</span>
+                What <span className="text-tertiary">shipped.</span>
               </h1>
               <p className="mt-6 max-w-3xl text-lg text-text-primary/70 md:text-xl">
                 Every release, every feature, every fix — in the order we

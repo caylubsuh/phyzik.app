@@ -50,7 +50,7 @@ export default function BodybuildingPage() {
           pill="FOR BODYBUILDING"
           headline={
             <>
-              Hypertrophy <span className="text-accent">science</span> in your
+              Hypertrophy <span className="text-tertiary">science</span> in your
               pocket.
             </>
           }
