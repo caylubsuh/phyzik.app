@@ -5,24 +5,57 @@ export const alt = 'PHYZIK — The social training platform built for lifters'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
+// Generate on first request, not at build time. The fetches below (Google Fonts
+// + our own brand asset) sometimes time out from the build sandbox, which
+// previously broke the entire deploy.
+export const dynamic = 'force-dynamic'
+
+/** Fetch with a short timeout and a null-safe fallback. */
+async function safeFetch(
+  url: string,
+  init?: RequestInit,
+  timeoutMs = 3500,
+): Promise<Response | null> {
+  const controller = new AbortController()
+  const t = setTimeout(() => controller.abort(), timeoutMs)
+  try {
+    const res = await fetch(url, { ...init, signal: controller.signal })
+    if (!res.ok) return null
+    return res
+  } catch {
+    return null
+  } finally {
+    clearTimeout(t)
+  }
+}
+
+async function loadInterFont(weight: 400 | 700): Promise<ArrayBuffer | null> {
+  const cssRes = await safeFetch(
+    `https://fonts.googleapis.com/css2?family=Inter:wght@${weight}&display=swap`,
+  )
+  if (!cssRes) return null
+  const css = await cssRes.text()
+  const url = css.match(/src: url\((.+?)\) format/)?.[1]
+  if (!url) return null
+  const fontRes = await safeFetch(url)
+  if (!fontRes) return null
+  return fontRes.arrayBuffer()
+}
+
 export default async function OpengraphImage() {
   const [interRegular, interBold] = await Promise.all([
-    fetch('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap')
-      .then((r) => r.text())
-      .then((css) => {
-        const url = css.match(/src: url\((.+?)\) format/)?.[1]
-        return url ? fetch(url).then((r) => r.arrayBuffer()) : null
-      }),
-    fetch('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap')
-      .then((r) => r.text())
-      .then((css) => {
-        const url = css.match(/src: url\((.+?)\) format/)?.[1]
-        return url ? fetch(url).then((r) => r.arrayBuffer()) : null
-      }),
+    loadInterFont(400),
+    loadInterFont(700),
   ])
 
-  const wordmarkUrl = 'https://www.phyzik.app/brand/phyzik-wordmark-white.png'
-  const iconUrl = 'https://www.phyzik.app/brand/phyzik-icon.png'
+  // Resolve brand asset URLs against whatever deployment is rendering us.
+  // VERCEL_URL is set on Vercel (preview + prod); fall back to phyzik.app.
+  const baseUrl = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : 'https://www.phyzik.app'
+
+  const wordmarkUrl = `${baseUrl}/brand/phyzik-wordmark-white.png`
+  const iconUrl = `${baseUrl}/brand/phyzik-icon.png`
 
   const taglineWords: Array<{ text: string; accent?: boolean }> = [
     { text: 'The' },

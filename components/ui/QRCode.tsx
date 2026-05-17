@@ -11,7 +11,7 @@ type QRCodeProps = {
 }
 
 export default function QRCode({
-  size = 120,
+  size = 144,
   hideOnMobile = true,
   className,
 }: QRCodeProps) {
