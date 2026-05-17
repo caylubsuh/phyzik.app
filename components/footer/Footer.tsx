@@ -86,11 +86,6 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className="mt-12 border-t border-border/50 pt-6">
-          <p className="text-center text-[11px] uppercase tracking-[0.15em] text-text-tertiary/80">
-            Made in Ithaca and Vienna. Built for everyone everywhere.
-          </p>
-        </div>
       </Container>
     </footer>
   )

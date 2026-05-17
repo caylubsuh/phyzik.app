@@ -224,33 +224,23 @@ export default function PressPage() {
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-text-primary md:text-4xl">
               In the press.
             </h2>
-            <p className="mt-3 max-w-2xl text-text-secondary">
-              Coverage lands here as it comes in.
-            </p>
           </FadeUp>
-          <div className="mt-10 rounded-2xl border border-border bg-bg-high/50 p-10 text-center">
-            <p className="text-sm text-text-tertiary">
+          <div className="mt-10 border-t border-border pt-8">
+            <p className="text-[14px] italic text-text-tertiary">
               New app, new story. First pieces coming soon.
             </p>
           </div>
         </Section>
 
         <Section spacing="medium">
-          <div className="flex flex-col items-start gap-6 rounded-3xl border border-border bg-bg-high p-10 md:flex-row md:items-center md:justify-between">
-            <div className="max-w-xl">
+          <div className="flex flex-col items-start gap-10 border-t border-border pt-10 md:flex-row md:items-end md:justify-between md:gap-12">
+            <div className="flex max-w-xl flex-col gap-4">
               <Pill>CONTACT</Pill>
-              <h2 className="mt-4 text-2xl font-bold tracking-tight text-text-primary md:text-3xl">
+              <h2 className="text-3xl font-bold tracking-tight text-text-primary md:text-4xl">
                 Interviews, review units, partnerships.
               </h2>
-              <p className="mt-3 text-text-secondary">
+              <p className="text-text-secondary">
                 Email{' '}
-                <a
-                  href="mailto:admin@phyzik.app"
-                  className="text-accent underline-offset-4 hover:underline"
-                >
-                  admin@phyzik.app
-                </a>{' '}
-                or{' '}
                 <a
                   href="mailto:admin@phyzik.app"
                   className="text-accent underline-offset-4 hover:underline"
