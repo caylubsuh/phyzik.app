@@ -266,3 +266,82 @@ export const COMPETITORS: readonly Competitor[] = [
 export function getCompetitor(slug: string): Competitor | undefined {
   return COMPETITORS.find((c) => c.slug === slug)
 }
+
+/* ──────────────────────────────────────────────────────────────────────────
+ * UNIFIED MATRIX — one chart, all competitors side-by-side.
+ * Used by /vs. Grouped by category so the page can render section headers.
+ * ────────────────────────────────────────────────────────────────────────── */
+
+export type MatrixCellValue = string | boolean
+
+export type MatrixRow = {
+  feature: string
+  phyzik: MatrixCellValue
+  hevy: MatrixCellValue
+  strong: MatrixCellValue
+  fitbod: MatrixCellValue
+  jefit: MatrixCellValue
+}
+
+export type MatrixCategory = {
+  label: string
+  rows: MatrixRow[]
+}
+
+export const COMPARISON_MATRIX: readonly MatrixCategory[] = [
+  {
+    label: 'Pricing',
+    rows: [
+      { feature: 'Annual price (web)',  phyzik: '$34.99', hevy: '$39.99', strong: '$29.99', fitbod: '$79.99', jefit: '$69.99' },
+      { feature: 'Monthly price',       phyzik: '$3.99',  hevy: '$4.99',  strong: '$4.99',  fitbod: '$12.99', jefit: '$12.99' },
+      { feature: 'Free tier',           phyzik: true,     hevy: true,     strong: true,     fitbod: 'trial only', jefit: true },
+    ],
+  },
+  {
+    label: 'Core tracking',
+    rows: [
+      { feature: 'Workout logging',         phyzik: true,    hevy: true,   strong: true,  fitbod: true,  jefit: true },
+      { feature: 'Exercise library',        phyzik: '730+',  hevy: '400+', strong: '300+', fitbod: '350+', jefit: '1,400+' },
+      { feature: 'Rest timer',              phyzik: true,    hevy: true,   strong: true,  fitbod: true,  jefit: true },
+      { feature: 'Plate calculator',        phyzik: true,    hevy: true,   strong: true,  fitbod: true,  jefit: true },
+      { feature: 'Custom routines',         phyzik: true,    hevy: true,   strong: true,  fitbod: true,  jefit: true },
+    ],
+  },
+  {
+    label: 'Programming intelligence',
+    rows: [
+      { feature: 'Adaptive programming',           phyzik: true, hevy: false, strong: false, fitbod: true,  jefit: false },
+      { feature: 'Mesocycle periodization',        phyzik: true, hevy: false, strong: false, fitbod: false, jefit: false },
+      { feature: 'Auto deload detection',          phyzik: true, hevy: false, strong: false, fitbod: false, jefit: false },
+      { feature: 'AI form-check',                  phyzik: true, hevy: false, strong: false, fitbod: false, jefit: false },
+      { feature: 'Volume landmarks (MEV/MAV/MRV)', phyzik: true, hevy: false, strong: false, fitbod: false, jefit: false },
+      { feature: 'Recovery scoring',               phyzik: true, hevy: false, strong: false, fitbod: false, jefit: false },
+      { feature: 'Nutrition tracking',             phyzik: true, hevy: false, strong: false, fitbod: false, jefit: false },
+    ],
+  },
+  {
+    label: 'Social',
+    rows: [
+      { feature: 'Social feed',              phyzik: true, hevy: true,  strong: false, fitbod: false, jefit: true  },
+      { feature: 'Squads / shared schedules', phyzik: true, hevy: false, strong: false, fitbod: false, jefit: false },
+    ],
+  },
+  {
+    label: 'Platform',
+    rows: [
+      { feature: 'iOS app',          phyzik: true,     hevy: true, strong: true, fitbod: true, jefit: true },
+      { feature: 'Android app',      phyzik: 'coming', hevy: true, strong: true, fitbod: true, jefit: true },
+      { feature: 'Apple Watch app',  phyzik: 'coming', hevy: true, strong: true, fitbod: true, jefit: true },
+      { feature: 'Web companion',    phyzik: true,     hevy: false, strong: false, fitbod: false, jefit: true },
+    ],
+  },
+] as const
+
+/** Column order for the matrix header. PHYZIK always first. */
+export const MATRIX_COLUMNS: readonly { key: keyof MatrixRow; label: string; isUs: boolean }[] = [
+  { key: 'phyzik', label: 'PHYZIK', isUs: true },
+  { key: 'hevy',   label: 'Hevy',   isUs: false },
+  { key: 'strong', label: 'Strong', isUs: false },
+  { key: 'fitbod', label: 'Fitbod', isUs: false },
+  { key: 'jefit',  label: 'Jefit',  isUs: false },
+] as const

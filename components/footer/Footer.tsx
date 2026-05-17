@@ -42,12 +42,6 @@ export default function Footer() {
               Pricing
             </Link>
             <Link
-              href="/method"
-              className="rounded-sm text-[13px] text-text-secondary transition-colors hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-bg"
-            >
-              Method
-            </Link>
-            <Link
               href="/vs"
               className="rounded-sm text-[13px] text-text-secondary transition-colors hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-bg"
             >
