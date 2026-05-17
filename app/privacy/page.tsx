@@ -123,8 +123,6 @@ export default function PrivacyPage() {
         <a href="mailto:admin@phyzik.app">
           admin@phyzik.app
         </a>
-        <br />
-        416 Windover Ave NW, Vienna, VA 22180
       </p>
     </LegalLayout>
   )

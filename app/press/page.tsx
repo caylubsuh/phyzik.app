@@ -103,7 +103,7 @@ export default function PressPage() {
               or personal coaches. Free. For every lifter.
             </p>
             <p className="text-sm text-text-tertiary">
-              Founded 2024 · {BRAND.legalName} · Based in Ithaca, NY and Vienna, VA
+              Founded 2024 · {BRAND.legalName}
             </p>
           </div>
         </Section>
@@ -125,7 +125,6 @@ export default function PressPage() {
               ['Exercises', '730+'],
               ['Exercise aliases', '3,145+'],
               ['Program combinations', '5,000+'],
-              ['Headquarters', 'Ithaca, NY · Vienna, VA'],
               ['App Store', 'apps.apple.com/us/app/phyzik/id6760412488'],
             ].map(([k, v]) => (
               <div key={k} className="flex flex-col gap-1">

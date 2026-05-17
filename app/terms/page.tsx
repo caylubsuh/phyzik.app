@@ -151,8 +151,6 @@ export default function TermsPage() {
         <a href="mailto:admin@phyzik.app">
           admin@phyzik.app
         </a>
-        <br />
-        416 Windover Ave NW, Vienna, VA 22180
       </p>
     </LegalLayout>
   )
