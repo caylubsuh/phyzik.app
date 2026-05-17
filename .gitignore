@@ -47,3 +47,9 @@ _preserve/
 .claude/*
 !.claude/skills/
 
+# Stripe CLI (locally extracted, never commit)
+stripe.exe
+stripe_*_windows_*/
+stripe_*_darwin_*/
+stripe_*_linux_*/
+

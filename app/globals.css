@@ -141,4 +141,31 @@
     color: #f2f2f3;
     font-weight: 600;
   }
+
+  /* Slow metallic shimmer across gold text. Pair with bg-clip-text. */
+  .text-shimmer-gold {
+    background-image: linear-gradient(
+      110deg,
+      #997b54 0%,
+      #b8976a 35%,
+      #f5dcaa 50%,
+      #b8976a 65%,
+      #997b54 100%
+    );
+    background-size: 220% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 7s linear infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -180% center;
+  }
+  100% {
+    background-position: 180% center;
+  }
 }

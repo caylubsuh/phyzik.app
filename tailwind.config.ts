@@ -60,6 +60,20 @@ export default {
         '18': '4.5rem',
         '22': '5.5rem',
       },
+      keyframes: {
+        shimmer: {
+          '0%': { backgroundPosition: '-180% center' },
+          '100%': { backgroundPosition: '180% center' },
+        },
+        'slow-drift': {
+          '0%, 100%': { transform: 'translate3d(0, 0, 0) scale(1)' },
+          '50%': { transform: 'translate3d(0, -8%, 0) scale(1.06)' },
+        },
+      },
+      animation: {
+        shimmer: 'shimmer 7s linear infinite',
+        'slow-drift': 'slow-drift 14s ease-in-out infinite',
+      },
     },
   },
   plugins: [],

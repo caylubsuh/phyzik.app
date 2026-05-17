@@ -18,8 +18,8 @@ import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
   { label: 'Features', href: '/#features' },
+  { label: 'Pricing', href: '/pricing' },
   { label: 'Press', href: '/press' },
-  { label: 'Privacy', href: '/privacy' },
 ] as const
 
 export default function Nav() {
