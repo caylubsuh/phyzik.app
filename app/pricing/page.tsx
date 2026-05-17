@@ -91,14 +91,14 @@ export default function PricingPage() {
                   Everything intelligent.
                   <br />
                   <span className="text-shimmer-gold">
-                    Lowest price we can offer.
+                    Built for who you&apos;re becoming.
                   </span>
                 </h1>
 
                 <p className="max-w-[540px] text-[15.5px] leading-relaxed text-text-secondary md:text-[17px]">
-                  Become a member and unlock every AI feature in PHYZIK.
-                  Subscribing here — not the App Store — keeps the full price
-                  on our side and lets us pass the difference back to you.
+                  Become a Pro member and unlock every AI feature. Subscribing
+                  here — not the App Store — keeps the full price on our side
+                  and lets us pass the difference back to you.
                 </p>
               </div>
             </FadeUp>
