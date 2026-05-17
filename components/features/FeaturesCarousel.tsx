@@ -28,10 +28,7 @@ function splitBody(body: string): { lead: string; rest: string | null } {
 export default function FeaturesCarousel() {
   const reduced = useReducedMotion()
   const [active, setActive] = useState(0)
-  /** Direction of last navigation: +1 (next) or -1 (prev). Drives the
-   *  AnimatePresence enter/exit direction so slides slide rather than fade. */
   const [direction, setDirection] = useState(1)
-  /** Pauses autoplay on hover, focus, or user interaction. */
   const [paused, setPaused] = useState(false)
 
   const total = FEATURES.length
@@ -46,14 +43,8 @@ export default function FeaturesCarousel() {
     [total],
   )
 
-  const next = useCallback(
-    () => goTo(active + 1, 1),
-    [active, goTo],
-  )
-  const prev = useCallback(
-    () => goTo(active - 1, -1),
-    [active, goTo],
-  )
+  const next = useCallback(() => goTo(active + 1, 1), [active, goTo])
+  const prev = useCallback(() => goTo(active - 1, -1), [active, goTo])
 
   // Autoplay
   useEffect(() => {
@@ -62,7 +53,6 @@ export default function FeaturesCarousel() {
     return () => window.clearTimeout(id)
   }, [active, paused, reduced, next])
 
-  // Keyboard nav while the carousel has focus
   const onKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
       if (e.key === 'ArrowRight') {
@@ -76,7 +66,6 @@ export default function FeaturesCarousel() {
     [next, prev],
   )
 
-  // Touch / pointer swipe
   const onDragEnd = useCallback(
     (_: unknown, info: PanInfo) => {
       const { offset, velocity } = info
@@ -89,17 +78,52 @@ export default function FeaturesCarousel() {
     [next, prev],
   )
 
-  // Animation variants — both columns animate together, in the same direction.
-  const variants = useMemo(
+  /**
+   * SCREENSHOT variants — 3D rotation around the Y axis.
+   * Outgoing slide rotates away from camera + slides + scales down.
+   * Incoming slide enters from opposite rotation, rotates into place.
+   * Perspective wrapper on the parent makes the rotation feel volumetric.
+   */
+  const screenshotVariants = useMemo(
     () => ({
       enter: (d: number) => ({
         opacity: 0,
-        x: d > 0 ? 40 : -40,
+        x: d > 0 ? 90 : -90,
+        rotateY: d > 0 ? 35 : -35,
+        scale: 0.86,
+        filter: 'blur(6px)',
       }),
-      center: { opacity: 1, x: 0 },
+      center: {
+        opacity: 1,
+        x: 0,
+        rotateY: 0,
+        scale: 1,
+        filter: 'blur(0px)',
+      },
       exit: (d: number) => ({
         opacity: 0,
-        x: d > 0 ? -40 : 40,
+        x: d > 0 ? -90 : 90,
+        rotateY: d > 0 ? -35 : 35,
+        scale: 0.86,
+        filter: 'blur(6px)',
+      }),
+    }),
+    [],
+  )
+
+  /** COPY variants — gentler, no rotation. Lets the screenshot be the star. */
+  const copyVariants = useMemo(
+    () => ({
+      enter: (d: number) => ({
+        opacity: 0,
+        y: 18,
+        x: d > 0 ? 14 : -14,
+      }),
+      center: { opacity: 1, y: 0, x: 0 },
+      exit: (d: number) => ({
+        opacity: 0,
+        y: -10,
+        x: d > 0 ? -14 : 14,
       }),
     }),
     [],
@@ -130,41 +154,69 @@ export default function FeaturesCarousel() {
         aria-label="PHYZIK features"
       >
         <div className="grid items-center gap-10 md:grid-cols-[0.85fr_1fr] md:gap-16 lg:gap-24">
-          {/* ─────────── Phone screenshot column ─────────── */}
-          <div className="relative mx-auto w-full max-w-[260px] md:mx-0 md:max-w-[320px]">
+          {/* ─────────── Screenshot column with 3D perspective ─────────── */}
+          <div
+            className="relative mx-auto w-full max-w-[260px] md:mx-0 md:max-w-[320px]"
+            style={{
+              perspective: 1400,
+              perspectiveOrigin: 'center center',
+            }}
+          >
             {/* Behind-glow that pulses subtly with each slide change */}
             <motion.div
               key={`glow-${active}`}
               aria-hidden="true"
-              className="pointer-events-none absolute -inset-8 -z-10 scale-110 blur-3xl"
+              className="pointer-events-none absolute -inset-10 -z-10 scale-110 blur-3xl"
               style={{
                 background:
-                  'radial-gradient(circle, rgba(184,151,106,0.22) 0%, transparent 70%)',
+                  'radial-gradient(circle, rgba(184,151,106,0.26) 0%, transparent 70%)',
               }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1.2, ease: 'easeOut' }}
             />
 
-            <div className="relative aspect-[1290/2796] w-full">
+            <div
+              className="relative aspect-[1290/2796] w-full"
+              style={{
+                transformStyle: 'preserve-3d',
+              }}
+            >
               <AnimatePresence mode="popLayout" initial={false} custom={direction}>
                 <motion.div
                   key={current.id}
                   custom={direction}
-                  variants={variants}
+                  variants={screenshotVariants}
                   initial="enter"
                   animate="center"
                   exit="exit"
                   transition={{
-                    x: { type: 'spring', stiffness: 260, damping: 30 },
-                    opacity: { duration: 0.4, ease: 'easeOut' },
+                    x: { type: 'spring', stiffness: 220, damping: 28, mass: 0.9 },
+                    rotateY: { type: 'spring', stiffness: 220, damping: 28, mass: 0.9 },
+                    scale: { type: 'spring', stiffness: 240, damping: 26 },
+                    opacity: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+                    filter: { duration: 0.4, ease: 'easeOut' },
                   }}
                   drag={reduced ? undefined : 'x'}
                   dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.2}
+                  dragElastic={0.18}
                   onDragEnd={onDragEnd}
                   className="absolute inset-0 cursor-grab active:cursor-grabbing"
+                  style={{
+                    transformStyle: 'preserve-3d',
+                    transformOrigin: 'center center',
+                  }}
                 >
+                  {/* Edge highlight that catches "light" as the screenshot rotates */}
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 rounded-[40px]"
+                    style={{
+                      background:
+                        'linear-gradient(115deg, transparent 38%, rgba(255,255,255,0.06) 50%, transparent 62%)',
+                      zIndex: 2,
+                    }}
+                  />
                   <Image
                     src={current.image}
                     alt={current.imageAlt}
@@ -174,6 +226,10 @@ export default function FeaturesCarousel() {
                     draggable={false}
                     priority={active === 0}
                     className="select-none object-contain"
+                    style={{
+                      // Soft drop-shadow that adds dimensionality during rotation
+                      filter: 'drop-shadow(0 30px 60px rgba(0,0,0,0.6))',
+                    }}
                   />
                 </motion.div>
               </AnimatePresence>
@@ -186,12 +242,13 @@ export default function FeaturesCarousel() {
               <motion.div
                 key={current.id}
                 custom={direction}
-                variants={variants}
+                variants={copyVariants}
                 initial="enter"
                 animate="center"
                 exit="exit"
                 transition={{
                   x: { type: 'spring', stiffness: 260, damping: 30 },
+                  y: { type: 'spring', stiffness: 260, damping: 30 },
                   opacity: { duration: 0.4, ease: 'easeOut' },
                 }}
                 className="flex flex-col gap-5"
@@ -231,7 +288,6 @@ export default function FeaturesCarousel() {
 
         {/* ─────────── Controls strip ─────────── */}
         <div className="mt-14 flex flex-col items-center gap-5 md:mt-16">
-          {/* Dot pagination with autoplay progress on active */}
           <div className="flex items-center gap-2.5" role="tablist" aria-label="Feature">
             {FEATURES.map((f, i) => {
               const isActive = i === active
@@ -274,7 +330,6 @@ export default function FeaturesCarousel() {
             })}
           </div>
 
-          {/* Counter + arrow controls */}
           <div className="flex items-center gap-6">
             <button
               type="button"
@@ -303,8 +358,6 @@ export default function FeaturesCarousel() {
         </div>
       </div>
 
-      {/* Keep at least one FadeUp wrapping this section's mount so it aligns
-          with the rest of the page reveal timing — visible only on first paint. */}
       <FadeUp className="sr-only" aria-hidden="true">
         <span />
       </FadeUp>
