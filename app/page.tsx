@@ -2,7 +2,8 @@ import Hero from '@/components/hero/Hero'
 import Nav from '@/components/nav/Nav'
 import VideoShowcase from '@/components/showcase/VideoShowcase'
 import FeaturesIntro from '@/components/features/FeaturesIntro'
-import FeaturesGrid from '@/components/features/FeaturesGrid'
+import FeaturesCarousel from '@/components/features/FeaturesCarousel'
+import ChapterBreak from '@/components/features/ChapterBreak'
 import StatsSection from '@/components/stats/StatsSection'
 import FAQ from '@/components/faq/FAQ'
 import FinalCTA from '@/components/cta/FinalCTA'
@@ -29,8 +30,9 @@ export default function HomePage() {
         <VideoShowcase />
         <div id="features">
           <FeaturesIntro />
-          <FeaturesGrid />
+          <FeaturesCarousel />
         </div>
+        <ChapterBreak />
         <StatsSection />
         <FAQ />
         <FinalCTA />
