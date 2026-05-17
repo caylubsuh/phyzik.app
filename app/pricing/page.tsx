@@ -178,6 +178,49 @@ export default function PricingPage() {
           </Container>
         </section>
 
+        {/* ─────────── MISSION ─────────── */}
+        <section className="relative border-t border-border/60 py-20 md:py-28">
+          <Container>
+            <div className="mx-auto max-w-[820px]">
+              <FadeUp>
+                <span className="text-[10.5px] font-bold uppercase tracking-[0.36em] text-text-tertiary">
+                  Mission
+                </span>
+              </FadeUp>
+
+              <FadeUp delay={0.05}>
+                <h2 className="mt-6 text-balance text-[clamp(2rem,4.5vw,3.5rem)] font-bold leading-[1.05] tracking-tightest text-text-primary">
+                  Everyone deserves{' '}
+                  <span className="text-shimmer-gold">the tools.</span>
+                </h2>
+              </FadeUp>
+
+              <FadeUp delay={0.1}>
+                <div className="mt-8 space-y-5 text-[16px] leading-relaxed text-text-secondary md:text-[18px]">
+                  <p>
+                    PHYZIK is built on the belief that every lifter should have
+                    access to the same tools that used to live behind paywalls
+                    and personal coaches. Elite-level programming. Real
+                    progressive overload. Form feedback. Recovery science. The
+                    things that actually move you forward.
+                  </p>
+                  <p>
+                    This isn&apos;t a promotion. It isn&apos;t a discount. The
+                    membership price covers the bare minimum we need to keep
+                    the servers running, the AI improving, and the platform
+                    free for everyone who can&apos;t afford a paid
+                    subscription.
+                  </p>
+                  <p className="text-text-primary">
+                    No margin. No markup. The fairest price we can offer for
+                    what the app actually does.
+                  </p>
+                </div>
+              </FadeUp>
+            </div>
+          </Container>
+        </section>
+
         {/* ─────────── FEATURE CLUSTERS ─────────── */}
         <section className="relative border-t border-border/60 py-20 md:py-28">
           <Container>

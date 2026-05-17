@@ -32,7 +32,7 @@ export default function ChapterBreak() {
           className="text-3xl font-bold leading-[1.1] tracking-tightest text-text-primary md:text-5xl lg:text-6xl"
         >
           {`We don't care who you are.`}{' '}
-          <span className="text-accent">We care that you showed up.</span>
+          <span className="text-shimmer-gold">We care that you showed up.</span>
         </motion.p>
       </div>
     </section>

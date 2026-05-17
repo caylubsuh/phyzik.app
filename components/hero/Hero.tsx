@@ -55,7 +55,7 @@ export default function Hero() {
               className="max-w-[620px] text-balance text-[clamp(2rem,4.6vw,3.75rem)] font-semibold leading-[1.02] tracking-[-0.035em] text-text-primary"
             >
               Where every post is a{' '}
-              <span className="text-accent">real workout.</span>
+              <span className="text-shimmer-gold">real workout.</span>
             </motion.h2>
 
             <motion.p

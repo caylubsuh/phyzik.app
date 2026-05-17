@@ -4,16 +4,35 @@ import FadeUp from '@/components/motion/FadeUp'
 
 export default function FeaturesIntro() {
   return (
-    <Section spacing="medium">
-      <div className="flex flex-col items-start gap-5 md:max-w-3xl">
+    <Section spacing="medium" className="relative overflow-hidden">
+      {/* Faint metallic horizon hairline */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px"
+        style={{
+          background:
+            'linear-gradient(90deg, transparent 0%, rgba(184,151,106,0.25) 50%, transparent 100%)',
+        }}
+      />
+      {/* Subtle bronze blob behind the heading */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-0 top-1/2 -z-10 h-[420px] w-[640px] -translate-y-1/2 opacity-70 blur-3xl"
+        style={{
+          background:
+            'radial-gradient(ellipse 55% 55% at 50% 50%, rgba(184,151,106,0.16) 0%, transparent 65%)',
+        }}
+      />
+
+      <div className="flex flex-col items-start gap-6 md:max-w-3xl">
         <FadeUp>
-          <Pill>FEATURES</Pill>
+          <Pill>Features</Pill>
         </FadeUp>
 
         <FadeUp delay={0.05}>
-          <h2 className="text-balance text-4xl font-bold leading-[1.02] tracking-tightest text-text-primary md:text-5xl lg:text-6xl">
+          <h2 className="text-balance text-[clamp(2.25rem,5vw,4rem)] font-bold leading-[1.02] tracking-tightest text-text-primary">
             Everything you need.{' '}
-            <span className="text-text-tertiary">Nothing you don&apos;t.</span>
+            <span className="text-shimmer-gold">Nothing you don&apos;t.</span>
           </h2>
         </FadeUp>
 
