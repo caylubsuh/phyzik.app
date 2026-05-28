@@ -24,16 +24,40 @@ import { NextResponse, type NextRequest } from 'next/server'
 import type Stripe from 'stripe'
 import { getStripe } from '@/lib/stripe'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { planFromPriceId, type PlanId } from '@/lib/pricing'
 
 // Stripe sends raw bytes — we need the body untouched for signature verification.
 export const dynamic = 'force-dynamic'
 export const runtime = 'nodejs'
 
-type PlanId = 'monthly' | 'annual'
+/**
+ * Resolve PlanId from a Stripe Price ID, falling back to subscription
+ * metadata (set by /api/checkout) when the env-based lookup misses.
+ * Defaults to 'pro_monthly' as the safest "user paid for something" guess
+ * if everything fails — better than crashing the webhook.
+ */
+function resolvePlanFromSubscription(subscription: Stripe.Subscription): PlanId {
+  const priceId = subscription.items.data[0]?.price?.id ?? null
+  const fromPrice = planFromPriceId(priceId)
+  if (fromPrice) return fromPrice
 
-function planFromPriceId(priceId: string | null): PlanId {
-  if (priceId && priceId === process.env.NEXT_PUBLIC_STRIPE_PRICE_ANNUAL) return 'annual'
-  return 'monthly'
+  const metaPlan = subscription.metadata?.plan as PlanId | undefined
+  if (
+    metaPlan === 'pro_monthly' ||
+    metaPlan === 'pro_annual' ||
+    metaPlan === 'pro_max_monthly' ||
+    metaPlan === 'pro_max_annual'
+  ) {
+    return metaPlan
+  }
+
+  console.error(
+    '[stripe-webhook] Could not resolve plan for subscription',
+    subscription.id,
+    'priceId=', priceId,
+    'metaPlan=', metaPlan,
+  )
+  return 'pro_monthly'
 }
 
 function isoOrNull(ts: number | null | undefined): string | null {
@@ -92,7 +116,7 @@ async function upsertSubscription(subscription: Stripe.Subscription) {
   }
 
   const priceId = subscription.items.data[0]?.price?.id ?? null
-  const plan = planFromPriceId(priceId)
+  const plan = resolvePlanFromSubscription(subscription)
   const customerId =
     typeof subscription.customer === 'string' ? subscription.customer : subscription.customer.id
 

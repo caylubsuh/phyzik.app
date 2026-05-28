@@ -7,7 +7,14 @@ import Container from '@/components/ui/Container'
 import PhyzikMark from '@/components/brand/PhyzikMark'
 import { createClient } from '@/lib/supabase/server'
 import { SITE_URL } from '@/lib/constants'
-import { PRO_FEATURES, getPlan } from '@/lib/pricing'
+import {
+  PRO_FEATURES,
+  PRO_MAX_DELTA_FEATURES,
+  getPlan,
+  isProMax,
+  tierLabel,
+  type PlanId,
+} from '@/lib/pricing'
 
 export const metadata: Metadata = {
   title: 'Member — PHYZIK',
@@ -91,7 +98,7 @@ export default async function AccountPage({
 
   const sub = subRow as
     | {
-        plan: 'monthly' | 'annual'
+        plan: PlanId
         status: SubStatus
         current_period_end: string | null
         cancel_at_period_end: boolean
@@ -102,6 +109,12 @@ export default async function AccountPage({
 
   const planMeta = sub ? getPlan(sub.plan) : null
   const isActive = sub ? sub.status === 'active' || sub.status === 'trialing' : false
+  // Tier-aware label + features list. Pro Max card shows the full feature set
+  // (Pro + Pro Max delta); Pro card shows just the Pro features.
+  const memberTierLabel = sub ? tierLabel(getPlan(sub.plan).tier) : 'Pro'
+  const memberFeatures: readonly string[] = sub && isProMax(sub.plan)
+    ? [...PRO_FEATURES, ...PRO_MAX_DELTA_FEATURES]
+    : PRO_FEATURES
 
   let banner: { tone: 'warn' | 'info' | 'danger'; text: string } | null = null
   if (sub) {
@@ -279,7 +292,7 @@ export default async function AccountPage({
                           color: 'transparent',
                         }}
                       >
-                        Pro
+                        {memberTierLabel}
                       </span>
                     </div>
 
@@ -390,12 +403,12 @@ export default async function AccountPage({
                       <span className="text-shimmer-gold">own.</span>
                     </h2>
                     <span className="text-[10.5px] font-bold uppercase tracking-[0.22em] text-accent/80">
-                      {String(PRO_FEATURES.length).padStart(2, '0')}
+                      {String(memberFeatures.length).padStart(2, '0')}
                     </span>
                   </div>
 
                   <ol className="mt-6 flex flex-col">
-                    {PRO_FEATURES.map((feature, i) => (
+                    {memberFeatures.map((feature, i) => (
                       <li
                         key={feature}
                         className="group grid grid-cols-[auto_1fr] items-baseline gap-x-5 border-b border-border/60 py-5 first:border-t md:gap-x-10"
