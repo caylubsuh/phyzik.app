@@ -7,14 +7,7 @@ import Container from '@/components/ui/Container'
 import PhyzikMark from '@/components/brand/PhyzikMark'
 import { createClient } from '@/lib/supabase/server'
 import { SITE_URL } from '@/lib/constants'
-import {
-  PRO_FEATURES,
-  PRO_MAX_DELTA_FEATURES,
-  getPlan,
-  isProMax,
-  tierLabel,
-  type PlanId,
-} from '@/lib/pricing'
+import { PRO_FEATURES, getPlan, type PlanId } from '@/lib/pricing'
 
 export const metadata: Metadata = {
   title: 'Member — PHYZIK',
@@ -109,12 +102,9 @@ export default async function AccountPage({
 
   const planMeta = sub ? getPlan(sub.plan) : null
   const isActive = sub ? sub.status === 'active' || sub.status === 'trialing' : false
-  // Tier-aware label + features list. Pro Max card shows the full feature set
-  // (Pro + Pro Max delta); Pro card shows just the Pro features.
-  const memberTierLabel = sub ? tierLabel(getPlan(sub.plan).tier) : 'Pro'
-  const memberFeatures: readonly string[] = sub && isProMax(sub.plan)
-    ? [...PRO_FEATURES, ...PRO_MAX_DELTA_FEATURES]
-    : PRO_FEATURES
+  // Single tier — every member gets the full Pro feature set.
+  const memberTierLabel = 'Pro'
+  const memberFeatures: readonly string[] = PRO_FEATURES
 
   let banner: { tone: 'warn' | 'info' | 'danger'; text: string } | null = null
   if (sub) {

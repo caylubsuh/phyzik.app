@@ -42,12 +42,7 @@ function resolvePlanFromSubscription(subscription: Stripe.Subscription): PlanId 
   if (fromPrice) return fromPrice
 
   const metaPlan = subscription.metadata?.plan as PlanId | undefined
-  if (
-    metaPlan === 'pro_monthly' ||
-    metaPlan === 'pro_annual' ||
-    metaPlan === 'pro_max_monthly' ||
-    metaPlan === 'pro_max_annual'
-  ) {
+  if (metaPlan === 'pro_monthly' || metaPlan === 'pro_annual') {
     return metaPlan
   }
 

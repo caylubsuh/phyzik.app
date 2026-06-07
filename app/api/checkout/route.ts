@@ -13,14 +13,11 @@
  *
  *   New (tier+interval — preferred):
  *     GET  /api/checkout?tier=pro&interval=year
- *     GET  /api/checkout?tier=pro_max&interval=month
- *     POST /api/checkout  body: { tier: 'pro'|'pro_max', interval: 'month'|'year' }
+ *     POST /api/checkout  body: { tier: 'pro', interval: 'month'|'year' }
  *
  *   Legacy (planId direct):
  *     GET  /api/checkout?plan=pro_monthly
  *     GET  /api/checkout?plan=pro_annual
- *     GET  /api/checkout?plan=pro_max_monthly
- *     GET  /api/checkout?plan=pro_max_annual
  *
  *   Backwards-compat (old monthly/annual single-tier):
  *     GET  /api/checkout?plan=monthly   → routes to pro_monthly
@@ -39,16 +36,11 @@ import {
 } from '@/lib/pricing'
 
 function isPlanId(v: unknown): v is PlanId {
-  return (
-    v === 'pro_monthly' ||
-    v === 'pro_annual' ||
-    v === 'pro_max_monthly' ||
-    v === 'pro_max_annual'
-  )
+  return v === 'pro_monthly' || v === 'pro_annual'
 }
 
 function isTier(v: unknown): v is Tier {
-  return v === 'pro' || v === 'pro_max'
+  return v === 'pro'
 }
 
 function isInterval(v: unknown): v is PlanInterval {
