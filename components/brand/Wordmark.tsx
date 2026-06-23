@@ -26,7 +26,7 @@ const variantSizeClass: Record<Variant, string> = {
 export default function Wordmark({
   variant = 'nav',
   animate = false,
-  src = '/brand/phyzik-wordmark-white.png',
+  src = '/brand/phyzik-wordmark-gold.png',
   className,
 }: WordmarkProps) {
   const reduced = useReducedMotion()

@@ -18,8 +18,9 @@ import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
   { label: 'Features', href: '/#features' },
+  { label: 'Shop', href: '/shop' },
+  { label: 'For Brands', href: '/for-brands' },
   { label: 'Pricing', href: '/pricing' },
-  { label: 'Press', href: '/press' },
 ] as const
 
 export default function Nav() {
@@ -83,7 +84,7 @@ export default function Nav() {
           <Link
             href="/"
             aria-label="PHYZIK — Home"
-            className="flex items-center rounded-sm transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-bg"
+            className="flex items-center rounded-[3px] transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-bg"
           >
             <Wordmark variant="nav" />
           </Link>
@@ -93,7 +94,7 @@ export default function Nav() {
               <Link
                 key={link.label}
                 href={link.href}
-                className="rounded-sm text-[14px] text-text-secondary transition-colors hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-bg"
+                className="rounded-[3px] text-[14px] text-text-secondary transition-colors hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-bg"
               >
                 {link.label}
               </Link>
@@ -104,7 +105,7 @@ export default function Nav() {
             <div className="hidden md:block">
               <AppStoreBadge size="sm" />
             </div>
-            <Button size="sm" className="md:hidden" asChild>
+            <Button size="sm" variant="gold" className="md:hidden" asChild>
               <a href={APP_STORE_URL} target="_blank" rel="noopener">
                 Download
               </a>
@@ -166,7 +167,6 @@ function MobileMenu({ open, onClose }: MobileMenuProps) {
     return () => window.removeEventListener('keydown', onKey)
   }, [open])
 
-  // Use motion presence only when open.
   return (
     <motion.div
       id="mobile-menu"
@@ -207,7 +207,7 @@ function MobileMenu({ open, onClose }: MobileMenuProps) {
             key={link.label}
             href={link.href}
             onClick={onClose}
-            className="rounded-sm text-3xl font-semibold text-text-primary transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-bg"
+            className="rounded-[3px] text-3xl font-semibold text-text-primary transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-bg"
           >
             {link.label}
           </Link>

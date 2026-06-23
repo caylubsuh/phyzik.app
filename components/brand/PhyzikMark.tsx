@@ -4,8 +4,8 @@ import { cn } from '@/lib/utils'
 type PhyzikMarkProps = {
   /** Visual size — Tailwind height utility (e.g. 'h-7', 'h-12', 'h-20'). */
   sizeClass?: string
-  /** Defaults to white wordmark. Pass an alt path for the gradient or black mark. */
-  src?: '/brand/phyzik-wordmark-white.png' | '/brand/phyzik-wordmark-black.png' | '/brand/phyzik-wordmark-gradient.png'
+  /** Defaults to the metallic-gold wordmark (gold-forward brand). */
+  src?: string
   priority?: boolean
   className?: string
 }
@@ -19,7 +19,7 @@ const INTRINSIC_HEIGHT = 307
  */
 export default function PhyzikMark({
   sizeClass = 'h-7 w-auto',
-  src = '/brand/phyzik-wordmark-white.png',
+  src = '/brand/phyzik-wordmark-gold.png',
   priority = false,
   className,
 }: PhyzikMarkProps) {

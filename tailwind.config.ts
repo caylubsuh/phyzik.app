@@ -19,16 +19,17 @@ export default {
           tertiary: '#71717A',
           inverse: '#0A0A0B',
         },
-        // PRIMARY ACCENT — gold. Used for CTAs, links, icons, glows, ratings, etc.
+        // PRIMARY ACCENT — metallic gold. CTAs, links, icons, glows, ratings, PR accents.
         accent: {
-          DEFAULT: '#B8976A',
-          light: 'rgba(184,151,106,0.08)',
-          dark: '#997B54',
-          dim: 'rgba(184,151,106,0.12)',
-          bubble: 'rgba(184,151,106,0.30)',
-          mid: '#A8896A',
+          DEFAULT: '#A8892E',
+          light: 'rgba(168,137,46,0.08)',
+          dark: '#856A1F',
+          dim: 'rgba(168,137,46,0.12)',
+          bubble: 'rgba(168,137,46,0.30)',
+          mid: '#B8902F',
+          bright: '#C9A94E',
         },
-        // TERTIARY ACCENT — purple. Reserved for inline highlights inside titles.
+        // TERTIARY ONLY — lavender. Muscle-map highlight + data viz. NEVER a CTA/hero/live accent.
         tertiary: {
           DEFAULT: '#A78BFA',
           light: 'rgba(167,139,250,0.08)',
@@ -37,11 +38,12 @@ export default {
           bubble: 'rgba(167,139,250,0.30)',
           mid: '#9A7EF0',
         },
-        // Legacy gold tokens — kept for any existing app-side cross-references.
+        // Gold scale (aligned with accent).
         gold: {
-          DEFAULT: '#B8976A',
-          dark: '#997B54',
-          light: '#C5A77D',
+          DEFAULT: '#A8892E',
+          dark: '#856A1F',
+          light: '#C9A94E',
+          bright: '#E8D9A8',
         },
         border: {
           DEFAULT: 'rgba(255,255,255,0.07)',
@@ -51,12 +53,14 @@ export default {
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-archivo)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {
         tightest: '-0.04em',
         tighter: '-0.02em',
       },
       spacing: {
+        '13': '3.25rem',
         '18': '4.5rem',
         '22': '5.5rem',
       },

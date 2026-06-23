@@ -15,17 +15,21 @@
   --text-tertiary: #71717a;
   --text-inverse: #0a0a0b;
 
-  --accent: #B8976A;
-  --accent-dark: #997B54;
-  --accent-mid: #A8896A;
+  /* PRIMARY — metallic gold (gold-forward rebrand 2026-06). */
+  --accent: #A8892E;
+  --accent-dark: #856A1F;
+  --accent-mid: #B8902F;
+  --accent-bright: #C9A94E;
 
+  /* TERTIARY ONLY — lavender survives for muscle-map + data viz. Never a CTA. */
   --tertiary: #A78BFA;
   --tertiary-dark: #8B6FE0;
   --tertiary-mid: #9A7EF0;
 
-  --gold: #b8976a;
-  --gold-dark: #997b54;
-  --gold-light: #c5a77d;
+  --gold: #A8892E;
+  --gold-dark: #856A1F;
+  --gold-light: #C9A94E;
+  --gold-bright: #E8D9A8;
 
   --border: rgba(255, 255, 255, 0.07);
   --border-mid: rgba(255, 255, 255, 0.10);
@@ -156,16 +160,4 @@
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    -webkit-text-fill-color: transparent;
-    animation: shimmer 7s linear infinite;
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -180% center;
-  }
-  100% {
-    background-position: 180% center;
-  }
-}
+    -webkit-

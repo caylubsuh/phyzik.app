@@ -1,6 +1,8 @@
 import Hero from '@/components/hero/Hero'
 import Nav from '@/components/nav/Nav'
 import VideoShowcase from '@/components/showcase/VideoShowcase'
+import MoatSection from '@/components/home/MoatSection'
+import ShopTeaser from '@/components/home/ShopTeaser'
 import FeaturesIntro from '@/components/features/FeaturesIntro'
 import FeaturesCarousel from '@/components/features/FeaturesCarousel'
 import ChapterBreak from '@/components/features/ChapterBreak'
@@ -27,11 +29,13 @@ export default function HomePage() {
       <Nav />
       <main id="main-content">
         <Hero />
+        <MoatSection />
         <VideoShowcase />
         <div id="features">
           <FeaturesIntro />
           <FeaturesCarousel />
         </div>
+        <ShopTeaser />
         <ChapterBreak />
         <StatsSection />
         <FAQ />

@@ -21,7 +21,7 @@ export default function HeroContent() {
         initial={reduced ? undefined : { opacity: 0, y: -8 }}
         animate={reduced ? undefined : { opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-        className="group inline-flex items-center gap-2 rounded-full border border-border bg-bg-high/60 px-4 py-2 text-[13px] text-text-secondary backdrop-blur transition-colors hover:border-border-mid hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+        className="group inline-flex items-center gap-2 rounded-[3px] border border-border bg-bg-high/60 px-4 py-2 text-[13px] text-text-secondary backdrop-blur transition-colors hover:border-border-mid hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
       >
         <span className="relative inline-flex h-1.5 w-1.5">
           {!reduced && (
@@ -42,7 +42,7 @@ export default function HeroContent() {
               width: '140%',
               height: '280%',
               background:
-                'radial-gradient(ellipse at center, rgba(184,151,106,0.35) 0%, rgba(184,151,106,0.12) 30%, transparent 65%)',
+                'radial-gradient(ellipse at center, rgba(168,137,46,0.35) 0%, rgba(168,137,46,0.12) 30%, transparent 65%)',
               filter: 'blur(40px)',
             }}
           />
@@ -56,7 +56,7 @@ export default function HeroContent() {
               width: '140%',
               height: '280%',
               background:
-                'radial-gradient(ellipse at center, rgba(184,151,106,0.35) 0%, rgba(184,151,106,0.12) 30%, transparent 65%)',
+                'radial-gradient(ellipse at center, rgba(168,137,46,0.35) 0%, rgba(168,137,46,0.12) 30%, transparent 65%)',
               filter: 'blur(40px)',
             }}
           />
@@ -65,7 +65,7 @@ export default function HeroContent() {
       </div>
 
       <FadeUp delay={0.6}>
-        <h2 className="text-2xl font-semibold tracking-tight text-text-primary md:text-4xl lg:text-5xl">
+        <h2 className="font-display text-2xl font-semibold tracking-tight text-text-primary md:text-4xl lg:text-5xl">
           The <span className="text-accent">social</span> training platform built for{' '}
           <span className="text-accent">lifters.</span>
         </h2>
@@ -97,9 +97,9 @@ export default function HeroContent() {
           </span>
           <span>5.0 App Store</span>
           <span aria-hidden="true">•</span>
-          <span>Free</span>
+          <span>Free to start</span>
           <span aria-hidden="true">•</span>
-          <span>iOS</span>
+          <span>iOS &amp; Android</span>
         </div>
       </FadeUp>
     </div>

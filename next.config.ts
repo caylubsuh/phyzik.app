@@ -6,7 +6,15 @@ const config: NextConfig = {
     optimizePackageImports: ['motion', 'lucide-react'],
   },
   images: {
-    remotePatterns: [{ protocol: 'https', hostname: 'is1-ssl.mzstatic.com' }],
+    remotePatterns: [
+      { protocol: 'https', hostname: 'is1-ssl.mzstatic.com' },
+      // PHYZIK Shop product/brand images live in Supabase Storage (public buckets).
+      {
+        protocol: 'https',
+        hostname: 'vawfcizelppxfhffflgs.supabase.co',
+        pathname: '/storage/v1/object/public/**',
+      },
+    ],
   },
   async rewrites() {
     return [
