@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Container from '@/components/ui/Container'
-import { BRAND, INSTAGRAM_URL, APP_STORE_URL } from '@/lib/constants'
+import { BRAND, INSTAGRAM_URL, APP_STORE_URL, PLAY_STORE_URL } from '@/lib/constants'
 
 type FooterLink = { label: string; href: string; external?: boolean }
 
@@ -74,7 +74,7 @@ export default function Footer() {
             <p className="max-w-[260px] text-[13.5px] leading-relaxed text-text-secondary">
               {BRAND.tagline}
             </p>
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
               <a
                 href={APP_STORE_URL}
                 target="_blank"
@@ -82,6 +82,17 @@ export default function Footer() {
                 className="rounded-[3px] text-[13px] font-semibold text-accent underline-offset-4 transition-colors hover:text-accent-bright"
               >
                 App Store
+              </a>
+              <span aria-hidden className="text-text-tertiary">
+                ·
+              </span>
+              <a
+                href={PLAY_STORE_URL}
+                target="_blank"
+                rel="noopener"
+                className="rounded-[3px] text-[13px] font-semibold text-accent underline-offset-4 transition-colors hover:text-accent-bright"
+              >
+                Google Play
               </a>
               <span aria-hidden className="text-text-tertiary">
                 ·

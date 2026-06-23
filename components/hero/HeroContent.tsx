@@ -3,24 +3,22 @@
 import { motion, useReducedMotion } from 'motion/react'
 import { Star } from 'lucide-react'
 import AppStoreBadge from '@/components/ui/AppStoreBadge'
+import GooglePlayBadge from '@/components/ui/GooglePlayBadge'
 import QRCode from '@/components/ui/QRCode'
 import FadeUp from '@/components/motion/FadeUp'
-import { APP_STORE_URL, BRAND } from '@/lib/constants'
+import { BRAND } from '@/lib/constants'
 
 export default function HeroContent() {
   const reduced = useReducedMotion()
 
   return (
     <div className="flex flex-col items-center gap-8 text-center md:gap-12">
-      <motion.a
-        href={APP_STORE_URL}
-        target="_blank"
-        rel="noopener"
-        aria-label="PHYZIK is now live on the App Store — tap to open"
+      <motion.span
+        aria-hidden="true"
         initial={reduced ? undefined : { opacity: 0, y: -8 }}
         animate={reduced ? undefined : { opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-        className="group inline-flex items-center gap-2 rounded-[3px] border border-border bg-bg-high/60 px-4 py-2 text-[13px] text-text-secondary backdrop-blur transition-colors hover:border-border-mid hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+        className="inline-flex items-center gap-2 rounded-[3px] border border-border bg-bg-high/60 px-4 py-2 text-[13px] text-text-secondary backdrop-blur"
       >
         <span className="relative inline-flex h-1.5 w-1.5">
           {!reduced && (
@@ -28,8 +26,8 @@ export default function HeroContent() {
           )}
           <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
         </span>
-        Now live on the App Store
-      </motion.a>
+        Now live on iOS &amp; Android
+      </motion.span>
 
       <h1 className="sr-only">{BRAND.name}</h1>
       <div className="relative">
@@ -99,7 +97,10 @@ export default function HeroContent() {
 
       <FadeUp delay={0.9}>
         <div className="flex flex-col items-center gap-6 md:flex-row">
-          <AppStoreBadge size="lg" />
+          <div className="flex flex-col items-center gap-3 sm:flex-row">
+            <AppStoreBadge size="lg" />
+            <GooglePlayBadge size="lg" />
+          </div>
           <QRCode />
         </div>
       </FadeUp>
