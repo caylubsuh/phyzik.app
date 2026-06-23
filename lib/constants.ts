@@ -7,9 +7,9 @@ export const SITE_URL = 'https://phyzik.app'
 export const BRAND = {
   name: 'PHYZIK',
   legalName: 'Physique Technologies LLC',
-  tagline: 'Where every post is a real workout.',
+  tagline: 'The social training platform for lifters.',
   description:
-    'Every set, every PR, every meal — logged, analyzed, and turned into proof. The social training platform for serious lifters.',
+    'Every set, every PR, every meal — logged, analyzed, and built into one training system for serious lifters.',
 } as const
 
 export const STATS = [

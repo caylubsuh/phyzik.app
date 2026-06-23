@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     template: '%s — PHYZIK',
   },
   description:
-    'Every post is a real, logged workout. Train, track, and turn your sessions into data-driven highlight reels with PHYZIK Cut. Free on iOS and Android.',
+    'The social training platform for lifters. Track every set, log your nutrition, follow real training on the Floor, and shop the brands you train with. Free on iOS and Android.',
   applicationName: 'PHYZIK',
   keywords: [
     'lifting app',
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'PHYZIK — The social training platform built for lifters',
     description:
-      'Every post is a real, logged workout. Turn your sessions into data-driven highlight reels with PHYZIK Cut.',
+      'The social training platform for lifters. Track your training, log nutrition, and follow real sessions on the Floor.',
     url: 'https://phyzik.app',
     siteName: 'PHYZIK',
     images: [
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'PHYZIK — The social training platform built for lifters',
     description:
-      'Every post is a real, logged workout. Turn your sessions into data-driven highlight reels with PHYZIK Cut.',
+      'The social training platform for lifters. Track your training, log nutrition, and follow real sessions on the Floor.',
     images: ['/og.png'],
     site: '@phyzikapp',
   },

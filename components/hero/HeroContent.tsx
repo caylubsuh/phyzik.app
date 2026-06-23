@@ -5,7 +5,6 @@ import { Star } from 'lucide-react'
 import AppStoreBadge from '@/components/ui/AppStoreBadge'
 import QRCode from '@/components/ui/QRCode'
 import FadeUp from '@/components/motion/FadeUp'
-import Wordmark from '@/components/brand/Wordmark'
 import { APP_STORE_URL, BRAND } from '@/lib/constants'
 
 export default function HeroContent() {
@@ -61,12 +60,33 @@ export default function HeroContent() {
             }}
           />
         )}
-        <Wordmark variant="hero" animate />
+        {/* Animated gold-gradient wordmark: the white wordmark masks a moving
+            metallic-gold gradient so the mark flashes gold. */}
+        <div
+          role="img"
+          aria-label="PHYZIK"
+          className="aspect-[2046/307] w-[280px] sm:w-[440px] md:w-[640px] lg:w-[820px] xl:w-[980px]"
+          style={{
+            WebkitMaskImage: "url('/brand/phyzik-wordmark-white.png')",
+            maskImage: "url('/brand/phyzik-wordmark-white.png')",
+            WebkitMaskRepeat: 'no-repeat',
+            maskRepeat: 'no-repeat',
+            WebkitMaskPosition: 'center',
+            maskPosition: 'center',
+            WebkitMaskSize: 'contain',
+            maskSize: 'contain',
+            backgroundImage:
+              'linear-gradient(110deg, #7A6320 0%, #A8892E 22%, #F2E4B0 50%, #A8892E 78%, #7A6320 100%)',
+            backgroundSize: '220% auto',
+            backgroundPosition: 'center',
+            animation: reduced ? undefined : 'shimmer 4s linear infinite',
+          }}
+        />
       </div>
 
       <FadeUp delay={0.6}>
         <h2 className="font-display text-2xl font-semibold tracking-tight text-text-primary md:text-4xl lg:text-5xl">
-          The <span className="text-accent">social</span> training platform built for{' '}
+          The <span className="text-accent">social</span> training platform for{' '}
           <span className="text-accent">lifters.</span>
         </h2>
       </FadeUp>

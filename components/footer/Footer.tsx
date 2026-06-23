@@ -72,8 +72,7 @@ export default function Footer() {
               className="h-6 w-auto select-none"
             />
             <p className="max-w-[260px] text-[13.5px] leading-relaxed text-text-secondary">
-              The social training platform for lifters. Where every post is a
-              real workout.
+              {BRAND.tagline}
             </p>
             <div className="flex items-center gap-3">
               <a

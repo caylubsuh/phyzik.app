@@ -65,7 +65,7 @@ export const FEATURES: FeatureData[] = [
   {
     id: 'floor',
     pill: 'THE FLOOR',
-    body: 'Every post is a real workout. No motivation content. No ads. The Floor only shows actual sessions from people you follow — duration, volume, exercises, PRs, auto-logged.',
+    body: 'Real sessions only. No motivation content. No ads. The Floor only shows actual sessions from people you follow — duration, volume, exercises, PRs, auto-logged.',
     image: '/screenshots/marketing/01-floor-post.png',
     imageAlt: 'PHYZIK social feed post',
     imagePosition: 'right',
