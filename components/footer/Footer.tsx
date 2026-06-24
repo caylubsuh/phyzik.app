@@ -61,7 +61,7 @@ export default function Footer() {
       />
       <Container>
         <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.4fr_repeat(4,1fr)] md:gap-8">
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col items-start gap-5">
             <Image
               src="/brand/phyzik-wordmark-gold.png"
               alt="PHYZIK"

@@ -14,6 +14,8 @@ const config: NextConfig = {
         hostname: 'vawfcizelppxfhffflgs.supabase.co',
         pathname: '/storage/v1/object/public/**',
       },
+      // Brand/product images served from the app's CloudFront CDN.
+      { protocol: 'https', hostname: '**.cloudfront.net' },
     ],
   },
   async rewrites() {
