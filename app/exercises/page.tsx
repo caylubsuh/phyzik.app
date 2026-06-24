@@ -44,7 +44,7 @@ async function loadExercises(): Promise<ExerciseRow[]> {
   const supabase = createPublicClient()
   const { data, error } = await supabase
     .from('exercises')
-    .select('id, name, muscle_group, slug, equipment')
+    .select('id, name, muscle_group, equipment')
     .order('muscle_group', { ascending: true })
     .order('name', { ascending: true })
 

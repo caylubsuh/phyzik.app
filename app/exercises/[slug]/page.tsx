@@ -47,16 +47,6 @@ function deslugify(slug: string): string {
 async function loadExercise(slug: string): Promise<ExerciseRow | null> {
   const supabase = createPublicClient()
 
-  // Try `slug` column first, fall back to name-search using deslugify.
-  const { data: bySlug } = await supabase
-    .from('exercises')
-    .select('*')
-    .eq('slug', slug)
-    .limit(1)
-    .maybeSingle()
-
-  if (bySlug) return bySlug as ExerciseRow
-
   const candidate = deslugify(slug)
   const { data: byName } = await supabase
     .from('exercises')
@@ -74,7 +64,7 @@ export async function generateStaticParams(): Promise<Params[]> {
     const supabase = createPublicClient()
     const { data } = await supabase
       .from('exercises')
-      .select('name, slug')
+      .select('name')
       .order('name', { ascending: true })
       .limit(80)
 

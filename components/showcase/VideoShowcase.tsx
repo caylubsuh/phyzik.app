@@ -120,8 +120,7 @@ export default function VideoShowcase() {
             <span className="text-text-tertiary">in motion.</span>
           </h2>
           <p className="max-w-[560px] text-base leading-relaxed text-text-secondary md:text-lg">
-            Profile, session, nutrition. What it actually looks like
-            day-to-day.
+            No mockups, no renders — just the real app, captured live.
           </p>
         </div>
       </FadeUp>

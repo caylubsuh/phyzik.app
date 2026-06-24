@@ -52,7 +52,7 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.45, ease: EASE_OUT_EXPO }}
               className="max-w-[620px] text-balance text-[clamp(2rem,4.6vw,3.75rem)] font-semibold leading-[1.02] tracking-[-0.035em] text-text-primary"
             >
-              The <span className="text-shimmer-gold">social training</span>{' '}
+              The <span className="text-shimmer-gold">social</span> training{' '}
               platform for{' '}
               <span className="text-shimmer-gold">lifters.</span>
             </motion.h2>
