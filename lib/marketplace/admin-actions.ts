@@ -155,8 +155,11 @@ export async function moderateProduct(
   const { user, isAdmin } = await getAdminUser()
   if (!user || !isAdmin) return { ok: false, error: 'Not authorized.' }
   const status = decision === 'publish' ? 'published' : 'draft'
+  // Publishing must also make the product visible on the storefront (which
+  // requires is_active = true); sending back to draft leaves visibility as-is.
+  const patch = decision === 'publish' ? { status, is_active: true } : { status }
   const sb = createAdminClient()
-  const { error } = await sb.from('marketplace_products').update({ status }).eq('id', id)
+  const { error } = await sb.from('marketplace_products').update(patch).eq('id', id)
   if (error) return { ok: false, error: error.message }
   await audit(user.id, `product.${decision}`, 'marketplace_products', id, { status })
   revalidatePath('/admin/products')
@@ -201,4 +204,24 @@ export async function refundOrder(orderId: string): Promise<ActionResult> {
   revalidatePath(`/admin/orders/${orderId}`)
   revalidatePath('/admin/orders')
   return { ok: true, message: 'Refund issued.' }
+}
+
+export async function setProductCommission(
+  productId: string,
+  bps: number | null,
+): Promise<ActionResult> {
+  const { user, isAdmin } = await getAdminUser()
+  if (!user || !isAdmin) return { ok: false, error: 'Not authorized.' }
+  const value = bps == null ? null : Math.max(0, Math.min(10000, Math.round(bps)))
+  const sb = createAdminClient()
+  const { error } = await sb
+    .from('marketplace_products')
+    .update({ commission_bps: value })
+    .eq('id', productId)
+  if (error) return { ok: false, error: error.message }
+  await audit(user.id, 'product.commission', 'marketplace_products', productId, {
+    commission_bps: value,
+  })
+  revalidatePath('/admin/brands')
+  return { ok: true, message: value == null ? 'Reset to brand default.' : 'Commission updated.' }
 }

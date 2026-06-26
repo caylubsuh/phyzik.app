@@ -283,3 +283,24 @@ export async function listReturns(): Promise<ReturnRequest[]> {
     .map((r) => ({ ...r, brandName: names.get(r.brand_id) }))
     .sort((a, b) => rank(a.status) - rank(b.status))
 }
+
+export interface AdminProductRow {
+  id: string
+  name: string
+  image_url: string | null
+  price_cents: number | null
+  category: string
+  status: string
+  commission_bps: number | null
+}
+
+/** All of a brand's products (any status) for the admin per-item commission UI. */
+export async function getBrandProductsForAdmin(brandId: string): Promise<AdminProductRow[]> {
+  const sb = createAdminClient()
+  const { data } = await sb
+    .from('marketplace_products')
+    .select('id,name,image_url,price_cents,category,status,commission_bps')
+    .eq('brand_id', brandId)
+    .order('name', { ascending: true })
+  return (data ?? []) as AdminProductRow[]
+}

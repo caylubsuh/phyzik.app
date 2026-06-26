@@ -4,7 +4,8 @@ import { ArrowLeft, ExternalLink } from 'lucide-react'
 import AdminShell from '@/components/admin/AdminShell'
 import Button from '@/components/ui/Button'
 import BrandEditForm from '@/components/admin/BrandEditForm'
-import { getAdminBrand } from '@/lib/marketplace/admin'
+import ProductCommissionRow from '@/components/admin/ProductCommissionRow'
+import { getAdminBrand, getBrandProductsForAdmin } from '@/lib/marketplace/admin'
 
 function Row({ label, value }: { label: string; value: React.ReactNode }) {
   return (
@@ -23,6 +24,7 @@ export default async function AdminBrandDetailPage({
   const { id } = await params
   const brand = await getAdminBrand(id)
   if (!brand) notFound()
+  const products = await getBrandProductsForAdmin(id)
 
   return (
     <AdminShell eyebrow="Catalog" title={brand.name} subtitle="Edit status, commission, and visibility flags.">
@@ -55,6 +57,27 @@ export default async function AdminBrandDetailPage({
             <Row label="Website" value={brand.website_url} />
           </div>
         </div>
+      </div>
+
+      <div className="mt-10 flex flex-col gap-3">
+        <span className="text-[10.5px] font-bold uppercase tracking-[0.28em] text-text-tertiary">
+          Products &amp; commission
+        </span>
+        <p className="text-[13px] text-text-secondary">
+          Set a per-item commission to override the brand default of{' '}
+          {(brand.commission_bps / 100).toFixed(1)}%. Leave blank to inherit it.
+        </p>
+        {products.length === 0 ? (
+          <div className="rounded-[3px] border border-border bg-bg-surface px-5 py-6 text-[13px] text-text-tertiary">
+            This brand has no products yet.
+          </div>
+        ) : (
+          <div className="flex flex-col gap-2">
+            {products.map((p) => (
+              <ProductCommissionRow key={p.id} product={p} brandDefaultBps={brand.commission_bps} />
+            ))}
+          </div>
+        )}
       </div>
     </AdminShell>
   )

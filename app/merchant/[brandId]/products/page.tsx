@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { Package, Smartphone } from 'lucide-react'
+import { Package, Plus } from 'lucide-react'
 import Nav from '@/components/nav/Nav'
 import Footer from '@/components/footer/Footer'
 import MerchantShell from '@/components/merchant/MerchantShell'
 import ProductTable from '@/components/merchant/ProductTable'
 import MerchantEmptyState from '@/components/merchant/MerchantEmptyState'
+import Button from '@/components/ui/Button'
 import { getManagedBrand, getMerchantProducts } from '@/lib/marketplace/queries'
 import { SITE_URL } from '@/lib/constants'
 
@@ -35,24 +37,26 @@ export default async function MerchantProductsPage({
         title="Products"
         subtitle={`${products.length} product${products.length === 1 ? '' : 's'} in your catalog.`}
         headerAside={
-          <span className="inline-flex items-center gap-2 self-start rounded-[3px] border border-border bg-bg-high px-3 py-2 text-[12.5px] text-text-secondary sm:self-auto">
-            <Smartphone className="h-3.5 w-3.5 text-accent/70" />
-            Create &amp; edit in the PHYZIK app
-          </span>
+          <Button variant="gold" size="md" asChild className="self-start sm:self-auto">
+            <Link href={`/merchant/${brandId}/products/new`}>
+              <Plus className="h-4 w-4" />
+              New product
+            </Link>
+          </Button>
         }
       >
         {products.length === 0 ? (
           <MerchantEmptyState
             icon={<Package className="h-5 w-5" />}
             title="No products yet"
-            description="Add your first product from the PHYZIK app. It'll appear here once it's created — published items go live on the Shop."
-            note="Product creation & editing happens in the PHYZIK app."
+            description="Add your first product to start building your catalog. Save it as a draft, then submit it for review to go live on the Shop."
+            cta={{ label: 'Add your first product', href: `/merchant/${brandId}/products/new` }}
           />
         ) : (
           <div className="flex flex-col gap-3">
-            <ProductTable products={products} />
+            <ProductTable products={products} brandId={brandId} />
             <p className="text-[12.5px] text-text-tertiary">
-              Display only. To add, edit, or publish products, use the PHYZIK app.
+              Tap a product to edit. Published listings require PHYZIK review.
             </p>
           </div>
         )}

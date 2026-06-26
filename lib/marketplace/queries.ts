@@ -383,27 +383,50 @@ export async function getMerchantEarnings(brandId: string): Promise<MerchantEarn
     .maybeSingle()
   const bps = (brand as { commission_bps?: number } | null)?.commission_bps ?? 1200
 
+  // Read the stored application_fee_cents so earnings reflect the ACTUAL fee
+  // charged (already includes any per-product commission). Legacy orders without
+  // a stored fee fall back to the brand-rate estimate.
   const { data: orders } = await sb
     .from('marketplace_orders')
-    .select('status,amount_subtotal_cents')
+    .select('status,amount_subtotal_cents,shipping_cents,tax_cents,application_fee_cents')
     .eq('brand_id', brandId)
   if (!orders) return empty
 
   const paidStatuses = new Set(['paid', 'fulfilled', 'shipped', 'delivered', 'partially_refunded'])
   const pendingStatuses = new Set(['paid', 'fulfilled'])
   let gmv = 0
+  let commission = 0
+  let processing = 0
+  let net = 0
   let paidCount = 0
   let pending = 0
-  for (const o of orders as { status: string; amount_subtotal_cents: number }[]) {
+  for (const o of orders as {
+    status: string
+    amount_subtotal_cents: number
+    shipping_cents: number | null
+    tax_cents: number | null
+    application_fee_cents: number | null
+  }[]) {
     if (paidStatuses.has(o.status)) {
-      gmv += o.amount_subtotal_cents
+      const sub = o.amount_subtotal_cents ?? 0
+      const ship = o.shipping_cents ?? 0
+      const tax = o.tax_cents ?? 0
+      const proc = Math.round(sub * 0.029 + 30)
+      gmv += sub
       paidCount += 1
+      if (o.application_fee_cents != null) {
+        commission += Math.max(o.application_fee_cents - tax - proc, 0)
+        processing += proc
+        net += sub + ship + tax - o.application_fee_cents
+      } else {
+        const margin = Math.round((sub * bps) / 10000)
+        commission += margin
+        processing += proc
+        net += Math.max(0, sub + ship - margin - proc)
+      }
     }
     if (pendingStatuses.has(o.status)) pending += 1
   }
-  const commission = Math.round((gmv * bps) / 10000)
-  const processing = Math.round(gmv * 0.029 + paidCount * 30)
-  const net = Math.max(0, gmv - commission - processing)
 
   const { data: payouts } = await sb
     .from('marketplace_brand_payouts')
