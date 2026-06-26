@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, ExternalLink } from 'lucide-react'
 import AdminShell from '@/components/admin/AdminShell'
+import Button from '@/components/ui/Button'
 import BrandEditForm from '@/components/admin/BrandEditForm'
 import { getAdminBrand } from '@/lib/marketplace/admin'
 
@@ -25,10 +26,16 @@ export default async function AdminBrandDetailPage({
 
   return (
     <AdminShell eyebrow="Catalog" title={brand.name} subtitle="Edit status, commission, and visibility flags.">
-      <div className="mb-5">
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <Link href="/admin/brands" className="inline-flex items-center gap-2 text-[12.5px] font-semibold text-text-secondary hover:text-text-primary">
           <ArrowLeft className="h-3.5 w-3.5" /> All brands
         </Link>
+        <Button variant="secondary" size="sm" asChild>
+          <Link href={`/merchant/${brand.id}`}>
+            View merchant dashboard
+            <ExternalLink className="h-3.5 w-3.5" />
+          </Link>
+        </Button>
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.1fr_1fr]">

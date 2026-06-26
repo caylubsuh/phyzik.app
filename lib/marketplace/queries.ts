@@ -317,7 +317,28 @@ export async function getManagedBrands(): Promise<ManagedBrand[]> {
 
 export async function getManagedBrand(brandId: string): Promise<ManagedBrand | null> {
   const all = await getManagedBrands()
-  return all.find((b) => b.id === brandId) ?? null
+  const owned = all.find((b) => b.id === brandId)
+  if (owned) return owned
+  // Platform admins can preview ANY brand's merchant dashboard (read-only).
+  // Merchant reads below (orders/products/earnings) already pass for admins via
+  // the is_admin RLS overlay; this lets the dashboard pages resolve the brand.
+  const sb = await createClient()
+  const {
+    data: { user },
+  } = await sb.auth.getUser()
+  if (!user) return null
+  const { data: prof } = await sb
+    .from('profiles')
+    .select('is_admin')
+    .eq('id', user.id)
+    .maybeSingle()
+  if (!(prof as { is_admin?: boolean } | null)?.is_admin) return null
+  const { data } = await sb
+    .from('marketplace_brands')
+    .select(`${BRAND_COLS},status,charges_enabled,payouts_enabled,stripe_account_id,commission_bps`)
+    .eq('id', brandId)
+    .maybeSingle()
+  return (data as ManagedBrand | null) ?? null
 }
 
 export async function getMerchantProducts(brandId: string): Promise<Product[]> {
