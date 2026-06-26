@@ -78,6 +78,7 @@ export async function approveApplication(id: string): Promise<ActionResult> {
         name: brandName,
         slug,
         categories: category ? [category] : [],
+        primary_category: category,
         status: 'approved',
         is_active: true,
         owner_user_id: ownerId,

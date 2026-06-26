@@ -21,8 +21,6 @@ export const metadata: Metadata = {
   },
 }
 
-const APPLY_MAILTO =
-  'mailto:admin@phyzik.app?subject=PHYZIK%20Shop%20%E2%80%94%20Brand%20application'
 
 const REACH = [
   {
@@ -155,7 +153,7 @@ export default function ForBrandsPage() {
 
                 <div className="mt-2 flex flex-col items-center gap-3 sm:flex-row">
                   <Button variant="gold" size="lg" asChild>
-                    <a href={APPLY_MAILTO}>Apply to sell</a>
+                    <Link href="/merchant/apply">Apply to sell</Link>
                   </Button>
                   <Button variant="secondary" size="lg" asChild>
                     <Link href="/merchant">Go to merchant portal</Link>
@@ -424,7 +422,7 @@ export default function ForBrandsPage() {
                 </p>
                 <div className="mt-2 flex flex-col items-center gap-3 sm:flex-row">
                   <Button variant="gold" size="lg" asChild>
-                    <a href={APPLY_MAILTO}>Apply to sell</a>
+                    <Link href="/merchant/apply">Apply to sell</Link>
                   </Button>
                   <Button variant="ghost" size="lg" asChild>
                     <Link href="/merchant">Merchant portal</Link>

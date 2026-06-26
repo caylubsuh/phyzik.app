@@ -124,7 +124,7 @@ export default async function MerchantPortalPage() {
             icon={<Store className="h-5 w-5" />}
             title="Apply to sell on PHYZIK"
             description="The PHYZIK Shop puts your products in front of lifters mid-session. Apply to open a store and we'll get you set up."
-            cta={{ label: 'Sell on PHYZIK', href: '/for-brands' }}
+            cta={{ label: 'Apply to sell', href: '/merchant/apply' }}
             note="Questions? admin@phyzik.app"
           />
         </FadeUp>
