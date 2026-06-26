@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { LayoutDashboard, Package, ShoppingBag, Wallet, ArrowLeft } from 'lucide-react'
+import { LayoutDashboard, Package, ShoppingBag, Wallet, Truck, RotateCcw, ArrowLeft } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 /**
@@ -24,6 +24,8 @@ export default function MerchantNav({ brandId, brandName }: MerchantNavProps) {
     { label: 'Products', href: `${base}/products`, icon: Package, exact: false },
     { label: 'Orders', href: `${base}/orders`, icon: ShoppingBag, exact: false },
     { label: 'Earnings', href: `${base}/earnings`, icon: Wallet, exact: false },
+    { label: 'Shipping', href: `${base}/shipping`, icon: Truck, exact: false },
+    { label: 'Returns', href: `${base}/returns`, icon: RotateCcw, exact: false },
   ]
 
   const isActive = (href: string, exact: boolean) =>

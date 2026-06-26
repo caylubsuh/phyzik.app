@@ -1,15 +1,16 @@
 import { Check, X, AlertTriangle, CreditCard } from 'lucide-react'
 import StatusChip from './StatusChip'
+import ConnectButton from './ConnectButton'
 import type { BrandStatus } from '@/lib/marketplace/types'
 import { cn } from '@/lib/utils'
 
 /**
- * Stripe Connect readiness panel. Display-only this pass — onboarding happens
- * in the PHYZIK app, never from web. Shows the account status chip plus the two
- * capability flags (charges / payouts) and a gentle note when charges aren't
- * yet enabled.
+ * Stripe Connect readiness panel. Shows account status chip, capability flags
+ * (charges / payouts), connected account id, and — when onboarding is
+ * incomplete — a ConnectButton that redirects to the Stripe-hosted Account Link.
  */
 type ConnectStatusProps = {
+  brandId: string
   status: BrandStatus
   chargesEnabled: boolean
   payoutsEnabled: boolean
@@ -38,12 +39,14 @@ function CapabilityRow({ label, enabled }: { label: string; enabled: boolean }) 
 }
 
 export default function ConnectStatus({
+  brandId,
   status,
   chargesEnabled,
   payoutsEnabled,
   stripeAccountId,
 }: ConnectStatusProps) {
   const connected = Boolean(stripeAccountId)
+  const needsOnboarding = !chargesEnabled || !payoutsEnabled
 
   return (
     <div className="flex flex-col gap-4 rounded-[3px] border border-border bg-bg-surface p-5">
@@ -70,14 +73,16 @@ export default function ConnectStatus({
         </div>
       </div>
 
-      {!chargesEnabled && (
-        <div className="flex items-start gap-2.5 rounded-[3px] border border-accent/30 bg-accent/[0.06] px-3.5 py-3">
-          <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-accent-bright" />
-          <p className="text-[13px] leading-snug text-text-primary">
-            Finish onboarding in the PHYZIK app to start accepting orders. Stripe
-            Connect setup and identity verification live in the app — not on the
-            web.
-          </p>
+      {needsOnboarding && (
+        <div className="flex flex-col gap-3 rounded-[3px] border border-accent/30 bg-accent/[0.06] px-3.5 py-3">
+          <div className="flex items-start gap-2.5">
+            <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-accent-bright" />
+            <p className="text-[13px] leading-snug text-text-primary">
+              Complete Stripe identity verification to start accepting orders. You
+              will be redirected to Stripe and returned here when done.
+            </p>
+          </div>
+          <ConnectButton brandId={brandId} />
         </div>
       )}
     </div>

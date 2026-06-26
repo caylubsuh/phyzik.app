@@ -1,11 +1,15 @@
+import { notFound } from 'next/navigation'
 import { PackageCheck } from 'lucide-react'
 import AdminShell from '@/components/admin/AdminShell'
 import ProductModerationActions from '@/components/admin/ProductModerationActions'
-import { listReviewProducts } from '@/lib/marketplace/admin'
+import { listReviewProducts, getAdminUser } from '@/lib/marketplace/admin'
 import { formatCents, CATEGORY_LABEL } from '@/lib/marketplace/format'
 import type { MarketplaceCategory } from '@/lib/marketplace/types'
 
 export default async function AdminProductsPage() {
+  const { isAdmin } = await getAdminUser()
+  if (!isAdmin) notFound()
+
   const products = await listReviewProducts()
 
   return (
@@ -32,7 +36,11 @@ export default async function AdminProductsPage() {
               <div className="flex min-w-0 items-center gap-4">
                 {p.image_url ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={p.image_url} alt="" className="h-14 w-14 shrink-0 rounded-[3px] border border-border object-cover" />
+                  <img
+                    src={p.image_url}
+                    alt=""
+                    className="h-14 w-14 shrink-0 rounded-[3px] border border-border object-cover"
+                  />
                 ) : (
                   <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[3px] border border-border bg-bg-high">
                     <PackageCheck className="h-5 w-5 text-text-tertiary" />
@@ -43,7 +51,8 @@ export default async function AdminProductsPage() {
                     {p.name}
                   </span>
                   <span className="text-[12.5px] text-text-tertiary">
-                    {p.brandName ?? 'Unknown brand'} · {CATEGORY_LABEL[p.category as MarketplaceCategory] ?? p.category} ·{' '}
+                    {p.brandName ?? 'Unknown brand'} &middot;{' '}
+                    {CATEGORY_LABEL[p.category as MarketplaceCategory] ?? p.category} &middot;{' '}
                     {formatCents(p.price_cents)}
                   </span>
                 </div>

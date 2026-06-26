@@ -1,10 +1,22 @@
 import Link from 'next/link'
-import { Inbox, PackageCheck, ShoppingBag, Store, RotateCcw, BadgeCheck, ArrowRight } from 'lucide-react'
+import { notFound } from 'next/navigation'
+import {
+  Inbox,
+  PackageCheck,
+  ShoppingBag,
+  Store,
+  RotateCcw,
+  BadgeCheck,
+  ArrowRight,
+} from 'lucide-react'
 import AdminShell from '@/components/admin/AdminShell'
 import StatCard from '@/components/merchant/StatCard'
-import { getAdminOverview } from '@/lib/marketplace/admin'
+import { getAdminOverview, getAdminUser } from '@/lib/marketplace/admin'
 
 export default async function AdminOverviewPage() {
+  const { isAdmin } = await getAdminUser()
+  if (!isAdmin) notFound()
+
   const o = await getAdminOverview()
 
   const attention = [

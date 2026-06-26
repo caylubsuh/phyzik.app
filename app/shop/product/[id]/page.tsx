@@ -9,12 +9,16 @@ import FadeUp from '@/components/motion/FadeUp'
 import ProductGallery from '@/components/shop/ProductGallery'
 import VariantPicker from '@/components/shop/VariantPicker'
 import StarRating from '@/components/shop/StarRating'
+import SupplementDisclaimer from '@/components/shop/SupplementDisclaimer'
+import SellerInfo from '@/components/shop/SellerInfo'
+import ReviewForm from '@/components/shop/ReviewForm'
 import {
   getProductDetail,
   getProductReviews,
 } from '@/lib/marketplace/queries'
 import { CATEGORY_LABEL, publicAssetUrl } from '@/lib/marketplace/format'
 import { SITE_URL } from '@/lib/constants'
+import { createClient } from '@/lib/supabase/server'
 
 export const dynamic = 'force-dynamic'
 export const dynamicParams = true
@@ -72,6 +76,13 @@ export default async function ProductDetailPage({
 
   const reviews = await getProductReviews(product.id)
   const brand = product.brand
+
+  // Determine if a user is signed in (for the review form)
+  const sb = await createClient()
+  const {
+    data: { user },
+  } = await sb.auth.getUser()
+  const isSignedIn = user != null
 
   return (
     <>
@@ -172,6 +183,16 @@ export default async function ProductDetailPage({
                   currency={product.currency}
                 />
 
+                {/* Returns link */}
+                <p className="text-[12.5px] text-text-tertiary">
+                  <Link
+                    href="/legal/returns"
+                    className="underline underline-offset-2 transition-colors hover:text-text-secondary"
+                  >
+                    Returns &amp; refunds
+                  </Link>
+                </p>
+
                 {/* Trust strip */}
                 <div className="mt-1 grid grid-cols-2 gap-4 border-t border-border/60 pt-6 text-[12.5px] text-text-tertiary">
                   <div className="flex items-start gap-2.5">
@@ -183,6 +204,11 @@ export default async function ProductDetailPage({
                     <span>Secure checkout, processed via Stripe.</span>
                   </div>
                 </div>
+
+                {/* Seller disclosure */}
+                {brand && (
+                  <SellerInfo brand={brand} />
+                )}
               </div>
             </FadeUp>
           </div>
@@ -197,6 +223,15 @@ export default async function ProductDetailPage({
                 <p className="mt-4 whitespace-pre-line text-[15px] leading-relaxed text-text-secondary">
                   {product.description}
                 </p>
+              </div>
+            </FadeUp>
+          )}
+
+          {/* FDA supplement disclaimer — only for supplements */}
+          {product.category === 'supplements' && (
+            <FadeUp>
+              <div className="mt-8 max-w-[720px]">
+                <SupplementDisclaimer />
               </div>
             </FadeUp>
           )}
@@ -241,6 +276,14 @@ export default async function ProductDetailPage({
                 ))}
               </ul>
             )}
+
+            {/* Review submission form */}
+            <div className="mt-10 border-t border-border/60 pt-8">
+              <h3 className="mb-5 font-display text-[16px] font-bold tracking-tightest text-text-primary">
+                Write a Review
+              </h3>
+              <ReviewForm productId={product.id} isSignedIn={isSignedIn} />
+            </div>
           </section>
         </Container>
       </main>

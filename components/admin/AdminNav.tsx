@@ -10,6 +10,7 @@ import {
   ShoppingBag,
   RotateCcw,
   Wallet,
+  ScrollText,
   ArrowLeft,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -29,6 +30,7 @@ export default function AdminNav() {
     { label: 'Orders', href: '/admin/orders', icon: ShoppingBag, exact: false },
     { label: 'Returns', href: '/admin/returns', icon: RotateCcw, exact: false },
     { label: 'Payouts', href: '/admin/payouts', icon: Wallet, exact: false },
+    { label: 'Audit', href: '/admin/audit', icon: ScrollText, exact: false },
   ]
 
   const isActive = (href: string, exact: boolean) =>

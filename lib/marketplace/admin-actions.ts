@@ -32,6 +32,7 @@ async function audit(
     const sb = createAdminClient()
     await sb.from('marketplace_audit_log').insert({
       actor_user_id: actorId,
+      actor_is_admin: true,
       action,
       target_table: table,
       target_id: targetId,
@@ -189,21 +190,109 @@ export async function updateReturn(
   return { ok: true, message: status === 'approved' ? 'Return approved.' : 'Return denied.' }
 }
 
-export async function refundOrder(orderId: string): Promise<ActionResult> {
+export async function markReturnRefunded(id: string): Promise<ActionResult> {
+  const { user, isAdmin } = await getAdminUser()
+  if (!user || !isAdmin) return { ok: false, error: 'Not authorized.' }
+  const sb = createAdminClient()
+  const { error } = await sb
+    .from('marketplace_return_requests')
+    .update({ status: 'refunded', updated_at: new Date().toISOString() })
+    .eq('id', id)
+  if (error) return { ok: false, error: error.message }
+  await audit(user.id, 'return.refunded', 'marketplace_return_requests', id, { status: 'refunded' })
+  revalidatePath('/admin/returns')
+  revalidatePath('/admin')
+  return { ok: true, message: 'Return marked refunded.' }
+}
+
+/**
+ * Trigger a refund through the marketplace-refund edge function.
+ * Pass amountCents for a partial refund; omit for a full refund.
+ */
+export async function refundOrder(orderId: string, amountCents?: number): Promise<ActionResult> {
   const { user, isAdmin } = await getAdminUser()
   if (!user || !isAdmin) return { ok: false, error: 'Not authorized.' }
   // Use the cookie-session client so the user's JWT authorizes the edge function.
   const sb = await createClient()
-  const { data, error } = await sb.functions.invoke('marketplace-refund', {
-    body: { orderId },
-  })
+  const body: Record<string, unknown> = { orderId }
+  const safeAmount = (amountCents != null && Number.isFinite(amountCents) && amountCents > 0)
+    ? Math.round(amountCents)
+    : null
+  if (safeAmount !== null) body.amountCents = safeAmount
+
+  const { data, error } = await sb.functions.invoke('marketplace-refund', { body })
   if (error) return { ok: false, error: error.message }
   const payload = (data ?? {}) as { error?: string }
   if (payload.error) return { ok: false, error: payload.error }
-  await audit(user.id, 'order.refund', 'marketplace_orders', orderId, { refunded: true })
+
+  const isPartial = safeAmount !== null
+  await audit(
+    user.id,
+    isPartial ? 'order.partial_refund' : 'order.refund',
+    'marketplace_orders',
+    orderId,
+    isPartial ? { partial_refund: true, amount_cents: safeAmount } : { refunded: true },
+  )
   revalidatePath(`/admin/orders/${orderId}`)
   revalidatePath('/admin/orders')
-  return { ok: true, message: 'Refund issued.' }
+
+  if (isPartial) {
+    const dollars = (safeAmount / 100).toFixed(2)
+    return { ok: true, message: `Partial refund of $${dollars} issued.` }
+  }
+  return { ok: true, message: 'Full refund issued.' }
+}
+
+export async function setBrandOwner(brandId: string, email: string): Promise<ActionResult> {
+  const { user, isAdmin } = await getAdminUser()
+  if (!user || !isAdmin) return { ok: false, error: 'Not authorized.' }
+
+  const trimmedEmail = email.trim().toLowerCase()
+  if (!trimmedEmail) return { ok: false, error: 'Email is required.' }
+
+  const sb = createAdminClient()
+
+  // Resolve email → user id via the Supabase auth admin API.
+  // Paginate through all users to find one matching the email.
+  let targetUserId: string | null = null
+  let page = 1
+  const perPage = 1000
+  let exhausted = false
+
+  while (!exhausted && targetUserId === null) {
+    const { data, error } = await sb.auth.admin.listUsers({ page, perPage })
+    if (error) return { ok: false, error: `Auth lookup failed: ${error.message}` }
+    const users = data?.users ?? []
+    for (const u of users) {
+      if ((u.email ?? '').toLowerCase() === trimmedEmail) {
+        targetUserId = u.id
+        break
+      }
+    }
+    if (users.length < perPage) exhausted = true
+    page++
+  }
+
+  if (!targetUserId) {
+    return {
+      ok: false,
+      error: `No account found for ${trimmedEmail}. The user must sign up before being linked.`,
+    }
+  }
+
+  const { error: updateErr } = await sb
+    .from('marketplace_brands')
+    .update({ owner_user_id: targetUserId })
+    .eq('id', brandId)
+
+  if (updateErr) return { ok: false, error: updateErr.message }
+
+  await audit(user.id, 'brand.link_owner', 'marketplace_brands', brandId, {
+    owner_user_id: targetUserId,
+    linked_email: trimmedEmail,
+  })
+  revalidatePath(`/admin/brands/${brandId}`)
+  return { ok: true, message: `Owner linked: ${trimmedEmail}` }
 }
 
 export async function setProductCommission(

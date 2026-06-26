@@ -120,9 +120,9 @@ export default function TermsOfSalePage() {
 
       <h2>Governing law</h2>
       <p>
-        These Sale Terms are governed by the laws of [Governing law: State of __],
+        These Sale Terms are governed by the laws of the Commonwealth of Virginia,
         without regard to conflict-of-law principles, and any disputes shall be
-        resolved in the courts located in [venue: __].
+        resolved in the courts located in the state and federal courts located in the Commonwealth of Virginia.
       </p>
 
       <h2>Contact us</h2>

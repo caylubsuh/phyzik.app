@@ -1,11 +1,11 @@
+import Link from 'next/link'
 import StatusChip from './StatusChip'
 import { formatCents } from '@/lib/marketplace/format'
 import type { Order } from '@/lib/marketplace/types'
 
 /**
- * Display-only orders table. Fulfillment (mark shipped / delivered) happens in
- * the PHYZIK app for now — no writes here. Short order id, date, buyer, item
- * count, total, status, tracking.
+ * Merchant orders table. Each row links to /merchant/[brandId]/orders/[orderId]
+ * for fulfillment. Pass brandId to enable the detail links.
  */
 function shortId(id: string): string {
   return id.slice(0, 8).toUpperCase()
@@ -24,7 +24,13 @@ function itemCount(o: Order): number {
   return o.items.reduce((sum, it) => sum + (it.qty ?? 0), 0)
 }
 
-export default function OrderTable({ orders }: { orders: Order[] }) {
+type OrderTableProps = {
+  orders: Order[]
+  /** When provided, order IDs become links to the fulfillment detail page. */
+  brandId?: string
+}
+
+export default function OrderTable({ orders, brandId }: OrderTableProps) {
   return (
     <div className="overflow-hidden rounded-[3px] border border-border bg-bg-surface">
       <div className="overflow-x-auto">
@@ -57,14 +63,24 @@ export default function OrderTable({ orders }: { orders: Order[] }) {
           <tbody>
             {orders.map((o) => {
               const buyer = o.buyerName ?? o.ship_to?.name ?? null
+              const orderIdCell = brandId ? (
+                <Link
+                  href={`/merchant/${brandId}/orders/${o.id}`}
+                  className="font-mono text-[12.5px] tabular-nums text-accent-bright underline-offset-2 hover:underline"
+                >
+                  {shortId(o.id)}
+                </Link>
+              ) : (
+                <span className="font-mono text-[12.5px] text-text-primary tabular-nums">
+                  {shortId(o.id)}
+                </span>
+              )
               return (
                 <tr
                   key={o.id}
                   className="border-b border-border/50 last:border-b-0 transition-colors hover:bg-white/[0.02]"
                 >
-                  <td className="px-4 py-3.5 font-mono text-[12.5px] text-text-primary tabular-nums">
-                    {shortId(o.id)}
-                  </td>
+                  <td className="px-4 py-3.5">{orderIdCell}</td>
                   <td className="px-4 py-3.5 text-[13px] text-text-secondary tabular-nums">
                     {fmtDate(o.created_at)}
                   </td>

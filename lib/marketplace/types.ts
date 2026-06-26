@@ -36,6 +36,10 @@ export interface Brand {
   featured: boolean
   verified: boolean
   sort_order: number
+  legal_name?: string | null
+  business_address?: string | null
+  contact_email?: string | null
+  contact_phone?: string | null
 }
 
 export interface Product {

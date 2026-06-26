@@ -62,6 +62,7 @@ export default async function MerchantDashboardPage({
 
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1.1fr]">
             <ConnectStatus
+              brandId={brand.id}
               status={brand.status}
               chargesEnabled={brand.charges_enabled}
               payoutsEnabled={brand.payouts_enabled}

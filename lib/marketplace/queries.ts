@@ -35,7 +35,7 @@ export interface ManagedBrand extends Brand {
 }
 
 const BRAND_COLS =
-  'id,name,slug,logo_url,banner_url,description,categories,website_url,affiliate_url,promo_code,promo_description,featured,verified,sort_order'
+  'id,name,slug,logo_url,banner_url,description,categories,website_url,affiliate_url,promo_code,promo_description,featured,verified,sort_order,legal_name,business_address,contact_email,contact_phone'
 const PRODUCT_COLS =
   'id,brand_id,name,description,image_url,price_cents,compare_at_cents,currency,category,handle,is_drop,drop_starts_at,drop_ends_at,sort_order'
 const ORDER_COLS =
@@ -156,6 +156,7 @@ export async function getProductDetail(id: string): Promise<ProductDetail | null
     .select(PRODUCT_COLS)
     .eq('id', id)
     .eq('status', 'published')
+    .eq('is_active', true)
     .maybeSingle()
   if (error || !product) return null
   const p = product as Product
@@ -388,7 +389,7 @@ export async function getMerchantEarnings(brandId: string): Promise<MerchantEarn
   // a stored fee fall back to the brand-rate estimate.
   const { data: orders } = await sb
     .from('marketplace_orders')
-    .select('status,amount_subtotal_cents,shipping_cents,tax_cents,application_fee_cents')
+    .select('status,amount_subtotal_cents,shipping_cents,tax_cents,application_fee_cents,phyzik_margin_cents,processing_cents')
     .eq('brand_id', brandId)
   if (!orders) return empty
 
@@ -406,6 +407,8 @@ export async function getMerchantEarnings(brandId: string): Promise<MerchantEarn
     shipping_cents: number | null
     tax_cents: number | null
     application_fee_cents: number | null
+    phyzik_margin_cents: number | null
+    processing_cents: number | null
   }[]) {
     if (paidStatuses.has(o.status)) {
       const sub = o.amount_subtotal_cents ?? 0
@@ -415,8 +418,8 @@ export async function getMerchantEarnings(brandId: string): Promise<MerchantEarn
       gmv += sub
       paidCount += 1
       if (o.application_fee_cents != null) {
-        commission += Math.max(o.application_fee_cents - tax - proc, 0)
-        processing += proc
+        commission += o.phyzik_margin_cents ?? Math.max(o.application_fee_cents - tax - proc, 0)
+        processing += o.processing_cents ?? proc
         net += sub + ship + tax - o.application_fee_cents
       } else {
         const margin = Math.round((sub * bps) / 10000)

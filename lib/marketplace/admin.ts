@@ -304,3 +304,24 @@ export async function getBrandProductsForAdmin(brandId: string): Promise<AdminPr
     .order('name', { ascending: true })
   return (data ?? []) as AdminProductRow[]
 }
+
+export interface AuditLogRow {
+  id: string
+  actor_user_id: string | null
+  actor_is_admin: boolean | null
+  action: string
+  target_table: string | null
+  target_id: string | null
+  created_at: string
+  after: Record<string, unknown> | null
+}
+
+export async function listAuditLog(): Promise<AuditLogRow[]> {
+  const sb = createAdminClient()
+  const { data } = await sb
+    .from('marketplace_audit_log')
+    .select('id,actor_user_id,actor_is_admin,action,target_table,target_id,created_at,after')
+    .order('created_at', { ascending: false })
+    .limit(200)
+  return (data ?? []) as AuditLogRow[]
+}

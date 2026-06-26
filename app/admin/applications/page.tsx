@@ -1,18 +1,27 @@
+import { notFound } from 'next/navigation'
 import { Inbox } from 'lucide-react'
 import AdminShell from '@/components/admin/AdminShell'
 import ApplicationActions from '@/components/admin/ApplicationActions'
-import { listApplications, type Application } from '@/lib/marketplace/admin'
+import { listApplications, getAdminUser, type Application } from '@/lib/marketplace/admin'
 
 function fmtDate(iso: string | null): string {
   if (!iso) return '—'
-  return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+  return new Date(iso).toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  })
 }
 
 function Field({ label, value }: { label: string; value: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-0.5">
-      <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-text-tertiary">{label}</span>
-      <span className="text-[13.5px] text-text-primary">{value || <span className="text-text-tertiary">—</span>}</span>
+      <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-text-tertiary">
+        {label}
+      </span>
+      <span className="text-[13.5px] text-text-primary">
+        {value || <span className="text-text-tertiary">—</span>}
+      </span>
     </div>
   )
 }
@@ -23,6 +32,9 @@ function YesNo({ v }: { v: boolean | null }) {
 }
 
 export default async function AdminApplicationsPage() {
+  const { isAdmin } = await getAdminUser()
+  if (!isAdmin) notFound()
+
   const apps = await listApplications()
   const pending = apps.filter((a) => a.status === 'pending').length
 
@@ -37,7 +49,8 @@ export default async function AdminApplicationsPage() {
           <Inbox className="h-6 w-6 text-text-tertiary" />
           <p className="text-[14.5px] font-semibold text-text-primary">No applications yet</p>
           <p className="max-w-[360px] text-[13px] text-text-secondary">
-            Seller applications submitted from <span className="text-text-primary">/for-brands</span> land here.
+            Seller applications submitted from{' '}
+            <span className="text-text-primary">/for-brands</span> land here.
           </p>
         </div>
       ) : (
@@ -58,7 +71,8 @@ export default async function AdminApplicationsPage() {
                     </span>
                   </div>
                   <span className="text-[12.5px] text-text-tertiary">
-                    {app.contact_name ?? '—'} · {app.contact_email ?? '—'} · applied {fmtDate(app.created_at)}
+                    {app.contact_name ?? '—'} &middot; {app.contact_email ?? '—'} &middot; applied{' '}
+                    {fmtDate(app.created_at)}
                   </span>
                 </div>
                 <ApplicationActions id={app.id} status={app.status} />
@@ -70,15 +84,25 @@ export default async function AdminApplicationsPage() {
                 <Field label="Legal name" value={app.legal_business_name} />
                 <Field label="Entity" value={app.entity_type} />
                 <Field label="Tax ID (last 4)" value={app.tax_id_last4} />
-                <Field label="Liability insurance" value={<YesNo v={app.has_product_liability_insurance} />} />
-                <Field label="Supplement attestation" value={<YesNo v={app.supplement_attestation} />} />
+                <Field
+                  label="Liability insurance"
+                  value={<YesNo v={app.has_product_liability_insurance} />}
+                />
+                <Field
+                  label="Supplement attestation"
+                  value={<YesNo v={app.supplement_attestation} />}
+                />
                 <Field label="Agreement" value={app.agreement_version} />
               </div>
 
               {app.message && (
                 <div className="border-t border-border/60 pt-3">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-text-tertiary">Message</span>
-                  <p className="mt-1 text-[13.5px] leading-relaxed text-text-secondary">{app.message}</p>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-text-tertiary">
+                    Message
+                  </span>
+                  <p className="mt-1 text-[13.5px] leading-relaxed text-text-secondary">
+                    {app.message}
+                  </p>
                 </div>
               )}
             </div>

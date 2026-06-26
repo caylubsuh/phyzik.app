@@ -3,15 +3,17 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
-import { Suspense, useEffect, useMemo, useState } from 'react'
+import { Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import {
   ArrowLeft,
   ArrowRight,
   CheckCircle2,
-  CreditCard,
   Loader2,
   Lock,
 } from 'lucide-react'
+import { Elements } from '@stripe/react-stripe-js'
+import { loadStripe } from '@stripe/stripe-js'
+import type { Stripe } from '@stripe/stripe-js'
 import Nav from '@/components/nav/Nav'
 import Footer from '@/components/footer/Footer'
 import Container from '@/components/ui/Container'
@@ -21,12 +23,14 @@ import { useCart, type CartItem } from '@/components/shop/CartContext'
 import { createClient } from '@/lib/supabase/client'
 import { formatCents } from '@/lib/marketplace/format'
 import type { ShipTo } from '@/lib/marketplace/types'
+import PaymentSection from './PaymentSection'
 
 type AuthState = 'checking' | 'authed' | 'anon'
 
 interface CreatedOrder {
   orderId?: string
   clientSecret?: string
+  publishableKey?: string
   amountTotalCents?: number
   amountSubtotalCents?: number
   shippingCents?: number
@@ -88,6 +92,10 @@ function CheckoutInner() {
   const [error, setError] = useState<string | null>(null)
   const [order, setOrder] = useState<CreatedOrder | null>(null)
 
+  // Hold the resolved Stripe instance after we have a publishable key.
+  const stripeRef = useRef<Promise<Stripe | null> | null>(null)
+  const [stripePromise, setStripePromise] = useState<Promise<Stripe | null> | null>(null)
+
   // Scope the cart to the brand being checked out.
   const brandItems = useMemo<CartItem[]>(
     () => (brandId ? items.filter((i) => i.brandId === brandId) : []),
@@ -111,6 +119,16 @@ function CheckoutInner() {
       active = false
     }
   }, [])
+
+  // Once we have a publishable key from the edge function, lazy-load Stripe
+  // exactly once (the key is dynamic, so we can't call loadStripe at module scope).
+  useEffect(() => {
+    if (!order?.publishableKey) return
+    if (stripeRef.current) return
+    const promise = loadStripe(order.publishableKey)
+    stripeRef.current = promise
+    setStripePromise(promise)
+  }, [order?.publishableKey])
 
   function update(key: keyof ShipTo, value: string) {
     setShip((prev) => ({ ...prev, [key]: value }))
@@ -148,15 +166,15 @@ function CheckoutInner() {
 
       if (fnError) {
         setError(
-          'We could not start this order. Payments are still being switched on for the web — try again shortly or check out in the app.',
+          'We could not start this order. Please try again shortly or check out in the app.',
         )
         return
       }
 
       const result = (data ?? {}) as CreatedOrder
       setOrder(result)
-      // Order created on the backend — clear this brand from the local cart.
-      clearBrand(brandId)
+      // Clear the cart for this brand now that the order is reserved on the backend.
+      if (brandId) clearBrand(brandId)
     } catch {
       setError(
         'Something went wrong starting checkout. Please try again in a moment.',
@@ -165,6 +183,10 @@ function CheckoutInner() {
       setSubmitting(false)
     }
   }
+
+  // Whether we have enough to render the payment step.
+  const hasPayment =
+    order?.clientSecret && order?.publishableKey && order?.orderId && stripePromise
 
   return (
     <>
@@ -185,7 +207,7 @@ function CheckoutInner() {
               Checkout
             </span>
             <h1 className="mt-3 font-display text-[clamp(2rem,4.5vw,3.25rem)] font-bold tracking-tightest text-text-primary">
-              {order ? 'Order started' : 'Secure checkout'}
+              {hasPayment ? 'Complete payment' : 'Secure checkout'}
             </h1>
           </div>
 
@@ -231,13 +253,101 @@ function CheckoutInner() {
                 </Link>
               </Button>
             </div>
-          ) : order ? (
-            // Order created — summary + complete-payment panel
-            <OrderConfirmation
-              order={order}
-              brandName={brandName}
-              fallbackSubtotal={subtotalCents}
-            />
+          ) : hasPayment ? (
+            // Payment step — Stripe Elements
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.5fr_1fr]">
+              <div className="flex flex-col gap-7">
+                <div className="relative overflow-hidden rounded-[3px] border border-accent/40 bg-bg-high/50 p-7 md:p-9">
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-x-0 top-0 h-px"
+                    style={{
+                      background:
+                        'linear-gradient(90deg, transparent, rgba(245,220,170,0.7), transparent)',
+                    }}
+                  />
+                  <div className="mb-6 flex items-center gap-3">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-[3px] border border-accent/40 bg-bg-deep/80">
+                      <CheckCircle2 className="h-5 w-5 text-accent-bright" />
+                    </span>
+                    <div>
+                      <h2 className="font-display text-[17px] font-bold tracking-tightest text-text-primary">
+                        Items reserved from {brandName}
+                      </h2>
+                      {order?.orderId && (
+                        <p className="text-[12px] text-text-tertiary">
+                          Order{' '}
+                          <span className="font-mono text-text-secondary">
+                            {order.orderId.slice(-8).toUpperCase()}
+                          </span>
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  <Elements
+                    stripe={stripePromise!}
+                    options={{
+                      clientSecret: order!.clientSecret!,
+                      appearance: { theme: 'night' },
+                    }}
+                  >
+                    <PaymentSection
+                      orderId={order!.orderId!}
+                      amountTotalCents={order!.amountTotalCents ?? 0}
+                      amountSubtotalCents={order!.amountSubtotalCents ?? subtotalCents}
+                      shippingCents={order!.shippingCents ?? 0}
+                      taxCents={order!.taxCents ?? 0}
+                      currency={order!.currency ?? 'USD'}
+                      brandId={brandId}
+                      onClearBrand={() => brandId && clearBrand(brandId)}
+                    />
+                  </Elements>
+                </div>
+              </div>
+
+              {/* Summary */}
+              <aside className="lg:sticky lg:top-28 lg:self-start">
+                <div className="rounded-[3px] border border-border bg-bg-surface/60 p-6">
+                  <h2 className="font-display text-[16px] font-bold tracking-tightest text-text-primary">
+                    {brandName}
+                  </h2>
+                  <ul className="mt-5 flex flex-col gap-4">
+                    {brandItems.map((item) => (
+                      <li key={item.variantId} className="flex items-center gap-3">
+                        <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-[3px] border border-border bg-bg-deep">
+                          {item.image ? (
+                            <Image
+                              src={item.image}
+                              alt={item.name}
+                              fill
+                              sizes="48px"
+                              className="object-cover"
+                            />
+                          ) : (
+                            <span className="flex h-full w-full items-center justify-center">
+                              <ZMark sizeClass="h-5 w-auto opacity-30" />
+                            </span>
+                          )}
+                        </span>
+                        <span className="min-w-0 flex-1">
+                          <span className="line-clamp-1 text-[13px] text-text-primary">
+                            {item.name}
+                          </span>
+                          <span className="text-[12px] text-text-tertiary">
+                            Qty {item.qty}
+                            {item.variantLabel ? ` · ${item.variantLabel}` : ''}
+                          </span>
+                        </span>
+                        <span className="text-[13px] tabular-nums text-text-secondary">
+                          {formatCents(item.priceCents * item.qty)}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </aside>
+            </div>
           ) : brandItems.length === 0 ? (
             <EmptyNotice
               title="Nothing to check out"
@@ -245,7 +355,7 @@ function CheckoutInner() {
               cta={{ href: '/shop', label: 'Browse the shop' }}
             />
           ) : (
-            // Shipping form + summary
+            // Step 1: Shipping form + summary
             <form
               onSubmit={handleSubmit}
               className="grid grid-cols-1 gap-10 lg:grid-cols-[1.5fr_1fr]"
@@ -433,135 +543,6 @@ function EmptyNotice({
       <Button variant="secondary" size="md" asChild>
         <Link href={cta.href}>{cta.label}</Link>
       </Button>
-    </div>
-  )
-}
-
-function OrderConfirmation({
-  order,
-  brandName,
-  fallbackSubtotal,
-}: {
-  order: CreatedOrder
-  brandName: string
-  fallbackSubtotal: number
-}) {
-  const currency = order.currency ?? 'USD'
-  const subtotal = order.amountSubtotalCents ?? fallbackSubtotal
-  const total = order.amountTotalCents ?? subtotal
-
-  return (
-    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.5fr_1fr]">
-      {/* Complete payment panel */}
-      <div className="relative overflow-hidden rounded-[3px] border border-accent/40 bg-bg-high/50 p-7 md:p-9">
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 top-0 h-px"
-          style={{
-            background:
-              'linear-gradient(90deg, transparent, rgba(245,220,170,0.7), transparent)',
-          }}
-        />
-        <div className="flex items-center gap-3">
-          <span className="flex h-11 w-11 items-center justify-center rounded-[3px] border border-accent/40 bg-bg-deep/80">
-            <CheckCircle2 className="h-5 w-5 text-accent-bright" />
-          </span>
-          <div>
-            <h2 className="font-display text-[18px] font-bold tracking-tightest text-text-primary">
-              Order reserved
-            </h2>
-            <p className="text-[13px] text-text-secondary">
-              Your items from {brandName} are held.
-            </p>
-          </div>
-        </div>
-
-        {order.orderId && (
-          <p className="mt-5 text-[12.5px] text-text-tertiary">
-            Order reference{' '}
-            <span className="font-mono text-text-secondary">
-              {order.orderId}
-            </span>
-          </p>
-        )}
-
-        <div className="mt-7 rounded-[3px] border border-border bg-bg-deep/60 p-5">
-          <div className="flex items-center gap-2.5">
-            <CreditCard className="h-4 w-4 text-accent" />
-            <span className="text-[13px] font-bold uppercase tracking-[0.16em] text-text-secondary">
-              Complete payment
-            </span>
-          </div>
-          <p className="mt-3 text-[13.5px] leading-relaxed text-text-secondary">
-            Live card entry activates once Stripe web keys are configured. The
-            checkout is running in test mode — your order has been created on the
-            backend, and the payment step will open here the moment web payments
-            go live.
-          </p>
-          <div className="mt-4 flex items-center gap-2 text-[12px] text-text-tertiary">
-            <Lock className="h-3.5 w-3.5" />
-            Card details are never collected on this page.
-          </div>
-        </div>
-
-        <div className="mt-7 flex flex-wrap gap-3">
-          <Button variant="secondary" size="md" asChild>
-            <Link href="/shop">Keep shopping</Link>
-          </Button>
-          <Button variant="ghost" size="md" asChild>
-            <Link href="/account">View account</Link>
-          </Button>
-        </div>
-      </div>
-
-      {/* Totals */}
-      <aside>
-        <div className="rounded-[3px] border border-border bg-bg-surface/60 p-6">
-          <h3 className="font-display text-[16px] font-bold tracking-tightest text-text-primary">
-            Order total
-          </h3>
-          <dl className="mt-5 flex flex-col gap-3 text-[14px]">
-            <div className="flex items-center justify-between">
-              <dt className="text-text-secondary">Subtotal</dt>
-              <dd className="tabular-nums text-text-primary">
-                {formatCents(subtotal, currency)}
-              </dd>
-            </div>
-            {order.shippingCents != null && (
-              <div className="flex items-center justify-between">
-                <dt className="text-text-secondary">Shipping</dt>
-                <dd className="tabular-nums text-text-primary">
-                  {formatCents(order.shippingCents, currency)}
-                </dd>
-              </div>
-            )}
-            {order.taxCents != null && (
-              <div className="flex items-center justify-between">
-                <dt className="text-text-secondary">Tax</dt>
-                <dd className="tabular-nums text-text-primary">
-                  {formatCents(order.taxCents, currency)}
-                </dd>
-              </div>
-            )}
-          </dl>
-          <div
-            aria-hidden="true"
-            className="my-5 h-px w-full"
-            style={{
-              background:
-                'linear-gradient(90deg, transparent, rgba(168,137,46,0.35), transparent)',
-            }}
-          />
-          <div className="flex items-center justify-between">
-            <span className="text-[13px] font-semibold uppercase tracking-[0.16em] text-text-tertiary">
-              Total
-            </span>
-            <span className="font-display text-[22px] font-bold tabular-nums tracking-tightest text-text-primary">
-              {formatCents(total, currency)}
-            </span>
-          </div>
-        </div>
-      </aside>
     </div>
   )
 }

@@ -11,6 +11,7 @@ import FadeUp from '@/components/motion/FadeUp'
 import { ZMark } from '@/components/brand/BrandMarks'
 import ProductCard from '@/components/shop/ProductCard'
 import ShopEmptyState from '@/components/shop/ShopEmptyState'
+import SellerInfo from '@/components/shop/SellerInfo'
 import { getBrand, getProducts } from '@/lib/marketplace/queries'
 import { publicAssetUrl, CATEGORY_LABEL } from '@/lib/marketplace/format'
 import { SITE_URL } from '@/lib/constants'
@@ -170,6 +171,13 @@ export default async function BrandStorefrontPage({
                 </div>
               </FadeUp>
             )}
+
+            {/* INFORM Act seller disclosure */}
+            <FadeUp delay={0.08}>
+              <div className="mt-8 max-w-[560px]">
+                <SellerInfo brand={brand} />
+              </div>
+            </FadeUp>
           </Container>
         </section>
 
