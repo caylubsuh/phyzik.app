@@ -10,23 +10,17 @@ export const metadata = {
 
 export default function PrivacyPage() {
   return (
-    <LegalLayout title="Privacy Policy" lastUpdated="June 23, 2026">
-      <div className="mb-12 border border-border bg-bg-low px-5 py-4">
-        <p className="!mb-0 text-[13px] leading-relaxed !text-text-tertiary">
-          <strong className="!text-text-secondary">Draft — pending legal review.</strong>{' '}
-          This document is provided for information only and is not legal
-          advice.
-        </p>
-      </div>
-
+    <LegalLayout title="Privacy Policy" lastUpdated="August 26, 2026">
       <p>
-        {`Physique Technologies LLC ("PHYZIK," "we," "us," or "our") operates the PHYZIK mobile application, the PHYZIK Shop marketplace, and the phyzik.app website (together, the "Services"). This Privacy Policy explains what information we collect, how and why we use it, who we share it with, and the choices and rights you have. By using the Services, you agree to the practices described here.`}
+        {`Physique Technologies LLC, a Virginia limited liability company ("PHYZIK," "we," "us," or "our"), operates the PHYZIK mobile application and the phyzik.app website, including the PHYZIK Shop marketplace hosted on that website (together, the "Services"). This Privacy Policy explains what information we collect, how and why we use it, who we share it with, and the choices and rights you have. By using the Services, you agree to the practices described here.`}
       </p>
       <p>
         PHYZIK is both a social fitness platform and a marketplace where
-        independent brands sell physical goods. Because the Services include
-        payments and the sale of products, this policy covers shopping and order
-        data in addition to training and social data.
+        independent brands sell physical goods. The marketplace runs on the
+        phyzik.app website; no physical goods are sold inside the mobile app.
+        Because the Services include payments and the sale of products, this
+        policy covers shopping and order data in addition to training and social
+        data.
       </p>
 
       <h2>Information we collect</h2>
@@ -52,7 +46,7 @@ export default function PrivacyPage() {
       </p>
       <p>
         <strong>Marketplace and purchase data.</strong>
-        {` When you buy from PHYZIK Shop, we and our payment processor collect the information needed to complete your order — items purchased, order amount, shipping and billing address, contact details, and order status. Payment card details are collected and processed directly by Stripe; we do not store your full card number on our servers.`}
+        {` When you buy from PHYZIK Shop on the phyzik.app website, we and our payment processor collect the information needed to complete your order — items purchased, order amount, shipping and billing address, contact details, and order status. Payment card details are collected and processed directly by Stripe; we do not store your full card number on our servers.`}
       </p>
       <p>
         <strong>Device and usage information.</strong>

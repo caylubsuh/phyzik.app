@@ -10,15 +10,7 @@ export const metadata = {
 
 export default function ReturnsPage() {
   return (
-    <LegalLayout title="Returns & Refunds" lastUpdated="June 23, 2026">
-      <div className="mb-12 border border-border bg-bg-low px-5 py-4">
-        <p className="!mb-0 text-[13px] leading-relaxed !text-text-tertiary">
-          <strong className="!text-text-secondary">Draft — pending legal review.</strong>{' '}
-          This document is provided for information only and is not legal
-          advice.
-        </p>
-      </div>
-
+    <LegalLayout title="Returns & Refunds" lastUpdated="August 26, 2026">
       <p>
         This Returns &amp; Refunds Policy explains how returns, exchanges, and
         refunds work for purchases made through PHYZIK Shop, the marketplace

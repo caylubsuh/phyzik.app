@@ -10,15 +10,7 @@ export const metadata = {
 
 export default function ProhibitedItemsPage() {
   return (
-    <LegalLayout title="Prohibited Items" lastUpdated="June 23, 2026">
-      <div className="mb-12 border border-border bg-bg-low px-5 py-4">
-        <p className="!mb-0 text-[13px] leading-relaxed !text-text-tertiary">
-          <strong className="!text-text-secondary">Draft — pending legal review.</strong>{' '}
-          This document is provided for information only and is not legal
-          advice.
-        </p>
-      </div>
-
+    <LegalLayout title="Prohibited Items" lastUpdated="August 26, 2026">
       <p>
         This Prohibited Items policy describes products that may not be listed or
         sold through PHYZIK Shop, the marketplace operated by Physique Technologies

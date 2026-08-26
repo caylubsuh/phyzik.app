@@ -10,17 +10,9 @@ export const metadata = {
 
 export default function TermsPage() {
   return (
-    <LegalLayout title="Terms of Service" lastUpdated="June 23, 2026">
-      <div className="mb-12 border border-border bg-bg-low px-5 py-4">
-        <p className="!mb-0 text-[13px] leading-relaxed !text-text-tertiary">
-          <strong className="!text-text-secondary">Draft — pending legal review.</strong>{' '}
-          This document is provided for information only and is not legal
-          advice.
-        </p>
-      </div>
-
+    <LegalLayout title="Terms of Service" lastUpdated="August 26, 2026">
       <p>
-        {`These Terms of Service ("Terms") govern your use of the PHYZIK mobile application, the phyzik.app website, and related services (together, the "Services"), operated by Physique Technologies LLC ("PHYZIK," "we," "us," or "our"). By creating an account or using the Services, you agree to these Terms. If you do not agree, do not use the Services.`}
+        {`These Terms of Service ("Terms") govern your use of the PHYZIK mobile application, the phyzik.app website, and related services (together, the "Services"), operated by Physique Technologies LLC, a Virginia limited liability company ("PHYZIK," "we," "us," or "our"). By creating an account or using the Services, you agree to these Terms. If you do not agree, do not use the Services.`}
       </p>
 
       <h2>Eligibility</h2>
@@ -64,8 +56,10 @@ export default function TermsPage() {
 
       <h2>PHYZIK Shop marketplace</h2>
       <p>
-        The App includes PHYZIK Shop, a marketplace where independent brands offer
-        physical goods. Purchases made through PHYZIK Shop are governed by our{' '}
+        PHYZIK Shop is a marketplace on the phyzik.app website where independent
+        brands offer physical goods. It is not part of the iOS or Android app, and
+        no physical goods are sold or delivered inside the app. Purchases made
+        through PHYZIK Shop are governed by our{' '}
         <a href="/legal/terms-of-sale">Terms of Sale</a> and{' '}
         <a href="/legal/returns">Returns &amp; Refunds Policy</a>. The independent
         brand is the seller of record for each product; PHYZIK facilitates the
@@ -179,10 +173,35 @@ export default function TermsPage() {
 
       <h2>Governing law</h2>
       <p>
-        These Terms are governed by the laws of [Governing law: State of __],
-        without regard to conflict-of-law principles. Any disputes shall be
-        resolved in the state or federal courts located in [venue: __], and you
-        consent to the personal jurisdiction of those courts.
+        These Terms are governed by the laws of the Commonwealth of Virginia,
+        without regard to its conflict-of-law principles. Any dispute arising out
+        of or relating to these Terms or the Services shall be resolved
+        exclusively in the state or federal courts located in the Commonwealth of
+        Virginia, and you consent to the personal jurisdiction and venue of those
+        courts.
+      </p>
+
+      <h2>Apple App Store</h2>
+      <p>
+        These Terms are an agreement between you and Physique Technologies LLC
+        only, and not with Apple Inc. Apple is not responsible for the App or its
+        content. Your license to use the App is a non-transferable license to use
+        it on any Apple-branded device you own or control, as permitted by the
+        Usage Rules in the Apple Media Services Terms and Conditions.
+      </p>
+      <p>
+        Apple has no obligation to furnish any maintenance or support services for
+        the App. If the App fails to conform to any applicable warranty, you may
+        notify Apple, and Apple will refund the purchase price of the App; to the
+        maximum extent permitted by law, Apple has no other warranty obligation
+        with respect to the App. Physique Technologies LLC — not Apple — is
+        responsible for addressing any claims relating to the App, including
+        product liability claims, any claim that the App fails to conform to a
+        legal or regulatory requirement, and claims arising under consumer
+        protection or similar legislation.
+      </p>
+      <p>
+        {`In the event of any third-party claim that the App or your possession and use of it infringes that third party's intellectual property rights, Physique Technologies LLC — not Apple — is solely responsible for the investigation, defense, settlement, and discharge of that claim. You represent that you are not located in a country subject to a U.S. Government embargo or designated as a "terrorist supporting" country, and that you are not listed on any U.S. Government list of prohibited or restricted parties. Apple and its subsidiaries are third-party beneficiaries of these Terms and, upon your acceptance, will have the right to enforce these Terms against you as a third-party beneficiary.`}
       </p>
 
       <h2>Changes to these Terms</h2>

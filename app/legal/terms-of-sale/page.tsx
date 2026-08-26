@@ -10,15 +10,7 @@ export const metadata = {
 
 export default function TermsOfSalePage() {
   return (
-    <LegalLayout title="Terms of Sale" lastUpdated="June 23, 2026">
-      <div className="mb-12 border border-border bg-bg-low px-5 py-4">
-        <p className="!mb-0 text-[13px] leading-relaxed !text-text-tertiary">
-          <strong className="!text-text-secondary">Draft — pending legal review.</strong>{' '}
-          This document is provided for information only and is not legal
-          advice.
-        </p>
-      </div>
-
+    <LegalLayout title="Terms of Sale" lastUpdated="August 26, 2026">
       <p>
         {`These Terms of Sale ("Sale Terms") apply to purchases of physical goods you make through PHYZIK Shop, the marketplace within the PHYZIK app and website operated by Physique Technologies LLC ("PHYZIK," "we," "us," or "our"). By placing an order, you agree to these Sale Terms, which supplement our `}
         <a href="/terms">Terms of Service</a> and{' '}
